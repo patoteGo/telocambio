@@ -7,11 +7,11 @@ import { URLBASE } from './config/config'
 
 const Routes = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter  basename={`/${URLBASE}/`}>
             <Switch>
-                <Route exact path={`/${URLBASE}/`} component={Homepage}  />
-                <Route exact path={`/${URLBASE}/list`} component={List}  />
-                <Route exact path={`/${URLBASE}/detail/:id`} component={Detail} />
+                <Route exact path={'/'} component={Homepage}  />
+                <Route exact path={'/list'} component={List}  />
+                <Route exact path={'/detail/:id'} component={Detail} />
                 <Route render={ () => <h2>404</h2> } />
             </Switch>
         </BrowserRouter>

@@ -1,12 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Footer() {
+function Main() {
   return (
-    <div className="Footer">
-      Footer
+    <div className="Homepage-main">
+      MAIN
     </div>
   );
 }
 
-export default Footer;
+export default Main;
