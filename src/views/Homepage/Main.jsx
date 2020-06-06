@@ -5,7 +5,7 @@ function Main() {
   return (
     <div className="Homepage-main">
       MAIN
-      
+  <hola>hola</hola>
 
       <Card hijo="Anita" name="card1" img="https://picsum.photos/200/300?random=1"/>
       <Card hijo="Guillermo" name="card2" img="https://picsum.photos/200/300?random=2"/>
