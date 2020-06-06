@@ -9,7 +9,7 @@ function Index() {
       <Header/>
       <Main/>
       <Footer/>
-      HOMEPAGE
+      HOMEPA
     </div>
   );
 }
