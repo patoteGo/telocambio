@@ -6,7 +6,7 @@ function Header() {
     <div className="Header">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
-          <a className="navbar-brand" href="#">Container</a>
+          <a className="navbar-brand" href="#">TE LO CAMBIO</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -14,13 +14,10 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarsExample07">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                <a className="nav-link" href="#">INICIO <span className="sr-only">(current)</span></a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled" href="#">Disabled</a>
+                <a className="nav-link" href="#">PRODUCTOS</a>
               </li>
               <li className="nav-item dropdown">
                 <div className="nav-link dropdown-toggle"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</div>
