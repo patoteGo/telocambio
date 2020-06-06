@@ -1,6 +1,5 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './../../layouts/Header'
+import Header from './../../layouts/Header.jsx'
 import Main from './Main'
 import Footer from './../../layouts/Footer'
 function Index() {
