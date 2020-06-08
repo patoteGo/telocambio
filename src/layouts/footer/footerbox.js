@@ -1,34 +1,33 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import './FooterBoxStyle.css'
 
 function footerbox() {
     return (
-    <div className="containerBox">
-
-        <div className="firstBox">
-            <span> Terminos y condiciones </span>
-            <span> Politicas de privacidad </span>
-            <span> Trabaja con nosotros </span>
-            <span> Ayuda </span>
-            <span> Contacto </span>
+        <div class="container">
+        <div class="row">
+          <div class="col">
+            1 of 3
+          </div>
+          <div class="col-6">
+            2 of 3 (wider)
+          </div>
+          <div class="col">
+            3 of 3
+          </div>
         </div>
-
-        <div className="secondBox">
-            <span>Convenios</span>
-            <span> Medios de pago </span>
-            <span> Paga con Webpay </span>
-            <span> Paga con Paypal </span>
+        <div class="row">
+          <div class="col">
+            1 of 3
+          </div>
+          <div class="col-5">
+            2 of 3 (wider)
+          </div>
+          <div class="col">
+            3 of 3
+          </div>
         </div>
-
-        <div className="thirdBox">
-            <span> Visitanos </span>
-            <span> @telocambio </span>
-            <span> @telocambio </span>
-            <span> @telocambio </span>
-        </div>
-        
-    </div>
+      </div>
     );
 }
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import footerbox from './FooterBox'
+import FooterBox from './FooterBox'
 
 function Footer() {
   return (
     <div className="Footer">
-      <footerbox />
+      <FooterBox />
       Footer
     </div>
   );
