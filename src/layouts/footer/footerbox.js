@@ -1,33 +1,30 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './FooterBoxStyle.css'
 
-function footerbox() {
+function footerbox({fecha}) {
     return (
-        <div class="container">
-        <div class="row">
+       
+        <div class="row" id="footerlist">
           <div class="col">
-            1 of 3
+            <p> Politicas de privacidad </p>
+            <p> Terminos y condiciones </p>
+            <p> Trabaja con nostros </p>
+            <p> Ayuda </p>
           </div>
           <div class="col-6">
-            2 of 3 (wider)
+            <p> Paga con Webpay </p>
+            <p> Paga con Paypal </p>
+            <p> Paga con khipu </p>
+            <p> Master Card </p>
           </div>
           <div class="col">
-            3 of 3
+            <p> Quienes somos </p>
+            <p> Contactanos </p>
+            <p> Recomendaciones </p>
+            <p> Todos los derechos reservados &copy; {fecha} </p>
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            1 of 3
-          </div>
-          <div class="col-5">
-            2 of 3 (wider)
-          </div>
-          <div class="col">
-            3 of 3
-          </div>
-        </div>
-      </div>
+    
     );
 }
 
