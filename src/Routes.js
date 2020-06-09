@@ -10,8 +10,8 @@ const Routes = () => {
         <BrowserRouter  basename={`/${URLBASE}/`}>
             <Switch>
                 <Route exact path={'/'} component={Homepage}  />
-                <Route exact path={'/list'} component={List}  />
-                <Route exact path={'/detail/:id'} component={Detail} />
+                {/* <Route exact path={'/list'} component={List}  />
+                <Route exact path={'/detail/:id'} component={Detail} /> */}
                 <Route render={ () => <h2>404</h2> } />
             </Switch>
         </BrowserRouter>

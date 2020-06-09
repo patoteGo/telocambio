@@ -1,6 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 function Card() {
   return(
@@ -13,6 +11,7 @@ function Card() {
       <p className="card-text">Juguera en buen estado, cambio o vendo por no uso.</p>
     </div>
    </div>
+   
   )
 }
 
