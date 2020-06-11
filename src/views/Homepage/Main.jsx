@@ -4,9 +4,13 @@ import Card from './components/Card'
 function Main() {
   return (
     <div className="Main">
-      <Card/>
-      <Card/>
-      <Card/>
+      <div className="container">
+        <div className="row">
+          <div className="column">
+            <Card />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
