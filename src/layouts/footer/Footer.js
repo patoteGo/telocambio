@@ -4,6 +4,7 @@ import PrivacyPolicies from './PrivacyPolicies';
 import TermsConditions from './TermsConditions';
 import WorkWithUs from './WorkWithUs';
 import Help from './Help';
+import Contact from './Contact';
 
 function Footer() {
 
@@ -20,6 +21,8 @@ function Footer() {
       <TermsConditions />
       <WorkWithUs />
       <Help />
+      <Contact />
+
       
     </div>
   );
