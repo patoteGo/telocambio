@@ -1,0 +1,15 @@
+.row {
+    background-color: rgba(35, 6, 201, 0.644); 
+}
+.col {
+    border: 1px solid black;
+}
+.col-6 {
+    border: 1px solid black;
+}
+#footerlist li {
+    list-style:none;
+}
+p:hover {
+    color: white; 
+}
