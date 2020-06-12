@@ -16,7 +16,7 @@ export default function Register() {
                                 <form id="login-form" className="form is-light" action="" method="post">
                                     <h3 className="text-center text-info">Registrarse</h3>
                                     <div className="form-group">
-                                        <label for="username" className="text-info">Usuario:</label><br/>
+                                        <label for="username" className="text-info">Nombre:</label><br/>
                                         <input type="text" name="username" id="username" className="form-control"/>
                                     </div>
                                     <div className="form-group">

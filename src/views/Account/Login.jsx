@@ -16,8 +16,8 @@ export default function Login() {
                                 <form id="login-form" className="form is-light" action="" method="post">
                                     <h3 className="text-center text-info">Login</h3>
                                     <div className="form-group">
-                                        <label for="username" className="text-info">Username:</label><br/>
-                                        <input type="text" name="username" id="username" className="form-control"/>
+                                        <label for="username" className="text-info">Email:</label><br/>
+                                        <input type="email" name="email" id="email" className="form-control"/>
                                     </div>
                                     <div className="form-group">
                                         <label for="password" className="text-info">Password:</label><br/>
