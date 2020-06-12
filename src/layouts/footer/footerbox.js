@@ -3,7 +3,7 @@ import './FooterBoxStyle.css'
 
 function footerbox({fecha}) {
     return (
-       
+       <div className="footerbox">
         <div class="row" id="footerlist">
           <div class="col">
             <p> Politicas de privacidad </p>
@@ -24,6 +24,7 @@ function footerbox({fecha}) {
             <p> Todos los derechos reservados &copy; {fecha} </p>
           </div>
         </div>
+      </div>
     
     );
 }
