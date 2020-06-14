@@ -12,7 +12,7 @@ function Card() {
       </div>
 
 
-      <div className="row" style={{ background: "#19A26C", borderRadius: "20px" }}>
+      <div className="row" style={{ background: "#19A26C  ", borderRadius: "20px" }}>
         <div className="col">
           <div className=" text-right" style={{ width: "18rem" }}>
             <div className="card-body" >
