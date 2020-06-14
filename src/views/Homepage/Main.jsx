@@ -6,9 +6,10 @@ function Main() {
     <div className="Main">
       <div className="container">
         <div className="row">
-          <div className="column">
+          <div className="col">
             <Card />
           </div>
+
         </div>
       </div>
     </div>
