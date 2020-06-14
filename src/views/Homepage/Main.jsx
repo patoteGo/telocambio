@@ -6,7 +6,7 @@ function Main() {
     <div className="Main">
       <div className="container">
         <div className="row">
-          <div className="col">
+          <div className="col-3">
             <Card />
           </div>
 
