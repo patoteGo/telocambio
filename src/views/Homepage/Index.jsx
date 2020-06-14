@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from './../../layouts/Header.jsx'
 import Main from './Main'
-import Footer from './../../layouts/Footer'
-
+import Footer from "./../../layouts/footer/Footer"
 function Index() {
   return (
     <div className="Homepage-index">
