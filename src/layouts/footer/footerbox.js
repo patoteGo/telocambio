@@ -1,5 +1,5 @@
 import React from 'react';
-import './FooterBoxStyle.css'
+// import './FooterBoxStyle.css'
 
 function footerbox({fecha}) {
     return (

@@ -7,7 +7,8 @@ import { URLBASE } from './config/config'
 import Contact from './layouts/footer/Contact';
 import Login from './views/Account/Login';
 import Register from './views/Account/Register';
-
+import CreateProduct from './admin/views/CreateProduct.jsx'
+import ListProducts from './admin/views/ListProducts.jsx'
 const Routes = () => {
     return (
         <BrowserRouter  basename={`/${URLBASE}/`}>
@@ -18,6 +19,8 @@ const Routes = () => {
                 <Route exact path={'/register'} component={Register}  />
                 {/* <Route exact path={'/detail/:id'} component={Detail} /> */}
                 <Route exact path={'/footer/Contact'} component={Contact} />
+                <Route exact path={'/admin/create'} component={CreateProduct} />
+                <Route exact path={'/admin/list'} component={ListProducts} />
                 <Route render={ () => <h2>404</h2> } />
             </Switch>
         </BrowserRouter>
