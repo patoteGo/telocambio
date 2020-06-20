@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { setToken, deleteToken, getToken } from './../Helpers/auth-helpers';
 const UserContext = React.createContext();
 
@@ -14,7 +14,7 @@ export function UserProvider(props){
             }
 
             try {
-                const {data: user } = await Axios.get('api/user/JUAN'):
+                const {data: user } = await Axios.get('api/user/JUAN');
                 setUser(user);
                 setLoadinguser(false);
             } catch(error) {
@@ -35,4 +35,24 @@ export function UserProvider(props){
         setUser(null);
         deleteToken();
     }
+
+    const value = useMemo(( () => {
+        return ({
+            user,
+            loadUser,
+            signup,
+            login,
+            logout
+        })
+    }))
+
+    return <UserContext.Provider value={value} { ...props} />
+}
+
+export function useUser() {
+    const context = React.useContext(UserContext)
+    if(!context) {
+        throw new Error('Usuario debe estar dentro del proveedor UserContext')
+    }
+    return context;
 }
