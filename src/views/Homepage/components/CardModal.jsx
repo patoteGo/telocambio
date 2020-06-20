@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function CardModal() {
+function Cardmodal() {
     return (
         <div className="Cardmodal">
             <div className="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -38,4 +38,4 @@ function CardModal() {
                 
     )
 }
-export default CardModal
+export default Cardmodal
