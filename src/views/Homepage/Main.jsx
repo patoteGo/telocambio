@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './components/Card'
-import CardGallery from './components/CardGallery'
+
 
 function Main() {
   return (
