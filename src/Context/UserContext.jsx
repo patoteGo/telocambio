@@ -1,58 +1,22 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { setToken, deleteToken, getToken } from './../Helpers/auth-helpers';
-const UserContext = React.createContext();
+import React, { useState, useEffect, createContext } from 'react';
+import PrivacyPolicies from '../layouts/footer/PrivacyPolicies';
+// import { setToken, deleteToken, getToken } from './../Helpers/auth-helpers';
+// import { fetchUser } from './../api.js'
 
-export function UserProvider(props){
-    const [user, setUser] = useState(null); //no sabemos si esta autenticado
-    const [loadinguser, setLoadinguser] = useState(true);
+export const UserContext = createContext();
 
-    useEffect(() => {
-        async function loadUser() {
-            if(!getToken()){
-                setLoadinguser(false)
-                return;
-            }
-
-            try {
-                const {data: user } = await Axios.get('api/user/JUAN');
-                setUser(user);
-                setLoadinguser(false);
-            } catch(error) {
-                console.log(error);
-                
-            }
+export const UserProvider = props => {
+    const [user, setUser] = useState([
+        {
+            id: '5454',
+            name: 'juan',
+            email: 'email@email.com',
+            password: 'password',
         }
-        loadUser()
-    }, []);
-
-    async function signup(user) {
-        const { data } = await Axios.post('/api/user/signup', user);
-        setUser(data.user);
-        setToken(data.token);
-    }
-
-    function logout() {
-        setUser(null);
-        deleteToken();
-    }
-
-    const value = useMemo(( () => {
-        return ({
-            user,
-            loadUser,
-            signup,
-            login,
-            logout
-        })
-    }))
-
-    return <UserContext.Provider value={value} { ...props} />
-}
-
-export function useUser() {
-    const context = React.useContext(UserContext)
-    if(!context) {
-        throw new Error('Usuario debe estar dentro del proveedor UserContext')
-    }
-    return context;
+    ]);
+    return (
+        <UserContext.Provider>
+            {props.children}
+        </UserContext.Provider>
+    );
 }

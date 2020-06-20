@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './Header.sass';
-import { UserProvider, useUser} from './../Context/UserContext'
+// import { UserProvider, useUser} from './../Context/UserContext'
 function Header() {
   return (
-    <UserProvider>
+    // <UserProvider>
       <div className="Header">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container">
@@ -46,7 +46,7 @@ function Header() {
           </div>
         </nav>
       </div>
-    </UserProvider>
+    // </UserProvider>
   );
 }
 
