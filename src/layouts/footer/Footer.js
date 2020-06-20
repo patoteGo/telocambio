@@ -1,5 +1,5 @@
 import React from 'react';
-import FooterBox2 from './FooterBox2';
+import FooterBox from './footerbox';
 import PrivacyPolicies from './PrivacyPolicies';
 import TermsConditions from './TermsConditions';
 import WorkWithUs from './WorkWithUs';

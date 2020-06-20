@@ -1,27 +1,28 @@
 import React from 'react';
-// import './FooterBoxStyle.css'
+import './FooterBoxStyle.sass'
+import { Link } from "react-router-dom";
 
 function footerbox({fecha}) {
     return (
        <div className="footerbox">
-        <div className="row" id="footerlist">
-          <div className="col">
-            <p> Politicas de privacidad </p>
-            <p> Terminos y condiciones </p>
-            <p> Trabaja con nostros </p>
-            <p> Ayuda </p>
+        <div class="row" id="footerlist">
+          <div class="col">
+          <Link className="text-reset" to="/politicas" ><p> Politicas de privacidad </p></Link>
+            <Link className="text-reset" to="/terminos" ><p> Terminos y condiciones </p></Link>
+            <Link className="text-reset" to="/trabaja" ><p> Trabaja con nostros </p></Link>
+            <Link className="text-reset" to="/ayuda" ><p> Ayuda </p></Link>
           </div>
-          <div className="col-6">
-            <p> Paga con Webpay </p>
-            <p> Paga con Paypal </p>
-            <p> Paga con khipu </p>
-            <p> Master Card </p>
+          <div class="col-6">
+          <Link className="text-reset" to="/webpay" ><p> Paga con Webpay </p></Link>
+            <Link className="text-reset" to="/paypal" ><p> Paga con Paypal </p></Link>
+            <Link className="text-reset" to="/khipu" ><p> Paga con khipu </p></Link>
+            <Link className="text-reset" to="/mastercard" ><p> Master Card </p></Link>
           </div>
-          <div className="col">
-            <p> Quienes somos </p>
-            <p> Contactanos </p>
-            <p> Recomendaciones </p>
-            <p> Todos los derechos reservados &copy; {fecha} </p>
+          <div class="col">
+          <Link className="text-reset" to="/quienessomos" ><p >Quienes somos</p> </Link> 
+            <Link className="text-reset" to="/contacto" ><p >Contactanos</p> </Link> 
+            <Link className="text-reset" to="/recomendaciones" ><p >Recomendaciones</p> </Link>  
+            <Link className="text-reset" to="/" ><p> Todos los derechos reservados &copy; {fecha} </p></Link>
           </div>
         </div>
       </div>
