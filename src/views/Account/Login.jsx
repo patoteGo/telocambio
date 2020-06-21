@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext }  from 'react'
+import React, { useState, useContext }  from 'react'
 import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
@@ -7,16 +7,16 @@ import { UserContext, UserProvider } from './../../Context/UserContext'
 import './Login.sass'
 import { loginUser } from './../../config/api.js'
 import { NAMES, APIS, OPTIONS } from './../../config/config.js'
-import Auth from './../../middleware/Auth'
+
 
 // import SweetAlert from 'sweetalert2-react';
 import Swal from 'sweetalert2'
-import PrivacyPolicies from '../../layouts/footer/PrivacyPolicies';
+
 
 export default function Login(props) {
     // const [ state ] = useContext(UserProvider);
     const context = useContext(UserContext);
-    const [ name, setName] = useState('');
+    // const [ name, setName] = useState('');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -24,16 +24,16 @@ export default function Login(props) {
         return email.length > 0 && password.length > 0;
       }
 
-    useEffect(() => {
-        const cookies = new Cookies();
-        console.log('cookie, inicio0',cookies.get(NAMES.COOKIENAME));
-        context.fetchUser(12).then((res=>{
-            console.log ('contexct222',res.data)
-            setName(res.data.first_name)
-            console.log(context);
-            context.user[1](res.data)
-        }))
-    }, [])
+    // useEffect(() => {
+    //     const cookies = new Cookies();
+    //     console.log('cookie, inicio0',cookies.get(NAMES.COOKIENAME));
+    //     context.fetchUser(12).then((res=>{
+    //         console.log ('contexct222',res.data)
+    //         setName(res.data.first_name)
+    //         console.log(context);
+    //         context.user[1](res.data)
+    //     }))
+    // }, [])
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -77,9 +77,6 @@ export default function Login(props) {
            
             <div> 
                 <Header/>
-                
-                { name }
-                {/* <h1>{user[0] && user[0].name}</h1> */}
              
                 <div className="Login">
                     <div className="container">

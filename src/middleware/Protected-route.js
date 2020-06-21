@@ -1,9 +1,8 @@
-import React, { Component, useContext } from 'react'
+import React, { useContext } from 'react'
 import {Route, Redirect} from 'react-router-dom'
-import auth from './Auth'
 import Cookies from 'universal-cookie';
 import { UserContext  } from './../Context/UserContext'
-import { NAMES, OPTIONS } from './../config/config'
+import { NAMES } from './../config/config'
 export const ProtectedRoute = ({ component: Component, ...rest}) => {
     const context = useContext(UserContext);
     const isAuth = () =>{
