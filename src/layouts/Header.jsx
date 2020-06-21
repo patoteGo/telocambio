@@ -38,13 +38,13 @@ function Header(props) {
                   <div className="dropdown-menu" aria-labelledby="dropdown07">
                     <Link className="dropdown-item" to="/login">Login</Link>
                     <Link className="dropdown-item" to="/register">Registrarse</Link>
-                    <button onClick={
+                    {/* <button onClick={
                         Auth.logout(()=> {
                           // props.history.push('/')
                         }) 
                       }>
                       Logout
-                    </button>
+                    </button> */}
                   </div>
               </div>
               <form className="form-inline my-2 my-md-0" _lpchecked="1">
