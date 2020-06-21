@@ -13,7 +13,6 @@ export default function Forbidden() {
                         <div className="mb-4">
                             <img src="/img/tenor.gif" alt=""/>
                         </div>
-                        
                         <Link class="btn btn-primary mb-5" to="/">Volver a la pagina de inicio</Link>
                     </div>
                 </div>
