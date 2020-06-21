@@ -6,7 +6,7 @@ export default function ListProducts() {
       <div className="container">
         <div className="row my-5">
           <div className="col-12">
-            <h2 class="text-center">Tus Productos</h2>
+            <h2 className="text-center">Tus Productos</h2>
           </div>
         </div>
         <div className="row">

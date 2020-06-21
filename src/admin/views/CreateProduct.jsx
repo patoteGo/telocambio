@@ -12,29 +12,29 @@ export default function CreateProduct() {
           </div>
           <div className="row">
             <div className="col-md-6 col-sm-12">
-              <div class="form-group">
-                <label for="post_title">Titulo de la Publicación</label>
+              <div className="form-group">
+                <label htmlFor="post_title">Titulo de la Publicación</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="post_title"
                   placeholder="Licuadora"
                 />
               </div>
-              <div class="form-group">
-                <label for="short_desc">Descripcion Corta</label>
+              <div className="form-group">
+                <label htmlFor="short_desc">Descripcion Corta</label>
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   id="short_desc"
                   rows="2"
                 ></textarea>
               </div>
             </div>
             <div className="col-md-6 col-sm-12">
-              <div class="form-group">
-                <label for="long_desc">Descripcion Larga</label>
+              <div className="form-group">
+                <label htmlFor="long_desc">Descripcion Larga</label>
                 <textarea
-                  class="form-control"
+                  className="form-control"
                   id="long_desc"
                   rows="6"
                 ></textarea>
@@ -43,8 +43,8 @@ export default function CreateProduct() {
           </div>
           <div className="row">
             <div className="col-md-6 col-sm-12">
-              <div class="form-group">
-                <label for="cover_img">Imagen Portada</label>
+              <div className="form-group">
+                <label htmlFor="cover_img">Imagen Portada</label>
                 <input
                   type="file"
                   className="form-control-file"
@@ -53,19 +53,19 @@ export default function CreateProduct() {
               </div>
             </div>
             <div className="col-md-6 col-sm-12">
-              <div class="form-group">
-                <label for="gallery">Imagen Galerias</label>
+              <div className="form-group">
+                <label htmlFor="gallery">Imagen Galerias</label>
                 <input type="file" className="form-control-file" id="gallery" />
               </div>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6 col-sm-12">
-              <div class="form-group">
-                <label for="trade_for">Cambiar Por</label>
+              <div className="form-group">
+                <label htmlFor="trade_for">Cambiar Por</label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="trade_for"
                   placeholder="Tostadora"
                 />
@@ -74,7 +74,7 @@ export default function CreateProduct() {
           </div>
           <div className="row">
             <div className="offset-md-6 col-md-6 col-sm-12">
-              <button type="submit" class="btn btn-primary mb-2">
+              <button type="submit" className="btn btn-primary mb-2">
                 Subir Publicación a tu cuenta
               </button>
             </div>

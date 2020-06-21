@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './Header.sass';
+import Auth from './../middleware/Auth'
 // import { UserProvider, useUser} from './../Context/UserContext'
-function Header() {
+function Header(props) {
   return (
     // <UserProvider>
       <div className="Header">
@@ -37,6 +38,13 @@ function Header() {
                   <div className="dropdown-menu" aria-labelledby="dropdown07">
                     <Link className="dropdown-item" to="/login">Login</Link>
                     <Link className="dropdown-item" to="/register">Registrarse</Link>
+                    <button onClick={
+                        Auth.logout(()=> {
+                          // props.history.push('/')
+                        }) 
+                      }>
+                      Logout
+                    </button>
                   </div>
               </div>
               <form className="form-inline my-2 my-md-0" _lpchecked="1">
