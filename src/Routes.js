@@ -4,11 +4,12 @@ import Homepage from './views/Homepage/Index'
 import List from './views/List/Index'
 // import Detail from './views/Detail/Index'
 import { URLBASE } from './config/config'
-import Contact from './layouts/footer/Contact';
+import Contacto from './views/Contacto';
 import Login from './views/Account/Login';
 import Register from './views/Account/Register';
 import CreateProduct from './admin/views/CreateProduct.jsx'
 import ListProducts from './admin/views/ListProducts.jsx'
+import Contacto from './admin/views/Contacto'
 const Routes = () => {
     return (
         <BrowserRouter  basename={`/${URLBASE}/`}>
@@ -20,7 +21,7 @@ const Routes = () => {
                 {/* <Route exact path={'/detail/:id'} component={Detail} /> */}
                 <Route exact path={'/admin/create'} component={CreateProduct} />
                 <Route exact path={'/admin/list'} component={ListProducts} />
-                <Route exact path={'/Contact'} component={Contact} />
+                <Route exact path={'/Contacto'} component={Contacto} />
                 <Route render={ () => <h2>404</h2> } />
             </Switch>
         </BrowserRouter>
