@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import {Route, Redirect} from 'react-router-dom'
 import { isAuth } from './Auth'
 
-import { NAMES } from './../config/config'
+// import { NAMES } from './../config/config'
 export const ProtectedRoute = ({ component: Component, ...rest}) => {
     
     return (

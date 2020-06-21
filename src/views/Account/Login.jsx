@@ -2,7 +2,7 @@ import React, { useState, useContext }  from 'react'
 import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
-import Footer from './../../layouts/footer/Footer'
+import Footer from './../../layouts/footer/Footer2.jsx'
 import { UserContext, UserProvider } from './../../Context/UserContext'
 import './Login.sass'
 import { loginUser } from './../../config/api.js'

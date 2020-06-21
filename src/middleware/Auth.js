@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
 import Cookies from 'universal-cookie';
-import { NAMES , OPTIONS } from './../config/config.js'
-import { UserContext  } from './../Context/UserContext'
+import { NAMES  } from './../config/config.js'
+
 
 export const isAuth = () => {
 

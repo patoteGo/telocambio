@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CreateProduct() {
+export default function EditProduct() {
   return (
     <div>
       <div className="container">

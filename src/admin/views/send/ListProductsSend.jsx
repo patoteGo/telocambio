@@ -1,9 +1,18 @@
 import React from 'react'
-
+import Header from '../../layouts/HeaderAdmin'
+import { Link } from "react-router-dom";
 export default function ListProducts() {
   return (
+    <div>
+      <Header/>
     <div className="ListProducts">
       <div className="container">
+        <div className="row">
+          <div className="col offset-10 mt-3">
+            <Link className="btn btn-primary" to="/admin/create">Crear Producto</Link>
+          </div>
+          
+        </div>
         <div className="row my-5">
           <div className="col-12">
             <h2 className="text-center">Tus Productos</h2>
@@ -54,6 +63,7 @@ export default function ListProducts() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

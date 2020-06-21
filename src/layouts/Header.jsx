@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './Header.sass';
-import Auth from './../middleware/Auth'
+// import Auth from './../middleware/Auth'
 // import { UserProvider, useUser} from './../Context/UserContext'
 function Header(props) {
   return (

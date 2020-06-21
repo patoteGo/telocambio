@@ -1,5 +1,5 @@
 import React from 'react';
-import FooterBox2 from './footerbox';
+import FooterBox from './footerbox';
 import PrivacyPolicies from './PrivacyPolicies';
 import TermsConditions from './TermsConditions';
 import WorkWithUs from './WorkWithUs';
@@ -13,7 +13,7 @@ function Footer() {
 
   return (
     <div className="Footer">
-      <FooterBox2
+      <FooterBox
       fecha={fecha}
       />
 
