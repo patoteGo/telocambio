@@ -3,6 +3,7 @@ import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
 import Footer from './../../layouts/footer/Footer2.jsx'
+import Loader from './../../Helpers/Loader'
 import { UserContext, UserProvider } from './../../Context/UserContext'
 import './Login.sass'
 import { loginUser } from './../../config/api.js'
@@ -19,6 +20,7 @@ export default function Login(props) {
     // const [ name, setName] = useState('');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loader, setLoader] = useState("");
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -37,8 +39,10 @@ export default function Login(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setLoader('active');
         loginUser({'email':email, 'password':password}).then(res => {
             // console.log(res);
+            setLoader('');
             if(res.token){
                 console.log(res.token, 'exito');
                 context.token[1](res.token)
@@ -77,7 +81,7 @@ export default function Login(props) {
            
             <div> 
                 <Header/>
-             
+                <Loader active={loader}/>
                 <div className="Login">
                     <div className="container">
                         <div id="login-row" className="row justify-content-center align-items-center">
