@@ -21,7 +21,7 @@ const Routes = () => {
                 {/* <Route exact path={'/detail/:id'} component={Detail} /> */}
                 <Route exact path={'/admin/create'} component={CreateProduct} />
                 <Route exact path={'/admin/list'} component={ListProducts} />
-                <Route exact path={'/Contacto'} component={Contacto} />
+                <Route exact path={'/contacto'} component={Contacto} />
                 <Route render={ () => <h2>404</h2> } />
             </Switch>
         </BrowserRouter>
