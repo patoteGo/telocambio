@@ -1,8 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
-import Cookies from 'universal-cookie';
-// import { setToken, deleteToken, getToken } from './../Helpers/auth-helpers';
-import { fetchUserById, fetchUserByToken } from '../config/api.js'
-import { NAMES } from './../config/config.js'
+import { fetchUserById } from '../config/api.js'
+
 import { isAuth } from './../middleware/Auth'
 export const UserContext = createContext();
 
@@ -11,9 +9,7 @@ export const UserProvider = props => {
         return await fetchUserById(userid);
     }
 
-    const fetchTokenHandle = async(token) => {
-        return await fetchUserByToken(token);
-    }
+
 
     const [user, setUser] = useState([]);
     const [token, setToken] = useState([]);
