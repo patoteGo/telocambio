@@ -5,12 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Contacto() {
     return (
-
+        <div class="jumbotron jumbotron-fluid" style={{ backgroundColor: "black" }}>
+            <h1 class="display-4" style={{ fontSize: "70px", color: "white" }}><strong>Contacto</strong></h1>
+        </div>
         <div className="container">
-            <div class="jumbotron jumbotron-fluid" style={{ backgroundColor: "black" }}>
-                <h1 class="display-4" style={{ fontSize: "70px", color: "white" }}><strong>Contacto</strong></h1>
-            </div>
-            <div className="row" style={{direction:"column",  justify:"flex-end", alignItems:"flex-start"}}>
+            <div className="row" style={{ direction: "column", justify: "flex-end", alignItems: "flex-start" }}>
 
                 <div className="form-group col-md-8">
                     <label for="inputNombre">Nombre:</label>
