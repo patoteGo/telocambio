@@ -19,29 +19,13 @@ export const UserProvider = props => {
     }
     useEffect(() => {
         handleisauth().then(res => {
-            // console.log('auth',res);
+            console.log('auth',res);
             if(res){
                 setToken(res.token)
                 setUser(res.user)
             }
         })
         
-        
-       
-        // const cookies = new Cookies();
-        // if(!cookies.get(NAMES.COOKIENAME)) { return }
-        
-        // const token = cookies.get(NAMES.COOKIENAME);
-        // console.log('token',token);
-        // fetchTokenHandle(token).then(res => {
-        //     console.log(res.id);
-        //     setToken(token);
-        //     fetchUserHandle(2).then(res2 => {
-        //         setUser(res2)
-        //         console.log(user);
-        //     })
-        // })
-
     }, [])
 
 

@@ -11,7 +11,8 @@ export const isAuth = async () => {
 
     const userid = await fetchUserByToken(token);
     const user = await fetchUserById(userid);
-    return await {
+    if (!userid || !user) return false;
+    return {
         'token':token,
         'user':user
     }
