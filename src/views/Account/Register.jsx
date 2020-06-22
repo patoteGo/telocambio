@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
-import Footer from './../../layouts/footer/Footer'
+import Footer from './../../layouts/footer/Footer2.jsx'
 import './Register.sass'
 export default function Register() {
     return (

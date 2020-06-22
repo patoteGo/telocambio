@@ -1,38 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import { setToken, deleteToken, getToken } from './../Helpers/auth-helpers';
-const UserContext = React.createContext();
+import React, { useState, createContext, useEffect } from 'react';
+import { fetchUserById } from '../config/api.js'
 
-export function UserProvider(props){
-    const [user, setUser] = useState(null); //no sabemos si esta autenticado
-    const [loadinguser, setLoadinguser] = useState(true);
+import { isAuth } from './../middleware/Auth'
+export const UserContext = createContext();
 
+export const UserProvider = props => {
+    const fetchUserHandle = async(userid) => {
+        return await fetchUserById(userid);
+    }
+
+
+
+    const [user, setUser] = useState([]);
+    const [token, setToken] = useState([]);
+   
+    const handleisauth = async() => {
+        return await isAuth()
+    }
     useEffect(() => {
-        async function loadUser() {
-            if(!getToken()){
-                setLoadinguser(false)
-                return;
+        handleisauth().then(res => {
+            // console.log('auth',res);
+            if(res){
+                setToken(res.token)
+                setUser(res.user)
             }
+        })
+        
+        
+       
+        // const cookies = new Cookies();
+        // if(!cookies.get(NAMES.COOKIENAME)) { return }
+        
+        // const token = cookies.get(NAMES.COOKIENAME);
+        // console.log('token',token);
+        // fetchTokenHandle(token).then(res => {
+        //     console.log(res.id);
+        //     setToken(token);
+        //     fetchUserHandle(2).then(res2 => {
+        //         setUser(res2)
+        //         console.log(user);
+        //     })
+        // })
 
-            try {
-                const {data: user } = await Axios.get('api/user/JUAN'):
-                setUser(user);
-                setLoadinguser(false);
-            } catch(error) {
-                console.log(error);
-                
+    }, [])
+
+
+    
+    return (
+        <UserContext.Provider value={
+            {
+                user: [user, setUser],
+                token: [token, setToken],
+                fetchUser: fetchUserHandle
             }
-        }
-        loadUser()
-    }, []);
-
-    async function signup(user) {
-        const { data } = await Axios.post('/api/user/signup', user);
-        setUser(data.user);
-        setToken(data.token);
-    }
-
-    function logout() {
-        setUser(null);
-        deleteToken();
-    }
+            
+            }>
+            {props.children}
+        </UserContext.Provider>
+    );
 }
