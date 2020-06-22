@@ -1,18 +1,21 @@
 import Cookies from 'universal-cookie';
 import { NAMES  } from './../config/config.js'
+import { fetchUserById, fetchUserByToken } from './../config/api.js'
 
 
-export const isAuth = () => {
-
-    const cookies = new Cookies();
-    // console.log('cc',context.token[0] , cookies.get(NAMES.COOKIENAME));
+const cookies = new Cookies();
+export const isAuth = async () => {
     
-    if(cookies.get(NAMES.COOKIENAME)) {
-    // if(context.token[0] === cookies.get(NAMES.COOKIENAME)) {
-        // console.log(cookies.get(NAMES.COOKIENAME));
-        return true;
+    if(!cookies.get(NAMES.COOKIENAME)) { return false }
+    const token = cookies.get(NAMES.COOKIENAME);
+
+    const userid = await fetchUserByToken(token);
+    const user = await fetchUserById(userid);
+    return await {
+        'token':token,
+        'user':user
     }
-    return false;
+
 }
 
 

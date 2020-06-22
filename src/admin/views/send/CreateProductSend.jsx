@@ -1,7 +1,10 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import Header from '../../layouts/HeaderAdmin'
 // import { Link } from "react-router-dom";
 export default function CreateProduct() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loader, setLoader] = useState("");
   return (
     <div>
       <Header/>
@@ -20,6 +23,7 @@ export default function CreateProduct() {
                   type="text"
                   className="form-control"
                   id="post_title"
+                  name="post_title"
                   placeholder="Licuadora"
                 />
               </div>
@@ -28,6 +32,7 @@ export default function CreateProduct() {
                 <textarea
                   className="form-control"
                   id="short_desc"
+                  name="short_desc"
                   rows="2"
                 ></textarea>
               </div>
@@ -38,6 +43,7 @@ export default function CreateProduct() {
                 <textarea
                   className="form-control"
                   id="long_desc"
+                  name="long_desc"
                   rows="6"
                 ></textarea>
               </div>
@@ -51,6 +57,7 @@ export default function CreateProduct() {
                   type="text"
                   className="form-control"
                   id="cover_img"
+                  name="cover_img"
                   placeholder="Ingrese el url de su imagen"
                 />
               </div>
@@ -59,20 +66,31 @@ export default function CreateProduct() {
                 <input
                   type="text"
                   className="form-control"
+                  name="trade_for"
                   id="trade_for"
                   placeholder="Tostadora"
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="trade_for">tags, si son varios separalo por coma</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="tags"
+                  id="tags"
+                  placeholder="Electrodomestico, cocina"
                 />
               </div>
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
                 <label htmlFor="gallery">Imagen Galerias</label>
-                <input type="text" className="mt-2 form-control" id="gallery1" placeholder="Ingrese el url de la imagen 1"/>
-                <input type="text" className="mt-2 form-control" id="gallery2" placeholder="Ingrese el url de la imagen 2"/>
-                <input type="text" className="mt-2 form-control" id="gallery3" placeholder="Ingrese el url de la imagen 3"/>
-                <input type="text" className="mt-2 form-control" id="gallery4" placeholder="Ingrese el url de la imagen 4"/>
-                <input type="text" className="mt-2 form-control" id="gallery5" placeholder="Ingrese el url de la imagen 5"/>
-                <input type="text" className="mt-2 form-control" id="gallery6" placeholder="Ingrese el url de la imagen 6"/>
+                <input type="text" className="mt-2 form-control" id="gallery1" name="gallery1" placeholder="Ingrese el url de la imagen 1"/>
+                <input type="text" className="mt-2 form-control" id="gallery2" name="gallery2" placeholder="Ingrese el url de la imagen 2"/>
+                <input type="text" className="mt-2 form-control" id="gallery3" name="gallery3" placeholder="Ingrese el url de la imagen 3"/>
+                <input type="text" className="mt-2 form-control" id="gallery4" name="gallery4" placeholder="Ingrese el url de la imagen 4"/>
+                <input type="text" className="mt-2 form-control" id="gallery5" name="gallery5" placeholder="Ingrese el url de la imagen 5"/>
+                <input type="text" className="mt-2 form-control" id="gallery6" name="gallery6" placeholder="Ingrese el url de la imagen 6"/>
               </div>
             </div>
           </div>

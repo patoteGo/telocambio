@@ -1,10 +1,11 @@
 export const URLBASE = 'telocambio';
 export const APIS = {
     GETUSERS: 'https://reqres.in/api/users?page=1',
-    GETUSER: 'https://reqres.in/api/users/2', //aqui va el id del user
+    GETUSER: 'https://reqres.in/api/users/', //aqui va el id del user
     CREATEUSER: '',
     GETPOSTS: '',
     LOGIN: 'https://reqres.in/api/login',
+    USERTOKEN: 'https://reqres.in/api/token'
 
 }
 export const NAMES = {

@@ -4,7 +4,7 @@ export default function Loader({active}) {
     return (
         <div className={`Loader ${active}`}>
             <div className="inner">
-            <div class="multi-ripple">
+            <div className="multi-ripple">
                 <div></div>
                 <div></div>
             </div>
