@@ -9,17 +9,22 @@ export const ProtectedRoute = ({ component: Component, ...rest}) => {
         <Route {...rest } 
         render={
             (props) => {
-                if(isAuth()){
-                    return <Component {...props} />
-                } else {
-                    return <Redirect to={{
-                        pathname: "/forbidden",
-                        state: {
-                            from: props.location
+                isAuth().then(res => { 
+                    console.log(res.token);
+                    if(res.token){
+                        return <Component {...props} />
+                    } else {
+                        return <Redirect to={{
+                            pathname: "/forbidden",
+                            state: {
+                                from: props.location
+                            }
                         }
+                        }/>
                     }
-                    }/>
-                }
+                })
+                
+                
                 
             }
         }/>

@@ -19,7 +19,7 @@ export const UserProvider = props => {
     }
     useEffect(() => {
         handleisauth().then(res => {
-            console.log('auth',res);
+            // console.log('auth',res);
             if(res){
                 setToken(res.token)
                 setUser(res.user)
