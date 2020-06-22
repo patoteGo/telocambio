@@ -1,40 +1,35 @@
 import React from 'react';
 import './contacto.sass';
-
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Contacto  () {
+function Contacto() {
     return (
 
-        <div className="formulario" >
-            <div className="jumbotron">
-                <div className="container">
-                    <img src="https://lh3.googleusercontent.com/proxy/3F9evOZf1xOtz4p0SWTi85i2LPd-KuysQ54px4Zzqmu4q1NRiGEH7TvdkBYFo0enKq_T5HFPOgcstUAwajCXCwuNAKecviwGjvRS4vZPmBe6F7RxGgz5BE2xp1TNHdvAYYWpAAuR2g" class="img-fluid" alt="" />
-                    <p className="lead">Contacto</p>
-                </div>
+        <div className="container">
+            <div class="jumbotron jumbotron-fluid" style={{ backgroundColor: "black" }}>
+                <h1 class="display-4" style={{ fontSize: "70px", color: "white" }}><strong>Contacto</strong></h1>
             </div>
-            <div className="form col-md-8">
+            <div className="row" style={{direction:"column",  justify:"flex-end", alignItems:"flex-start"}}>
 
-                <div className="form-group col-md-4">
+                <div className="form-group col-md-8">
                     <label for="inputNombre">Nombre:</label>
                     <input type="nombre" className="form-control" id="inputNombre" />
                 </div>
-                <div className="form-group col-md-4">
+                <div className="form-group col-md-8">
                     <label for="inputApellido">Apellido:</label>
-                    <input type="apellido" className="form-control" id="inputapellido" />
+                    <input type="apellido" className="form-control" id="inputApellido" />
                 </div>
+                <div className="form-group col-md-8">
+                    <label for="inputEmail">E-mail:</label>
+                    <input type="email" className="form-control" id="inputEmail" placeholder="..." />
+                </div>
+                <div className="form-group col-md-8">
+                    <label for="inputMensaje">Mensaje:</label>
+                    <input type="text" className="form-control" id="inputMensaje" placeholder="..." />
+                </div>
+                <button type="send" className="btn btn-primary" style={{ backgroundColor: "black" }}>Enviar</button>
+                <hr></hr>
             </div>
-            <div className="form-group">
-                <label for="inputEmail">E-mail:</label>
-                <input type="email" className="form-control" id="inputEmail" placeholder="..." />
-            </div>
-            <div className="form-group">
-                <label for="inputMensaje">Mensaje:</label>
-                <input type="text" className="form-control" id="inputmensaje" placeholder="..." />
-            </div>
-            <button type="send" className="btn btn-primary">Enviar</button>
-
         </div>
     )
 }

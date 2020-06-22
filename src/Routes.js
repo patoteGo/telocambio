@@ -9,7 +9,7 @@ import Login from './views/Account/Login';
 import Register from './views/Account/Register';
 import CreateProduct from './admin/views/CreateProduct.jsx'
 import ListProducts from './admin/views/ListProducts.jsx'
-import Contacto from './admin/views/Contacto'
+
 const Routes = () => {
     return (
         <BrowserRouter  basename={`/${URLBASE}/`}>
