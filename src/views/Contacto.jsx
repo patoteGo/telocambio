@@ -33,7 +33,7 @@ function Contacto() {
                         <input type="text" className="form-control" id="inputMensaje" />
                     </div>
                      
-                        <div><Link to="/" className="btn btn-primary " >Enviar</Link></div>
+                        <div><Link to="/" className="btn btn-primary ">Enviar</Link></div>
                         
                     </form>
                 </div>
