@@ -8,7 +8,7 @@ function Header(props) {
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <div className="container">
             <div className="navbar-brand" to="/">
-              <img src="/img/logo.png" alt="logo"/>
+             <Link to='/'><img src="/img/logo.png" alt="logo"/></Link> 
               <span>DASHBOARD</span>
             </div>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">

@@ -1,17 +1,17 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from './middleware/Routes'
-import { UserProvider } from './Context/UserContext'
+import { AppProvider } from './Context/AppContext.jsx'
 import './sass/_fonts.sass'
 import Contacto from './views/Contacto'
 function App() { 
   return (
-    <UserProvider>
+    <AppProvider>
     <div className="App">
       <Routes/>
       <Contacto/>
     </div>
-    </UserProvider>
+    </AppProvider>
   );
 }
 

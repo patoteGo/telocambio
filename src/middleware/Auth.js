@@ -10,10 +10,13 @@ export const isAuth = async () => {
     const token = cookies.get(NAMES.COOKIENAME);
 
     const userid = await fetchUserByToken(token);
-    const user = await fetchUserById(userid);
-    return await {
+    // const user = await fetchUserById(userid);
+    if (!userid ) return false;
+    const user = await fetchUserById(2);
+    if (!user) return false;
+    return {
         'token':token,
-        'user':user
+        'user':user.data
     }
 
 }
