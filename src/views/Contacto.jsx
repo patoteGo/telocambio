@@ -33,7 +33,7 @@ function Contacto() {
                         <input type="text" className="form-control" id="inputMensaje" />
                     </div>
                      
-                        <button><Link to="/" className="btn btn-primary " style={{ backgroundColor: "black" }}>Enviar</Link></button>
+                        <div><Link to="/" className="btn btn-primary " >Enviar</Link></div>
                         
                     </form>
                 </div>
