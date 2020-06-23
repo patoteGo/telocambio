@@ -1,10 +1,10 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { fetchUserById } from '../config/api.js'
 
-import { isAuth } from './../middleware/Auth'
-export const UserContext = createContext();
+import { isAuth } from '../middleware/Auth'
+export const AppContext = createContext();
 
-export const UserProvider = props => {
+export const AppProvider = props => {
     const fetchUserHandle = async(userid) => {
         return await fetchUserById(userid);
     }
@@ -85,7 +85,7 @@ export const UserProvider = props => {
 
     
     return (
-        <UserContext.Provider value={
+        <AppContext.Provider value={
             {
                 user: [user, setUser],
                 token: [token, setToken],
@@ -95,6 +95,6 @@ export const UserProvider = props => {
             
             }>
             {props.children}
-        </UserContext.Provider>
+        </AppContext.Provider>
     );
 }

@@ -1,9 +1,9 @@
 import React from 'react'
-
+import ChoicePublish from './../modals/ChoicePublish'
 export default function Card() {
     return (
         <div>
-           
+           <ChoicePublish/>
             <div className="card promoting-card">
 
                 <div className="card-body d-flex flex-row">
@@ -30,6 +30,7 @@ export default function Card() {
                     <div className="row">
                         <div className="btn ml-auto btn-primary">Detalles</div>
                         <div className="btn ml-2 btn-info" data-toggle="modal"  data-target="#loginModal">Cambiar por</div>
+                        {/* <div className="btn btn-danger" data-toggle="modal"  data-target="#choiceModal">OTRO</div> */}
                     </div>
                 </div>
             </div>

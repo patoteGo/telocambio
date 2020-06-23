@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
 import Footer from './../../layouts/footer/Footer2.jsx'
 import Loader from './../../Helpers/Loader'
-import { UserContext, UserProvider } from './../../Context/UserContext'
+import { AppContext, AppProvider } from '../../Context/AppContext'
 import './Login.sass'
 import { loginUser } from './../../config/api.js'
 import { NAMES, APIS, OPTIONS } from './../../config/config.js'
@@ -16,7 +16,7 @@ import Swal from 'sweetalert2'
 
 export default function Login(props) {
     // const [ state ] = useContext(UserProvider);
-    const context = useContext(UserContext);
+    const context = useContext(AppContext);
     // const [ name, setName] = useState('');
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -66,7 +66,7 @@ export default function Login(props) {
     }
 
     return (
-        <UserProvider>
+ 
            
             <div> 
                 <Header/>
@@ -118,6 +118,6 @@ export default function Login(props) {
                 <Footer/>
                 
             </div>
-        </UserProvider>
+     
     )
 }
