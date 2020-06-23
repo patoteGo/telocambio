@@ -15,7 +15,7 @@ function Contacto() {
                     <h1 class="display-4">Contacto</h1>
                     <p class="lead"></p>
                 </div>
-                <div className="container2" >
+                <form >
                     <div className="form-group col-md-6">
                         <label for="inputNombre">Nombre:</label>
                         <input type="nombre" className="form-control" id="inputNombre" />
@@ -35,7 +35,7 @@ function Contacto() {
                      
                         <button><Link to="/" className="btn btn-primary " style={{ backgroundColor: "black" }}>Enviar</Link></button>
                         
-                    </div>
+                    </form>
                 </div>
                 <Footer />
             </div >
