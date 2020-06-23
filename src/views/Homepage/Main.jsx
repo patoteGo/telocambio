@@ -1,11 +1,13 @@
 import React from 'react';
-import Card from './components/Card2'
+import Card from './../../shared/Card'
 import Jumbotron from './components/Jumbotron'
 import { Link } from "react-router-dom";
+import Login from './../../modals/Login'
 function Main() {
   return (
     <div className="Homepage-main">
-          <Jumbotron/>
+      <Login/>
+      <Jumbotron/>
       <div className="container">
       <div className="row mb-4">
         <div className="col-md-4 col-sm-6 mt-4">

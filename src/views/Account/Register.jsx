@@ -16,15 +16,15 @@ export default function Register() {
                                 <form id="login-form" className="form is-light" action="" method="post">
                                     <h3 className="text-center text-info">Registrarse</h3>
                                     <div className="form-group">
-                                        <label for="username" className="text-info">Nombre:</label><br/>
+                                        <label htmlFor="username" className="text-info">Nombre:</label><br/>
                                         <input type="text" name="username" id="username" className="form-control"/>
                                     </div>
                                     <div className="form-group">
-                                        <label for="email" className="text-info">Email:</label><br/>
+                                        <label htmlFor="email" className="text-info">Email:</label><br/>
                                         <input type="text" name="email" id="email" className="form-control"/>
                                     </div>
                                     <div className="form-group">
-                                        <label for="password" className="text-info">Password:</label><br/>
+                                        <label htmlFor="password" className="text-info">Password:</label><br/>
                                         <input type="text" name="password" id="password" className="form-control"/>
                                     </div>
                                     <div className="form-group">

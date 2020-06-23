@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './../../layouts/Header.jsx'
 import Footer from './../../layouts/footer/Footer2.jsx'
-import Card from './../Homepage/components/Card2'
+import Card from './../../shared/Card'
 export default function Products() {
     return (
         <div>

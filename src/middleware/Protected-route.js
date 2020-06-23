@@ -1,21 +1,26 @@
-import React from 'react'
+import React,{ useState, useEffect } from 'react'
 import {Route, Redirect} from 'react-router-dom'
 import { isAuth } from './Auth'
 
 // import { NAMES } from './../config/config'
 export const ProtectedRoute = ({ component: Component, ...rest}) => {
+    const [user, setUser] = useState([]);
+    useEffect(() => {
+        isAuth().then(res => { 
+            setUser(res);
+            return res
+
+        })
+        
+    }, [])
+    
     return (
         <Route {...rest } 
         render={
             (props) => {
-                isAuth().then(res => { 
-                    console.log('from protected-view',res.token);
-                    if(res.token){
-                        console.log('true');
-                        
+                    if(user){
                         return <Component {...props} />
                     } else {
-                        console.log('false');
                         return <Redirect to={{
                             pathname: "/forbidden",
                             state: {
@@ -24,7 +29,7 @@ export const ProtectedRoute = ({ component: Component, ...rest}) => {
                         }
                         }/>
                     }
-                })
+               
             }
         }/>
     )

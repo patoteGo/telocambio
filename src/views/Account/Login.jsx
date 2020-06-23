@@ -26,17 +26,6 @@ export default function Login(props) {
         return email.length > 0 && password.length > 0;
       }
 
-    // useEffect(() => {
-    //     const cookies = new Cookies();
-    //     console.log('cookie, inicio0',cookies.get(NAMES.COOKIENAME));
-    //     context.fetchUser(12).then((res=>{
-    //         console.log ('contexct222',res.data)
-    //         setName(res.data.first_name)
-    //         console.log(context);
-    //         context.user[1](res.data)
-    //     }))
-    // }, [])
-
     const handleSubmit = (event) => {
         event.preventDefault();
         setLoader('active');
