@@ -1,44 +1,51 @@
 import React from 'react';
 import Header from './../layouts/Header'
 import Footer from './../layouts/footer/Footer2'
-import { Link } from "react-router-dom";
 import './contacto.sass';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function Contacto() {
     return (
-        <div className="contact">
-            <Header />
-            <div class="jumbotron ">
-                <div class="container">
-                    <h1 class="display-4">Contacto</h1>
-                    <p class="lead"></p>
-                </div>
-                <form >
-                    <div className="form-group col-md-6">
-                        <label for="inputNombre">Nombre:</label>
-                        <input type="nombre" className="form-control" id="inputNombre" />
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label for="inputApellido">Apellido:</label>
-                        <input type="apellido" className="form-control" id="inputApellido" />
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label for="inputEmail">E-mail:</label>
-                        <input type="email" className="form-control" id="inputEmail" />
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label for="inputMensaje">Mensaje:</label>
-                        <input type="text" className="form-control" id="inputMensaje" />
-                    </div>
-                     
-                        <div><Link to="/" className="btn btn-primary ">Enviar</Link></div>
-                        
-                    </form>
-                </div>
-                <Footer />
-            </div >
+        <div>
+        <div>
+       <Header/>
+       <div className="Contacto">
+           <div className="container">
+               <div id="contact-row" className="row justify-content-center align-items-center">
+                   <div id="contact-column" className="col-md-6">
+                       <div id="contact-box" className="col-md-12">
+                           <form id="contact-form" className="form is-light" action="" method="post">
+                               <h3 className="text-center text-info">Contacto</h3>
+                               <div className="form-group">
+                                   <label htmlFor="username" className="text-info">Nombre:</label><br/>
+                                   <input type="text" name="username" id="username" className="form-control"/>
+                               </div>
+                               <div className="form-group">
+                                   <label htmlFor="lastname" className="text-info">Apellido:</label><br/>
+                                   <input type="text" name="lastname" id="lastname" className="form-control"/>
+                               </div>
+                               <div className="form-group">
+                                   <label htmlFor="email" className="text-info">Email:</label><br/>
+                                   <input type="text" name="email" id="email" className="form-control"/>
+                               </div>
+                               <div className="form-group">
+                                   <label htmlFor="message" className="text-info">Mensaje:</label><br/>
+                                   <input type="text" name="message" id="message" className="form-control"/>
+                               </div>
+                               <div className="form-group">
+                                   <input type="submit" name="submit" className="btn btn-info btn-md" value="Enviar"/>
+                               </div>                           
+                            </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <Footer/>
+       
+   </div>
+   </div>
         
     )
 }
