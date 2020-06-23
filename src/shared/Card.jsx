@@ -1,15 +1,15 @@
-import React, { useContext ,useState, useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
 import ChoicePublish from './../modals/ChoicePublish'
-import { AppContext, AppProvider } from '../Context/AppContext'
+// import { AppContext, AppProvider } from '../Context/AppContext'
 export default function Card({user}) {
     const [modal, setModal] = useState('');
-    // const updatedUser = {};
-    // setUser(context.user[0]);
-    // console.log('card',context);
-    const updatedUser = () => {
-        !user.id ? setModal("#loginModal") : setModal("#choiceModal")
-    }
+    
+    
+    
     useEffect(() => {
+        const updatedUser = () => {
+            !user.id ? setModal("#loginModal") : setModal("#choiceModal")
+        }
         updatedUser()
     }, [user]);
    

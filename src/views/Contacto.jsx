@@ -1,48 +1,48 @@
 import React from 'react';
 import Header from './../layouts/Header'
 import Footer from './../layouts/footer/Footer2'
-import { Link } from "react-router-dom";
 import './contacto.sass';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-function Contacto() {
+export default function Contacto() {
     return (
-        <div className="contact">
-            <Header />
-            <div class="jumbotron ">
-                <div class="container">
-                    <h1 class="display-4">Contacto</h1>
-                    <p class="lead"></p>
+        
+            <div className="contacto">
+                <Header/>
+                <div className="jumbotron">
+                    <div className="container">
+                        <h1 className="display-4">Contacto</h1>
+                        <p className="lead"></p>
+                    </div>
                 </div>
-                <div className="container2" >
+                <div className="container">
                     <div className="form-group col-md-6">
-                        <label for="inputNombre">Nombre:</label>
+                        <label htmlFor="inputNombre">Nombre:</label>
                         <input type="nombre" className="form-control" id="inputNombre" />
                     </div>
                     <div className="form-group col-md-6">
-                        <label for="inputApellido">Apellido:</label>
+                        <label htmlFor="inputApellido">Apellido:</label>
                         <input type="apellido" className="form-control" id="inputApellido" />
                     </div>
                     <div className="form-group col-md-6">
-                        <label for="inputEmail">E-mail:</label>
+                        <label htmlFor="inputEmail">E-mail:</label>
                         <input type="email" className="form-control" id="inputEmail" />
                     </div>
                     <div className="form-group col-md-6">
-                        <label for="inputMensaje">Mensaje:</label>
+                        <label htmlFor="inputMensaje">Mensaje:</label>
                         <input type="text" className="form-control" id="inputMensaje" />
                     </div>
-                     
-                        <button><Link to="/login" className="btn btn-primary " style={{ backgroundColor: "black" }}>Enviar</Link></button>
-                        
+                    <div className="form-group col-md-6">
+                        <label htmlFor="inputMensaje">Mensaje:</label>
+                        <input type="text" className="form-control" id="inputMensaje" />
                     </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
+
                 <Footer />
-            </div >
-        
+            </div>
+    
     )
 }
 
 
 
-export default Contacto;

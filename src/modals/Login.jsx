@@ -1,7 +1,7 @@
 import React from 'react'
-import { loginUser } from './../config/api.js';
+// import { loginUser } from './../config/api.js';
 import { useForm } from 'react-hook-form';
-import { NAMES, APIS, OPTIONS } from './../config/config.js';
+import { APIS } from './../config/config.js';
 import { Link } from "react-router-dom";
 export default function Login() {
     const {register, handleSubmit, errors} = useForm();

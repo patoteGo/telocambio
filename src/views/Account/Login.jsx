@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
 import Footer from './../../layouts/footer/Footer2.jsx'
 import Loader from './../../Helpers/Loader'
-import { AppContext, AppProvider } from '../../Context/AppContext'
+import { AppContext } from '../../Context/AppContext'
 import './Login.sass'
 import { loginUser } from './../../config/api.js'
 import { NAMES, APIS, OPTIONS } from './../../config/config.js'

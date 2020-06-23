@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Card from './../../shared/Card'
 import Jumbotron from './components/Jumbotron'
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import Login from './../../modals/Login'
 import { AppContext, AppProvider } from '../../Context/AppContext'
 function Main() {
   const context = useContext(AppContext);
+  // eslint-disable-next-line
   const [user, setUser] = context.user;
   // setUser(context.user[0]);
   // const handleAuth = async () => {

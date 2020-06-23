@@ -9,7 +9,6 @@ function App() {
     <AppProvider>
     <div className="App">
       <Routes/>
-      <Contacto/>
     </div>
     </AppProvider>
   );
