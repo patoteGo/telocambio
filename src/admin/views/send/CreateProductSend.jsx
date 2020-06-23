@@ -3,17 +3,17 @@ import Header from '../../layouts/HeaderAdmin'
 import { useForm } from 'react-hook-form';
 // import { Link } from "react-router-dom";
 export default function CreateProduct() {
-  
-  const {register, handleSubmit, errors} = useForm();
 
-  const onSubmit = (data) =>{
+  const { register, handleSubmit, errors } = useForm();
+
+  const onSubmit = (data) => {
     console.log(data);
-    
+
   }
 
   return (
     <div>
-      <Header/>
+      <Header />
       <div className="container">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row my-5">
@@ -31,11 +31,11 @@ export default function CreateProduct() {
                   id="post_title"
                   name="post_title"
                   placeholder="Licuadora"
-                  ref={register({required: 'Titulo requerido', minLength: {value:8, message:'muy corto'}})}
+                  ref={register({ required: 'Titulo requerido', minLength: { value: 8, message: 'muy corto' } })}
                 />
                 {errors.post_title && <p className="badge badge-danger ml-2">{errors.post_title.message}</p>}
               </div>
-              
+
               <div className="form-group">
                 <label htmlFor="short_desc">Descripcion Corta</label>
                 <textarea
@@ -99,17 +99,17 @@ export default function CreateProduct() {
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
                 <label htmlFor="gallery">Imagen Galerias</label>
-                <input type="text" className="mt-2 form-control" id="gallery1" name="gallery1" placeholder="Ingrese el url de la imagen 1" ref={register}/>
-                <input type="text" className="mt-2 form-control" id="gallery2" name="gallery2" placeholder="Ingrese el url de la imagen 2" ref={register}/>
-                <input type="text" className="mt-2 form-control" id="gallery3" name="gallery3" placeholder="Ingrese el url de la imagen 3" ref={register}/>
-                <input type="text" className="mt-2 form-control" id="gallery4" name="gallery4" placeholder="Ingrese el url de la imagen 4" ref={register}/>
-                <input type="text" className="mt-2 form-control" id="gallery5" name="gallery5" placeholder="Ingrese el url de la imagen 5" ref={register}/>
-                <input type="text" className="mt-2 form-control" id="gallery6" name="gallery6" placeholder="Ingrese el url de la imagen 6" ref={register}/>
+                <input type="text" className="mt-2 form-control" id="gallery1" name="gallery1" placeholder="Ingrese el url de la imagen 1" ref={register} />
+                <input type="text" className="mt-2 form-control" id="gallery2" name="gallery2" placeholder="Ingrese el url de la imagen 2" ref={register} />
+                <input type="text" className="mt-2 form-control" id="gallery3" name="gallery3" placeholder="Ingrese el url de la imagen 3" ref={register} />
+                <input type="text" className="mt-2 form-control" id="gallery4" name="gallery4" placeholder="Ingrese el url de la imagen 4" ref={register} />
+                <input type="text" className="mt-2 form-control" id="gallery5" name="gallery5" placeholder="Ingrese el url de la imagen 5" ref={register} />
+                <input type="text" className="mt-2 form-control" id="gallery6" name="gallery6" placeholder="Ingrese el url de la imagen 6" ref={register} />
               </div>
             </div>
           </div>
           <div className="row">
-        
+
           </div>
           <div className="row">
             <div className="offset-md-6 col-md-6 col-sm-12">

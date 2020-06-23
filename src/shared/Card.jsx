@@ -11,6 +11,7 @@ export default function Card({user}) {
     }
     useEffect(() => {
         updatedUser()
+        console.log('card', user);
     }, [user]);
    
     return (

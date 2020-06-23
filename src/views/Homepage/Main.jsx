@@ -12,13 +12,7 @@ function Main() {
   //   const res = await context.handleisauth()
   //   return res;
   // }
-  useEffect(() => {
-    // handleAuth().then((res) => {
-    //   console.log('card', res.data);
-    //   setUser(res.data);
-    // })
-    // setUser(context.user[0]);
-  }, [])
+
   return (
     <AppProvider>
       <div className="Homepage-main">
