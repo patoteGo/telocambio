@@ -90,7 +90,8 @@ export const AppProvider = props => {
                 user: [user, setUser],
                 token: [token, setToken],
                 products: [ products, setProducts],
-                fetchUser: fetchUserHandle
+                fetchUser: fetchUserHandle,
+                handleisauth: handleisauth
             }
             
             }>

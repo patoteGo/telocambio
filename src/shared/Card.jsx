@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useContext ,useState, useEffect} from 'react'
 import ChoicePublish from './../modals/ChoicePublish'
-export default function Card() {
+import { AppContext, AppProvider } from '../Context/AppContext'
+export default function Card({user}) {
+    const [modal, setModal] = useState('');
+    // const updatedUser = {};
+    // setUser(context.user[0]);
+    // console.log('card',context);
+    const updatedUser = () => {
+        !user.id ? setModal("#loginModal") : setModal("#choiceModal")
+    }
+    useEffect(() => {
+        updatedUser()
+    }, [user]);
+   
     return (
         <div>
            <ChoicePublish/>
@@ -26,10 +38,11 @@ export default function Card() {
                     <div className="collapse-content mb-2">
                         <p className="card-text" id="collapseContent">Recently, we added several exotic new dishes to our restaurant menu. They come from countries such as Mexico, Argentina, and Spain. </p>
                         <div className="card-text text-right">lo cambio por: <strong>BLABLABLA</strong></div>
+                       
                     </div>
                     <div className="row">
                         <div className="btn ml-auto btn-primary">Detalles</div>
-                        <div className="btn ml-2 btn-info" data-toggle="modal"  data-target="#loginModal">Cambiar por</div>
+                        <div className="btn ml-2 btn-info" data-toggle="modal" data-target={modal}>Cambiar por</div>
                         {/* <div className="btn btn-danger" data-toggle="modal"  data-target="#choiceModal">OTRO</div> */}
                     </div>
                 </div>
