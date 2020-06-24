@@ -16,7 +16,6 @@ import Swal from 'sweetalert2'
 
 
 export default function Login(props) {
-    // const [ state ] = useContext(UserProvider);
     const context = useContext(AppContext);
     const { register, handleSubmit, errors } = useForm();
 
@@ -32,10 +31,6 @@ export default function Login(props) {
                 console.log(res.access_token, 'exito');
                 context.token[1](res.access_token)
                 props.history.push('/admin/list')
-                // Auth.login(res.token, ()=>{
-                    
-                // });
-
                 const cookies = new Cookies();
                 cookies.set(NAMES.COOKIENAME, res.access_token, OPTIONS);
                 Swal.fire({
@@ -44,8 +39,6 @@ export default function Login(props) {
                     icon: 'success',
                     confirmButtonText: 'Listo'
                   })
-                
-
             } else {
                 console.log(res, 'fallo');
                 Swal.fire({
@@ -56,7 +49,6 @@ export default function Login(props) {
                   })
                 
             }
-            
         }).catch((err) => {
             setLoader('');
             console.log(err);

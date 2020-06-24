@@ -13,7 +13,7 @@ export default function Products() {
 
              <div className="container">
       <div className="row mb-4">
-        <div className="col-sm-3 col-md-4  mt-4">
+        {/* <div className="col-sm-3 col-md-4  mt-4">
         <Card user={user}/> 
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
@@ -39,7 +39,7 @@ export default function Products() {
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
         <Card user={user}/> 
-        </div>
+        </div> */}
       </div>
       </div>
 

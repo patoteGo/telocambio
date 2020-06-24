@@ -8,6 +8,9 @@ function Main() {
   const context = useContext(AppContext);
   // eslint-disable-next-line
   const [user, setUser] = context.user;
+  // eslint-disable-next-line
+  const [products, setProduct] = context.products;
+  
   // setUser(context.user[0]);
   // const handleAuth = async () => {
   //   const res = await context.handleisauth()
@@ -21,15 +24,24 @@ function Main() {
         <Jumbotron />
         <div className="container">
           <div className="row mb-4">
-            <div className="col-md-4 col-sm-6 mt-4">
+            {
+              products.map((product, index) => {
+                return (
+                  <div className="col-md-4 col-sm-6 mt-4" key={index}>
+                    <Card user={user} product={product} />
+                  </div>      
+                )
+              })
+            }
+            {/* <div className="col-md-4 col-sm-6 mt-4">
+              <Card user={user} />
+            </div> */}
+            {/* <div className="col-md-4 col-sm-6 mt-4">
               <Card user={user} />
             </div>
             <div className="col-md-4 col-sm-6 mt-4">
               <Card user={user} />
-            </div>
-            <div className="col-md-4 col-sm-6 mt-4">
-              <Card user={user} />
-            </div>
+            </div> */}
 
           </div>
           <div className="row">
