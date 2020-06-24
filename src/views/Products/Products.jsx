@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext,  } from 'react'
 import Header from './../../layouts/Header.jsx'
 import Footer from './../../layouts/footer/Footer2.jsx'
 import Card from './../../shared/Card'
+import { AppContext, AppProvider } from '../../Context/AppContext'
 export default function Products() {
+  const context = useContext(AppContext);
+  const [user, setUser] = context.user;
     return (
         <div>
              <Header/>
@@ -10,31 +13,31 @@ export default function Products() {
              <div className="container">
       <div className="row mb-4">
         <div className="col-sm-3 col-md-4  mt-4">
-        <Card/> 
+        <Card user={user}/> 
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
-        <Card/> 
+        <Card user={user}/> 
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
-        <Card/> 
+        <Card user={user}/> 
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
-        <Card/> 
+        <Card user={user}/> 
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
-        <Card/> 
+        <Card user={user}/> 
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
-        <Card/> 
+        <Card user={user}/> 
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
-        <Card/> 
+        <Card user={user}/> 
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
-        <Card/> 
+        <Card user={user}/> 
         </div>
         <div className="col-sm-3 col-md-4  mt-4">
-        <Card/> 
+        <Card user={user}/> 
         </div>
       </div>
       </div>

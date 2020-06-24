@@ -11,6 +11,7 @@ export default function Card({user}) {
             !user.id ? setModal("#loginModal") : setModal("#choiceModal")
         }
         updatedUser()
+        console.log('card', user);
     }, [user]);
    
     return (
