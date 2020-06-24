@@ -1,9 +1,48 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import './Header.sass';
-// import Auth from './../middleware/Auth'
-// import { UserProvider, useUser} from './../Context/UserContext'
-function Header(props) {
+import Swal from 'sweetalert2'
+import { AppContext } from './../Context/AppContext'
+import Cookies from 'universal-cookie';
+import { NAMES,  OPTIONS } from './../config/config.js'
+function Header() {
+  const context = useContext(AppContext);
+  // eslint-disable-next-line
+  const [user, setUser] = context.user;
+
+  const logout = () => {
+    const cookies = new Cookies();
+    cookies.remove(NAMES.COOKIENAME,  OPTIONS);
+    setUser([])
+    context.token[1]('');
+    Swal.fire({
+      title: 'Deslogueo',
+      text: 'Ya Saliste',
+      icon: 'success',
+      confirmButtonText: 'Listo'
+    })
+  }
+
+  const dropdownmenu = (user) => {
+    if(user.id){
+      return (
+        <div className="dropdown-menu" aria-labelledby="dropdown07">
+        <Link className="dropdown-item" to='/admin/list'>Productos Ofreces</Link>
+        <Link className="dropdown-item" to='/admin/listRec'>Productos que te ofrecen</Link>
+        <Link className="dropdown-item" to='/admin/create'>Crear un Producto</Link>
+        <button className="dropdown-item" onClick={logout}>Logout</button>
+      </div>
+      )
+    } else {
+      return (
+        <div className="dropdown-menu" aria-labelledby="dropdown07">
+        <Link className="dropdown-item" to="/login">Login</Link>
+        <Link className="dropdown-item" to="/register">Registrarse</Link>
+      </div>
+      )
+    }
+  }
+
   return (
     // <UserProvider>
       <div className="Header">
@@ -32,20 +71,11 @@ function Header(props) {
                   <Link className="nav-link" to="/contacto">Contáctanos</Link>
                 </li>
               </ul>
-
+             
               <div className="nav-item dropdown my-md-0 is-dark">
-                  <div className="nav-link dropdown-toggle"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cuenta</div>
-                  <div className="dropdown-menu" aria-labelledby="dropdown07">
-                    <Link className="dropdown-item" to="/login">Login</Link>
-                    <Link className="dropdown-item" to="/register">Registrarse</Link>
-                    {/* <button onClick={
-                        Auth.logout(()=> {
-                          // props.history.push('/')
-                        }) 
-                      }>
-                      Logout
-                    </button> */}
-                  </div>
+                  <div className="nav-link dropdown-toggle"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> { user.firstname ? 'Hola '+ user.firstname : 'Cuenta' } </div>
+                  
+                  {dropdownmenu(user)}
               </div>
               <form className="form-inline my-2 my-md-0" _lpchecked="1">
                 <input className="form-control" type="text" placeholder="Buscar.." aria-label="Buscar.."/>

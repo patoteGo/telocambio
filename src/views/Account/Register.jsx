@@ -1,24 +1,48 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
 import Footer from './../../layouts/footer/Footer2.jsx'
 import { useForm } from 'react-hook-form';
-import { createUser } from './../../config/api.js'
+import { AppContext } from '../../Context/AppContext'
+import { createUser, loginUser } from './../../config/api.js'
 import Loader from './../../Helpers/Loader'
+import Swal from 'sweetalert2'
+import { NAMES,  OPTIONS } from './../../config/config.js'
 import './RegisterLogin.sass'
-export default function Register() {
+export default function Register(props) {
     // eslint-disable-next-line
     const [loader, setLoader] = useState("");
+    const context = useContext(AppContext);
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
         console.log(data);
         setLoader('active');
         createUser(data).then((res) => {
-            setLoader('');
+            
+            loginUser({'email':data.email, 'password':data.password}).then(res => {
+                setLoader('');
+                context.token[1](res.access_token)
+                props.history.push('/admin/list')
+                const cookies = new Cookies();
+                cookies.set(NAMES.COOKIENAME, res.access_token, OPTIONS);
+                Swal.fire({
+                    title: 'Yuhuuu',
+                    text: 'Ya estas logueado',
+                    icon: 'success',
+                    confirmButtonText: 'Listo'
+                  })
+            })
             console.log(data, res)
         }).catch((err) => {
             console.log(err);
+            Swal.fire({
+                title: 'Cueck',
+                html: `Hubo un problema con tu registro, prueba con otro email`,
+                icon: 'error',
+                confirmButtonText: 'uchh'
+              })
         })
     }
     return (

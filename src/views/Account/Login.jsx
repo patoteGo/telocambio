@@ -71,46 +71,6 @@ export default function Login(props) {
 
     }
 
-    
-
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     setLoader('active');
-    //     loginUser({'email':email, 'password':password}).then(res => {
-    //         // console.log(res);
-    //         setLoader('');
-    //         if(res.token){
-    //             console.log(res.token, 'exito');
-    //             context.token[1](res.token)
-    //             props.history.push('/admin/list')
-    //             // Auth.login(res.token, ()=>{
-                    
-    //             // });
-
-    //             const cookies = new Cookies();
-    //             cookies.set(NAMES.COOKIENAME, res.token, OPTIONS);
-    //             Swal.fire({
-    //                 title: 'Yuhuuu',
-    //                 text: 'Ya estas logueado',
-    //                 icon: 'success',
-    //                 confirmButtonText: 'Listo'
-    //               })
-                
-
-    //         } else {
-    //             console.log(res, 'fallo');
-    //             Swal.fire({
-    //                 title: 'Cueck',
-    //                 html: `Tu email o password no son validos, hubo este error <br> <strong>${res.error}</strong> <br> Intenta de nuevo`,
-    //                 icon: 'error',
-    //                 confirmButtonText: 'uchh'
-    //               })
-                
-    //         }
-            
-    //     })
-
-    // }
 
     return (
  
