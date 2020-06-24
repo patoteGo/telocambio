@@ -8,7 +8,7 @@ export const AppProvider = props => {
     const fetchUserHandle = async(userid) => {
         return await fetchUserById(userid);
     }
-
+    // eslint-disable-next-line
     const userTest = {
         firstname: 'juan',
         lastname: 'soto',

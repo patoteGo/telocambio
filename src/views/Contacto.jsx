@@ -2,10 +2,8 @@ import React from 'react';
 import Header from './../layouts/Header'
 import Footer from './../layouts/footer/Footer2'
 import './contacto.sass';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-function Contacto() {
+export default function Contacto() {
     return (
         <div>
         <div>
@@ -52,4 +50,3 @@ function Contacto() {
 
 
 
-export default Contacto;
