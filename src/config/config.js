@@ -5,7 +5,8 @@ export const APIS = {
     CREATEUSER: 'http://localhost:5000/register',
     GETPOSTS: '',
     LOGIN: 'http://localhost:5000/login',
-    USERTOKEN: 'http://localhost:5000/token'
+    USERTOKEN: 'http://localhost:5000/token',
+    CREATEPRODUCT: 'http://localhost:5000/product'
 
 }
 export const NAMES = {
