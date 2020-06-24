@@ -13,21 +13,21 @@ export const fetchUserByToken = async (token) => {
       {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          Authorization: `Bearer ${token}`,
         }
       }
     )
   const res = response.json();
-  // console.log('token', res );
+  console.log('token', res );
   
   return await res;
 }
 
 export const loginUser = async (data) => {
-    const response = await fetch('https://reqres.in/api/login', {
+    const response = await fetch(APIS.LOGIN, {
         method: 'POST',
         headers: {
+        
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },

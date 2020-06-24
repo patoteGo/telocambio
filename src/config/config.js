@@ -4,8 +4,8 @@ export const APIS = {
     GETUSER: 'https://reqres.in/api/users/', //aqui va el id del user
     CREATEUSER: '',
     GETPOSTS: '',
-    LOGIN: 'https://reqres.in/api/login',
-    USERTOKEN: 'https://reqres.in/api/token'
+    LOGIN: 'http://localhost:5000/login',
+    USERTOKEN: 'http://localhost:5000/token'
 
 }
 export const NAMES = {
