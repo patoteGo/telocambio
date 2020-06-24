@@ -16,7 +16,7 @@ function footerbox({fecha}) {
           <Link className="text-reset" to="/webpay" ><p> Paga con Webpay </p></Link>
             <Link className="text-reset" to="/paypal" ><p> Paga con Paypal </p></Link>
             <Link className="text-reset" to="/khipu" ><p> Paga con khipu </p></Link>
-            <Link className="text-reset" to="/mastercard" ><p> Master Card </p></Link>
+            <Link className="text-reset" to="/mastercard" ><p> Master Card <i class="fa fa-cc-mastercard"></i> </p></Link>
           </div>
           <div class="col">
           <Link className="text-reset" to="/quienessomos" ><p >Quienes somos</p> </Link> 
