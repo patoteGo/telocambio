@@ -3,15 +3,15 @@ import { APIS } from './config'
 export const fetchUserById = async (userid) => {
     const response = await fetch(APIS.GETUSER + userid);
     const res = response.json();
-    // console.log('del api', res );
+    console.log('del api', APIS.GETUSER + '/' + userid );
     
     return await res;
 }
 
 export const fetchUserByToken = async (token) => {
-  const response = await fetch(APIS.USERTOKEN + token,
+  const response = await fetch(APIS.USERTOKEN,
       {
-        method: 'POST',
+        method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`,
         }

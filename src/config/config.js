@@ -1,7 +1,7 @@
 export const URLBASE = 'telocambio';
 export const APIS = {
     GETUSERS: 'https://reqres.in/api/users?page=1',
-    GETUSER: 'https://reqres.in/api/users/', //aqui va el id del user
+    GETUSER: 'http://localhost:5000/user/', //aqui va el id del user
     CREATEUSER: '',
     GETPOSTS: '',
     LOGIN: 'http://localhost:5000/login',

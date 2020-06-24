@@ -9,16 +9,20 @@ export const isAuth = async () => {
     if(!cookies.get(NAMES.COOKIENAME)) { return false }
     const token = cookies.get(NAMES.COOKIENAME);
 
-    const userid = await fetchUserByToken(token);
-    // const user = await fetchUserById(userid);
-    if (!userid ) return false;
-    const user = await fetchUserById(2);
-    if (!user) return false;
+    const userAPI = await fetchUserByToken(token);
+    if (!userAPI ) return false;
+    // const user = await fetchUserById(user.id);    
+    // if (!user) return false;
     return {
         'token':token,
-        'user':user.data
+        'user':{
+            'id': userAPI.id,
+            'firstname': userAPI.firstname,
+            'lastname': userAPI.lastname,
+            'email': userAPI.email,
+            'role': userAPI.role,
+            }
     }
-
 }
 
 
