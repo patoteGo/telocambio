@@ -2,9 +2,10 @@ import React, { useContext,  } from 'react'
 import Header from './../../layouts/Header.jsx'
 import Footer from './../../layouts/footer/Footer2.jsx'
 import Card from './../../shared/Card'
-import { AppContext, AppProvider } from '../../Context/AppContext'
+import { AppContext } from '../../Context/AppContext'
 export default function Products() {
   const context = useContext(AppContext);
+  // eslint-disable-next-line
   const [user, setUser] = context.user;
     return (
         <div>

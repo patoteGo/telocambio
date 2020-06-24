@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
 import Footer from './../../layouts/footer/Footer2.jsx'
@@ -7,6 +7,7 @@ import { createUser } from './../../config/api.js'
 import Loader from './../../Helpers/Loader'
 import './RegisterLogin.sass'
 export default function Register() {
+    // eslint-disable-next-line
     const [loader, setLoader] = useState("");
     const { register, handleSubmit, errors } = useForm();
 
@@ -24,6 +25,7 @@ export default function Register() {
         <div>
             <div>
                 <Header />
+                <Loader/>
                 <div className="Register">
                     <div className="container">
                         <div id="login-row" className="row justify-content-center align-items-center">

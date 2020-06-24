@@ -1,8 +1,8 @@
 import React from 'react'
-import { loginUser } from './../config/api.js';
+// import { loginUser } from './../config/api.js';
 import { useForm } from 'react-hook-form';
-import { NAMES, APIS, OPTIONS } from './../config/config.js';
-import { Link } from "react-router-dom";
+// import { NAMES, APIS, OPTIONS } from './../config/config.js';
+// import { Link } from "react-router-dom";
 import './createproduct.sass'
 
 export default function NewPublish() {

@@ -2,7 +2,7 @@ import React from 'react'
 // import { loginUser } from './../config/api.js';
 // import { useForm } from 'react-hook-form';
 // import { NAMES, APIS, OPTIONS } from './../config/config.js';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import ListPublish from './ListPublish';
 import NewPublish from './NewPublish';
 export default function ChoicePublish() {
