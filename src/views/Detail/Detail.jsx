@@ -3,7 +3,7 @@ import Header from './../../layouts/Header.jsx'
 import Footer from './../../layouts/footer/Footer2.jsx'
 import Gallery from './Gallery'
 import { Link } from "react-router-dom";
-import { AppContext, AppProvider } from './../../Context/AppContext'
+import { AppContext } from './../../Context/AppContext'
 import './detail.sass'
 import ChoicePublish from './../../modals/ChoicePublish'
 import Login from './../../modals/Login'

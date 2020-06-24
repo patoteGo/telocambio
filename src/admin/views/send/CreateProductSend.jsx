@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../layouts/HeaderAdmin'
 import { useForm } from 'react-hook-form';
-// import { Link } from "react-router-dom";
-export default function CreateProduct() {
+import { AppContext } from './../../../Context/AppContext'
 
+export default function CreateProduct() {
+  const context = useContext(AppContext);
+  const [user, setUser] = useState({});
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
 
   }
+
+  useEffect(() => {
+    const updatedUser = () => {
+        setUser(context.user[0]);
+    }
+    updatedUser()
+    
+}, [context.user[0]]);
 
   return (
     <div>
@@ -24,36 +34,49 @@ export default function CreateProduct() {
           <div className="row">
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
-                <label htmlFor="post_title">Titulo de la Publicación</label>
+                <label htmlFor="name">Titulo de la Publicación</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="post_title"
-                  name="post_title"
+                  id="name"
+                  name="name"
                   placeholder="Licuadora"
                   ref={register({ required: 'Titulo requerido', minLength: { value: 8, message: 'muy corto' } })}
                 />
-                {errors.post_title && <p className="badge badge-danger ml-2">{errors.post_title.message}</p>}
+                {errors.name && <p className="badge badge-danger ml-2">{errors.name.message}</p>}
               </div>
 
               <div className="form-group">
-                <label htmlFor="short_desc">Descripcion Corta</label>
+                <label htmlFor="tags">Tags</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="tags"
+                  name="tags"
+                  placeholder="cocina, eléctrico, para la casa"
+                  ref={register({ required: 'Titulo requerido', minLength: { value: 8, message: 'muy corto' } })}
+                />
+                {errors.tags && <p className="badge badge-danger ml-2">{errors.tags.message}</p>}
+              </div>
+              <div className="form-group">
+                <label htmlFor="shortDesc">Descripcion Corta</label>
                 <textarea
                   className="form-control"
-                  id="short_desc"
-                  name="short_desc"
+                  id="shortDesc"
+                  name="shortDesc"
                   rows="2"
-                  ref={register}
+                  ref={register({required: 'Descripción requerida'})}
                 ></textarea>
+                {errors.shortDesc && <p className="badge badge-danger ml-2">{errors.shortDesc.message}</p>}
               </div>
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
-                <label htmlFor="long_desc">Descripcion Larga</label>
+                <label htmlFor="longDesc">Descripcion Larga</label>
                 <textarea
                   className="form-control"
-                  id="long_desc"
-                  name="long_desc"
+                  id="longDesc"
+                  name="longDesc"
                   rows="6"
                   ref={register}
                 ></textarea>
@@ -70,31 +93,21 @@ export default function CreateProduct() {
                   id="cover_img"
                   name="cover_img"
                   placeholder="Ingrese el url de su imagen"
-                  ref={register}
+                  ref={register({required: 'Imágen requerida'})}
                 />
+                {errors.cover_img && <p className="badge badge-danger ml-2">{errors.cover_img.message}</p>}
               </div>
               <div className="form-group">
-                <label htmlFor="trade_for">Cambiar Por</label>
+                <label htmlFor="tradeBy">Cambiar Por</label>
                 <input
                   type="text"
                   className="form-control"
-                  name="trade_for"
-                  id="trade_for"
+                  name="tradeBy"
+                  id="tradeBy"
                   placeholder="Tostadora"
-                  ref={register}
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="trade_for">tags, si son varios separalo por coma</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="tags"
-                  id="tags"
-                  placeholder="Electrodomestico, cocina"
-                  ref={register}
-                />
-              </div>
+             
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
@@ -108,6 +121,8 @@ export default function CreateProduct() {
               </div>
             </div>
           </div>
+          <input type="hidden" name="user_id" value={user.id}/>
+          <input type="hidden" name="user_name" value={user.firstname}/>
           <div className="row">
 
           </div>
@@ -119,7 +134,7 @@ export default function CreateProduct() {
             </div>
           </div>
         </form>
-        <div className="btn btn-info">Buscar imagenes</div>
+        {/* <div className="btn btn-info">Buscar imagenes</div> */}
       </div>
     </div>
   )
