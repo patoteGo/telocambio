@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
 import Footer from './../../layouts/footer/Footer2.jsx'
 import { useForm } from 'react-hook-form';
+import { createUser } from './../../config/api.js'
+import Loader from './../../Helpers/Loader'
 import './RegisterLogin.sass'
 export default function Register() {
+    const [loader, setLoader] = useState("");
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
         console.log(data);
-
+        setLoader('active');
+        createUser(data).then((res) => {
+            setLoader('');
+            console.log(data, res)
+        }).catch((err) => {
+            console.log(err);
+        })
     }
     return (
         <div>

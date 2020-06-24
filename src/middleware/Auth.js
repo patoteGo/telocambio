@@ -1,7 +1,7 @@
 import Cookies from 'universal-cookie';
 import { NAMES  } from './../config/config.js'
-import { fetchUserById, fetchUserByToken } from './../config/api.js'
-
+import { fetchUserByToken } from './../config/api.js'
+// fetchUserById
 
 const cookies = new Cookies();
 export const isAuth = async () => {

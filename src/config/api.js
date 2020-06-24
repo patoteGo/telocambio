@@ -8,6 +8,22 @@ export const fetchUserById = async (userid) => {
     return await res;
 }
 
+export const createUser = async (data) => {
+  const response = await fetch(APIS.CREATEUSER, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Accept': 'application/json',
+      // 'Content-Type': 'application/json',
+    },
+    
+  });
+const res = response.json();
+return await res;
+  
+
+}
+
 export const fetchUserByToken = async (token) => {
   const response = await fetch(APIS.USERTOKEN,
       {

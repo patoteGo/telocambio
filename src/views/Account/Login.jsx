@@ -8,7 +8,7 @@ import { AppContext } from '../../Context/AppContext'
 import { useForm } from 'react-hook-form';
 import './RegisterLogin.sass'
 import { loginUser } from './../../config/api.js'
-import { NAMES, APIS, OPTIONS } from './../../config/config.js'
+import { NAMES,  OPTIONS } from './../../config/config.js'
 
 
 // import SweetAlert from 'sweetalert2-react';
@@ -50,7 +50,7 @@ export default function Login(props) {
                 console.log(res, 'fallo');
                 Swal.fire({
                     title: 'Cueck',
-                    html: `Tu email o password no son validos, hubo este error <br> <strong>${res.error}</strong> <br> Intenta de nuevo`,
+                    html: `Tu email o password no son validos, <br> Intenta de nuevo`,
                     icon: 'error',
                     confirmButtonText: 'uchh'
                   })
@@ -62,7 +62,7 @@ export default function Login(props) {
             console.log(err);
             Swal.fire({
                 title: 'Cueck',
-                html: `Tu email o password no son validos, hubo este error <br> <strong>${err}</strong> <br> Intenta de nuevo`,
+                html: `Tu email o password no son validos,  <br> Intenta de nuevo`,
                 icon: 'error',
                 confirmButtonText: 'uchh'
               })
