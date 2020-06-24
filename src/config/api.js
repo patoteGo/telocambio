@@ -14,7 +14,7 @@ export const createUser = async (data) => {
     body: JSON.stringify(data),
     headers: {
       'Accept': 'application/json',
-      // 'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     },
     
   });
