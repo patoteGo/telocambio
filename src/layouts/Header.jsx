@@ -13,6 +13,7 @@ function Header() {
   const logout = () => {
     const cookies = new Cookies();
     cookies.remove(NAMES.COOKIENAME,  OPTIONS);
+    localStorage.removeItem(NAMES.COOKIENAME);
     setUser([])
     context.token[1]('');
     Swal.fire({

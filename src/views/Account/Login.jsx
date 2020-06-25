@@ -33,6 +33,8 @@ export default function Login(props) {
                 props.history.push('/admin/list')
                 const cookies = new Cookies();
                 cookies.set(NAMES.COOKIENAME, res.access_token, OPTIONS);
+                localStorage.setItem(NAMES.COOKIENAME,res.access_token);
+                window.location.reload(false);
                 Swal.fire({
                     title: 'Yuhuuu',
                     text: 'Ya estas logueado',

@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, {useContext, useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import ChoicePublish from './../modals/ChoicePublish'
-// import { AppContext, AppProvider } from '../Context/AppContext'
+import { AppContext } from '../Context/AppContext'
+import ListPublish from './../modals/ListPublish';
+import NewPublish from './../modals/NewPublish';
 export default function Card({ user , product }) {
     const [modal, setModal] = useState('');
-
+    const context = useContext(AppContext);
     // const onModal = () => {
     //     const modal = document.querySelector('#choiceModal')
     //     modal.classList.add('show')
@@ -18,14 +20,16 @@ export default function Card({ user , product }) {
 
     useEffect(() => {
         const updatedUser = () => {
-            !user.id ? setModal("#loginModal") : setModal("#choiceModal")
+            !user.id ? setModal("#loginModal") : setModal(`#choiceModal${product.id}`)
         }
         updatedUser()
     }, [user]);
 
     return (
         <div>
-            <ChoicePublish />
+            <ChoicePublish product={product} name={`choiceModal${product.id}`}/>
+            <ListPublish product={product} name={`listpublishModal${product.id}`}/>
+            <NewPublish product={product} name={`newpublishModal${product.id}`}/>
             <div className="card promoting-card">
 
                 <div className="card-body d-flex flex-row">
@@ -61,7 +65,13 @@ export default function Card({ user , product }) {
                     </div>
                     <div className="row">
                         <Link className="btn ml-auto btn-primary" to={`/publicaciones/${product.id}`} >Detalles</Link>
-                        <div className="btn ml-2 btn-info" data-toggle="modal" data-target={modal}>Cambiar por</div>
+                        {
+                            context.user[0].id != product.user_id ?
+                                <div className="btn ml-2 btn-info" data-toggle="modal" data-target={modal}>Cambiar por</div> : ''
+                                
+                            }
+                        
+                        
                         {/* <div className="btn btn-danger" data-toggle="modal"  data-target="#choiceModal">OTRO</div> */}
                     </div>
                 </div>

@@ -10,8 +10,10 @@ export const APIS = {
     USERTOKEN: VERCEL ? 'https://telocambio-api.herokuapp.com/token' : 'http://localhost:5000/token', 
     GETPRODUCTS: VERCEL ? 'https://telocambio-api.herokuapp.com/products' : 'http://localhost:5000/products',
     GETPRODUCT: VERCEL ? 'https://telocambio-api.herokuapp.com/product' : 'http://localhost:5000/product',
+    
     GETPRODUCTSBYUSER: VERCEL ? 'https://telocambio-api.herokuapp.com/products/user' : 'http://localhost:5000/products/user',
     CREATEPRODUCT: VERCEL ? 'https://telocambio-api.herokuapp.com/product' : 'http://localhost:5000/product',
+    DELETEPRODUCT: VERCEL ? 'https://telocambio-api.herokuapp.com/product' : 'http://localhost:5000/product',
     CREATESWAP: VERCEL ? 'https://telocambio-api.herokuapp.com/swap/create' : 'http://localhost:5000/swap/create',
     GETSWAPBYPRODUCT: VERCEL ? 'https://telocambio-api.herokuapp.com/swap' : 'http://localhost:5000/swap',
     SWAPDONE: VERCEL ? 'https://telocambio-api.herokuapp.com/swap/done' : 'http://localhost:5000/swap/done',
@@ -24,7 +26,7 @@ export const NAMES = {
 export const OPTIONS = {
     secure: process.env.NODE_ENV === 'production',
     maxAge: 36000,
-    // domain : 'localhost',    
+    domain : 'localhost',    
 }
 
 // https://source.unsplash.com/1600x900/?nature,water

@@ -87,6 +87,21 @@ export const createProduct = async (data) => {
   return await res;
 }
 
+
+
+export const deleteProduct = async (id) => {
+  const response = await fetch(APIS.GETPRODUCT + '/' +  id, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    
+  });
+  const res = response.json();
+  return await res;
+}
+
 export const createSwap = async (data) => {
   const response = await fetch(APIS.CREATESWAP, {
     method: 'POST',

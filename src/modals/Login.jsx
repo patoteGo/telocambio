@@ -14,11 +14,9 @@ export default function Login(props) {
     const { register, handleSubmit, errors } = useForm();
     // eslint-disable-next-line
     const [loader, setLoader] = useState("");
-    const [user, setUser] = useState(context.user[0])
+    // const [user, setUser] = useState(context.user[0])
 
-    const  refreshPage = () =>  {
-        window.location.reload(false);
-      }
+
 
     const onSubmit = (data) => {
         console.log(data);
@@ -30,12 +28,13 @@ export default function Login(props) {
             console.log(res.access_token, 'exito');
             const cookies = new Cookies();
             cookies.set(NAMES.COOKIENAME, res.access_token, OPTIONS);
+            localStorage.setItem(NAMES.COOKIENAME,res.access_token);
             isAuth().then(res => {
                 console.log('auth',res);
                 if(res){
                     context.token[1](res.token)
                     context.user[1](res.user)
-                    refreshPage()
+                    window.location.reload(false);
                 }
             });
             Swal.fire({

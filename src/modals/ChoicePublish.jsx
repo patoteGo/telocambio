@@ -3,14 +3,13 @@ import React from 'react'
 // import { useForm } from 'react-hook-form';
 // import { NAMES, APIS, OPTIONS } from './../config/config.js';
 // import { Link } from "react-router-dom";
-import ListPublish from './ListPublish';
-import NewPublish from './NewPublish';
-export default function ChoicePublish() {
+
+export default function ChoicePublish({name, product}) {
     return (
         <div>
-            <ListPublish/>
-            <NewPublish/>
-            <div className="modal fade" id="choiceModal" tabIndex="-1" role="dialog" aria-labelledby="choiceModal" aria-hidden="true" >
+           
+         
+            <div className="modal fade" id={name} tabIndex="-1" role="dialog" aria-labelledby="choiceModal" aria-hidden="true" >
                 <div className="modal-dialog modal-dialog-centered" role="document" style={{ maxWidth: '400px' }}>
                     <div className="modal-content">
                         <div className="modal-header">
@@ -28,12 +27,13 @@ export default function ChoicePublish() {
                         <div className="modal-body">
                             <div className="container">
                             <div >Elige entre tus publicaciones o oferece algo nuevo</div>
+                            
                                 <div className="row mt-3 mb-3">
                                     <div className="col">
-                                        <div className="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#listpublishModal">Tus Publicaciones</div>
+                                        <div className="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target={`#listpublishModal${product.id}`}>Tus Publicaciones</div>
                                     </div>
                                     <div className="col">
-                                        <div className="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#newpublishModal">Subir nueva</div>
+                                        <div className="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target={`#newpublishModal${product.id}`}>Subir nueva</div>
                                     </div>
                                 </div>
 

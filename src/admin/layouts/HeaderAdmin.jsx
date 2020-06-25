@@ -22,15 +22,9 @@ function Header(props) {
                   <div className="nav-link dropdown-toggle"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MENU</div>
                   <div className="dropdown-menu" aria-labelledby="dropdown07">
                     <Link className="dropdown-item" to='/admin/list'>Productos Ofreces</Link>
-                    <Link className="dropdown-item" to='/admin/listRec'>Productos que te ofrecen</Link>
-                    <Link className="dropdown-item" to="/admin/config">Configuración</Link>
-                    {/* <button onClick={
-                        Auth.logout(()=> {
-                          // props.history.push('/')
-                        }) 
-                      }>
-                      Logout
-                    </button> */}
+                    <Link className="dropdown-item" to='/admin/create'>Crear Producto</Link>
+                    {/* <Link className="dropdown-item" to="/admin/config">Configuración</Link> */}
+                    
                   </div>
               </div>
            

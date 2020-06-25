@@ -9,6 +9,7 @@ import ChoicePublish from './../../modals/ChoicePublish'
 import Login from './../../modals/Login'
 export default function Detail(props) {
     const context = useContext(AppContext);
+    // eslint-disable-next-line
     const [products, setProducts] = context.products;
     const [product, setProduct] = useState({});
     const [modal, setModal] = useState('');
