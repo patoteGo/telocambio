@@ -28,7 +28,6 @@ function Header() {
       return (
         <div className="dropdown-menu" aria-labelledby="dropdown07">
         <Link className="dropdown-item" to='/admin/list'>Productos Ofreces</Link>
-        <Link className="dropdown-item" to='/admin/listRec'>Productos que te ofrecen</Link>
         <Link className="dropdown-item" to='/admin/create'>Crear un Producto</Link>
         <button className="dropdown-item" onClick={logout}>Logout</button>
       </div>

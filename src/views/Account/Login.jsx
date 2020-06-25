@@ -24,7 +24,7 @@ export default function Login(props) {
     const onSubmit = (data) => {
         console.log(data);
         setLoader('active');
-            loginUser({'email':data.email, 'password':data.password}).then(res => {
+            loginUser(data).then(res => {
             // console.log(res);
             setLoader('');
             if(res.access_token){

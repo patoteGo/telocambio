@@ -31,7 +31,6 @@ export const loginUser = async (data) => {
     const response = await fetch(APIS.LOGIN, {
         method: 'POST',
         headers: {
-        
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
@@ -64,6 +63,12 @@ export const fetchProducts = async() => {
 
 export const fetchProductsbyUser = async(userid) => {
   const response = await fetch(APIS.GETPRODUCTSBYUSER + '/' +  userid);
+  const res = response.json();
+  return await res;
+}
+
+export const fetchProductbyID = async(id) => {
+  const response = await fetch(APIS.GETPRODUCT + '/' +  id);
   const res = response.json();
   return await res;
 }

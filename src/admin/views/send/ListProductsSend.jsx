@@ -1,7 +1,8 @@
 import React from 'react'
 import Header from '../../layouts/HeaderAdmin'
 import { Link } from "react-router-dom";
-export default function ListProducts() {
+
+export default function ListProducts(props) {
   return (
     <div>
       <Header/>
@@ -52,7 +53,7 @@ export default function ListProducts() {
                     <button className="btn btn-sm btn-warning">Mensajes</button>
                   </td>
                   <td>
-                    <button className="btn btn-sm btn-secondary">EDITAR</button>
+                    <Link to="/admin/create" className="btn btn-sm btn-secondary">EDITAR</Link>
                   </td>
                   <td>
                     <button className="btn btn-sm btn-danger">BORRAR</button>

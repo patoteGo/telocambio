@@ -19,6 +19,7 @@ export const AppProvider = props => {
 
     const [user, setUser] = useState([]);
     const [token, setToken] = useState([]);
+    const [product, setProduct] = useState([]);
     const [products, setProducts] = useState([
         {
             id: 1,
@@ -92,6 +93,7 @@ export const AppProvider = props => {
                 user: [user, setUser],
                 token: [token, setToken],
                 products: [ products, setProducts],
+                product: [ product, setProduct],
                 fetchUser: fetchUserHandle,
                 handleisauth: handleisauth
             }
