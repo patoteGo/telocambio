@@ -30,7 +30,7 @@ const Routes = () => {
                 <Route exact path={'/contacto'} component={Contact} />
                 <Route exact path={'/publicaciones'} component={Products} />
                 <Route exact path={'/publicaciones/:id'} component={Detail} />
-                <Route exact path={'/quienes somos'} component={QuienesSomos}/>
+                <Route exact path={'/quienes-somos'} component={QuienesSomos}/>
                 <ProtectedRoute exact path={'/admin/create'} component={CreateProductSend} />
                 <ProtectedRoute exact path={'/admin/edit/:id'} component={EditProductSend} />
                 <ProtectedRoute exact path={'/admin/list'} component={ListProductsSend} />
