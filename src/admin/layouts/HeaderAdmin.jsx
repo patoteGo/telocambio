@@ -27,6 +27,20 @@ function Header(props) {
                     
                   </div>
               </div>
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">Inicio <span className="sr-only">(current)</span></Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/publicaciones">Productos</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/quienes-somos">Quienes somos</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/contacto">Contáctanos</Link>
+                </li>
+              </ul>
            
             </div>
           </div>
