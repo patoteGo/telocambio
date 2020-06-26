@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from './../Context/AppContext'
-import { createSwap } from './../config/api.js';
+import { createSwap, SendEmail } from './../config/api.js';
 import Swal from 'sweetalert2'
 // import { useForm } from 'react-hook-form';
 // import { NAMES, APIS, OPTIONS } from './../config/config.js';
@@ -16,6 +16,18 @@ export default function ListPublish({name, product}) {
             "done": false
         }
         createSwap(data).then((res) => {
+            // dataemail_oferta = {
+            //     "email": "patote.gonzalez@gmail.com",
+            //     "subject": "email de prueba de heroky",
+            //     "body": "hoala"    
+            // }
+            // dataemail_muestra = {
+            //     "email": "patote.gonzalez@gmail.com",
+            //     "subject": "email de prueba de heroky",
+            //     "body": "hoala"    
+            // }
+            // SendEmail(dataemail_muestra)
+
             Swal.fire({
                 title: 'Esta Listo',
                 text: 'Espere que la otra persona acepte su trueque',

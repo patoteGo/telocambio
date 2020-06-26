@@ -164,6 +164,7 @@ export default function CreateProduct(props) {
           <div className="row">
             <input type="hidden" name="user_id" defaultValue={user.id} ref={register({required: true})}/>
             <input type="hidden" name="username" defaultValue={user.firstname} ref={register({required: true})}/>
+            <input type="hidden" name="user_email" defaultValue={user.email} ref={register({required: true})}/>
 
           </div>
           <div className="row">
