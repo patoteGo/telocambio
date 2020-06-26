@@ -16,7 +16,7 @@ export default function Contacto() {
                             El intercambio o trueque es un acto de resistencia al uso obligatorio del dinero como medio para obtener productos o servicios. Con el trueque podemos nosotros mismos dar valor a las cosas, según nuestras expectativas rigiéndonos también por calidad, cantidad, tiempo de uso, etc.</p>
                         </div>
                         <div className="col-sm align-items-center">
-                           <img src="https://images.pexels.com/photos/1217327/pexels-photo-1217327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="img-fluid" alt="Responsive image"/>
+                           <img src="https://images.pexels.com/photos/1217327/pexels-photo-1217327.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="img-fluid" alt=""/>
                         </div>
                         
                     </div>
