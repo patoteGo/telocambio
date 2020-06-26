@@ -3,6 +3,7 @@ import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
 import Footer from './../../layouts/footer/Footer2.jsx'
+import { isAuth } from './../../middleware/Auth'
 import { useForm } from 'react-hook-form';
 import { AppContext } from '../../Context/AppContext'
 import { createUser, loginUser } from './../../config/api.js'
@@ -24,15 +25,21 @@ export default function Register(props) {
             loginUser({'email':data.email, 'password':data.password}).then(res => {
                 setLoader('');
                 context.token[1](res.access_token)
-                props.history.push('/admin/list')
+                
                 const cookies = new Cookies();
                 cookies.set(NAMES.COOKIENAME, res.access_token, OPTIONS);
+                localStorage.setItem(NAMES.COOKIENAME,res.access_token);
+                isAuth().then((userDB) => {
+                    context.user[1](userDB.user)
+                    props.history.push('/admin/list')
+                })
                 Swal.fire({
                     title: 'Yuhuuu',
                     text: 'Ya estas logueado',
                     icon: 'success',
                     confirmButtonText: 'Listo'
                   })
+                props.history.push('/admin/list')
             })
             console.log(data, res)
         }).catch((err) => {
