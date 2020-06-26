@@ -3,9 +3,30 @@ import Header from '../../layouts/HeaderAdmin'
 import { Link } from "react-router-dom";
 import { deleteProduct } from './../../../config/api'
 import { AppContext } from './../../../Context/AppContext'
+import {fetchSwapsbyProduct} from './../../../config/api'
 import Swal from 'sweetalert2'
+import Offers from './Offers'
+import './listproduct.sass'
 export default function ListProducts(props) {
   const context = useContext(AppContext);
+  const [offeractive, setOfferactive] = useState('');
+  const [offers, setOffers] = useState([]);
+  const [product, setProduct] = useState([]);
+
+  const handleOffer = (product) => {
+    setOfferactive('active');
+    setProduct(product)
+    fetchSwapsbyProduct(product.id).then(res => {
+      setOffers(res)
+    })
+    
+
+  }
+
+  const handleOfferOff = () => {
+    setOfferactive('');
+  }
+
   const handleDelete = (id) => {
     Swal.fire({
       title: 'Estas segur@?',
@@ -40,8 +61,10 @@ export default function ListProducts(props) {
   return (
     <div>
       <Header/>
-    <div className="ListProducts">
+    <div className="ListProducts" >
+      <Offers active={offeractive} off={handleOfferOff} product={product} offers={offers} />
       <div className="container">
+
         <div className="row">
           <div className="col offset-10 mt-3">
             <Link className="btn btn-primary" to="/admin/create">Crear Producto</Link>
@@ -88,10 +111,12 @@ export default function ListProducts(props) {
                       <th>{product.name}</th>
                       <td>{product.tradeBy}</td>
                       <td><strong className="mr-2">{product.offers}</strong> 
-                      { product.offers > 0 ? <button className="btn btn-info">ver</button> : ''}
+                      { product.offers > 0 ? <button onClick={()=>{handleOffer(product)}} className="btn btn-info">ver</button> : ''}
                           
                       </td>
                       <td>
+                      
+
                         <Link to="/admin/create" className="btn btn-sm btn-secondary">EDITAR</Link>
                       </td>
                       <td>

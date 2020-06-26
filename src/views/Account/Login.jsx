@@ -1,4 +1,4 @@
-import React, { useState, useContext }  from 'react'
+import React, { useState, useContext, useEffect }  from 'react'
 import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
@@ -7,6 +7,7 @@ import Loader from './../../Helpers/Loader'
 import { AppContext } from '../../Context/AppContext'
 import { useForm } from 'react-hook-form';
 import './RegisterLogin.sass'
+import { isAuth } from './../../middleware/Auth'
 import { loginUser } from './../../config/api.js'
 import { NAMES,  OPTIONS } from './../../config/config.js'
 
@@ -20,7 +21,6 @@ export default function Login(props) {
     const { register, handleSubmit, errors } = useForm();
 
     const [loader, setLoader] = useState("");
-
     const onSubmit = (data) => {
         console.log(data);
         setLoader('active');
@@ -30,11 +30,14 @@ export default function Login(props) {
             if(res.access_token){
                 console.log(res.access_token, 'exito');
                 context.token[1](res.access_token)
-                props.history.push('/admin/list')
+                // 
                 const cookies = new Cookies();
                 cookies.set(NAMES.COOKIENAME, res.access_token, OPTIONS);
                 localStorage.setItem(NAMES.COOKIENAME,res.access_token);
-                window.location.reload(false);
+                isAuth().then((userDB) => {
+                    context.user[1](userDB.user)
+                    props.history.push('/admin/list')
+                })
                 Swal.fire({
                     title: 'Yuhuuu',
                     text: 'Ya estas logueado',
@@ -64,6 +67,7 @@ export default function Login(props) {
         })
 
     }
+
 
 
     return (

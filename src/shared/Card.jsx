@@ -7,17 +7,6 @@ import NewPublish from './../modals/NewPublish';
 export default function Card({ user , product }) {
     const [modal, setModal] = useState('');
     const context = useContext(AppContext);
-    // const onModal = () => {
-    //     const modal = document.querySelector('#choiceModal')
-    //     modal.classList.add('show')
-    //     modal.style.display = 'block'
-    //     modal.style.paddingRight = '17px'
-    //     document.querySelector('body').style.paddingRight = '17px'
-    //     document.querySelector('body').classList.add('modal-open')
-    // }
-
-    
-
     useEffect(() => {
         const updatedUser = () => {
             !user.id ? setModal("#loginModal") : setModal(`#choiceModal${product.id}`)

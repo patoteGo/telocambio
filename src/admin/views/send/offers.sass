@@ -1,0 +1,32 @@
+.Offers
+    background: white
+    width: 100%
+    min-height: 100%
+    position: absolute
+    left: 0px
+    top: 0px
+    z-index: 10
+    transform: translateX(100%)
+    transition: all 0.3s ease-in-out
+ 
+    .cerrar
+        cursor: pointer
+        transition: all 0.2s ease-in-out
+        &:hover
+            transform: scale(1.3)
+    .cover_img
+        width: 50px
+    .list
+        margin: 20px 0px
+        .list-cell
+            display: flex
+            justify-content: center
+            align-items: center
+            padding: 5px 10px
+
+            border-bottom: 1px gray solid
+        .list-names
+            flex-direction: column
+            align-items: flex-start
+.Offers.active
+    transform: translateX(0%)
