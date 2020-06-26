@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Header from '../../layouts/HeaderAdmin'
 import { Link } from "react-router-dom";
 import { deleteProduct } from './../../../config/api'
@@ -6,13 +6,14 @@ import { AppContext } from './../../../Context/AppContext'
 import {fetchSwapsbyProduct, fetchProducts} from './../../../config/api'
 import Swal from 'sweetalert2'
 import Offers from './Offers'
+import Loader from './../../../Helpers/Loader'
 import './listproduct.sass'
 export default function ListProducts(props) {
   const context = useContext(AppContext);
   const [offeractive, setOfferactive] = useState('');
   const [offers, setOffers] = useState([]);
   const [product, setProduct] = useState([]);
-
+  const [loader, setLoader] = useState("");
   const handleOffer = (product) => {
     setOfferactive('active');
     setProduct(product)
@@ -26,8 +27,10 @@ export default function ListProducts(props) {
   const handleOfferOff = () => {
     setOfferactive('');
     fetchProducts().then(res => {
-      console.log('off', res)
+      // console.log('off', res)
       context.products[1](res)
+      window.location.reload(false);
+
   }) 
   }
 
@@ -66,8 +69,9 @@ export default function ListProducts(props) {
   return (
     <div>
       <Header/>
+      <Loader active={loader}/> 
     <div className="ListProducts" >
-      <Offers active={offeractive} off={handleOfferOff} product={product} offers={offers} setProduct={setProduct} />
+      <Offers active={offeractive} off={handleOfferOff} product={product} offers={offers} setProduct={setProduct} setLoader={setLoader} />
       <div className="container">
 
         <div className="row">

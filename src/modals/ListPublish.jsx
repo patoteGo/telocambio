@@ -1,23 +1,31 @@
-import React, { useContext, } from 'react'
+import React, { useContext,useState, useEffect } from 'react'
 import { AppContext } from './../Context/AppContext'
 import { createSwap, SendEmail } from './../config/api.js';
 import Swal from 'sweetalert2'
 import { APIS } from './../config/config'
+import Loader from './../Helpers/Loader'
 // import { useForm } from 'react-hook-form';
 // import { NAMES, APIS, OPTIONS } from './../config/config.js';
 // import { Link } from "react-router-dom";
 
 export default function ListPublish({name, product}) {
     const context = useContext(AppContext);
+    const [ select, setSelect ] = useState(0)
+    const [loader, setLoader] = useState("");
+    const handleChange = (event) => {
+        setSelect(event.target.value)
+      }
+      
     const handleSwap = () => {
-        const selector = document.querySelector('.selectpublish')
-        const prodoferta = context.products[0].filter(e => selector.value === e.id)[0]
+        setLoader('active');
+        const prodoferta = context.products[0].filter(e => select === e.id)[0]
         console.log('prodo', prodoferta);  
         const data = {
-            "oferta_id": selector.value,
+            "oferta_id": parseInt(select),
             "muestra_id": product.id,
             "done": false
         }
+        console.log(data);
         createSwap(data).then((res) => {
             const dataemail_oferta = {
                 "email": prodoferta.user_email,
@@ -31,7 +39,7 @@ export default function ListPublish({name, product}) {
             }
             SendEmail(dataemail_muestra)
             SendEmail(dataemail_oferta)
-
+            setLoader('');
             Swal.fire({
                 title: 'Esta Listo',
                 text: 'Espere que la otra persona acepte su trueque',
@@ -40,6 +48,7 @@ export default function ListPublish({name, product}) {
               })
               console.log(res);
             }).catch((err) => {
+               setLoader('');
               console.log(err.status);
               Swal.fire({
                 title: 'Ya habia echo esta oferta antes',
@@ -50,7 +59,16 @@ export default function ListPublish({name, product}) {
             })
 
     }
+
+    useEffect(() => {
+        const sel = document.querySelector('.selectpublish').value
+        setSelect(sel)
+        
+    }, [])
+    
     return (
+        <div>
+         <Loader active={loader}/> 
         <div className="modal fade" id={name} tabIndex="-1" role="dialog" aria-labelledby="listpublishModal" aria-hidden="true" >
             <div className="modal-dialog modal-dialog-centered" role="document" style={{ maxWidth: '400px' }}>
                 <div className="modal-content">
@@ -64,13 +82,15 @@ export default function ListPublish({name, product}) {
                         <div className="container">
                             <div className="row">
                             
-                                <select className="form-control selectpublish" name="publish">
+                                <select className="form-control selectpublish" name="publish" onChange={handleChange} >
                                     {
                                         context.products[0].map((product, key) => {
                                             if (product.user_id === context.user[0].id) {
+                                                
                                                 return (
                                                     <option key={key} value={product.id}>{product.name}</option>
                                                 )
+                                                
                                             }
                                         })
                                     }
@@ -86,6 +106,7 @@ export default function ListPublish({name, product}) {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

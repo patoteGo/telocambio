@@ -1,7 +1,7 @@
 import React  from 'react'
 import './offers.sass'
 import { Link } from "react-router-dom";
-import { SwapDone } from '../../../config/api'
+import { SwapDone, SendEmail } from '../../../config/api'
 
 
 import Swal from 'sweetalert2'
@@ -10,17 +10,23 @@ export default function Offers(props) {
     
     const handleDone = (offer, done) => {
         let msg = {}
+        
+        console.log(offer);
         if(done){
             msg = {
                 html:`de aceptar la oferta de <strong>${offer.name}</strong> <br> por tu <strong>${props.product.name}</strong>?`,
                 okbutton: ' <i class="fa fa-thumbs-up"></i> Si, acepto la oferta',
-                confirm: 'Le va a llegar un email a ambos para q se pongan de acuerdo'
+                confirm: 'Le va a llegar un email a ambos para q se pongan de acuerdo',
+                subject: `Te han aceptado tu oferta del ${offer.name} por el ${props.product.name}`,
+                body: `El dueño del producto ${props.product.name} es ${props.product.username} y su email es el ${props.product.user_email} para que lo puedas contactar y puedan cerrar el trueque, Saludos cordiales`
             }
         } else {
             msg = {
                 html:`de arrepentirse la oferta de <strong>${offer.name}</strong> <br> por tu <strong>${props.product.name}</strong>?`,
                 okbutton: ' <i class="fa fa-thumbs-up"></i> Si, me arrepiento',
-                confirm: 'Ahora puedes aceptar otra oferta'
+                confirm: 'Ahora puedes aceptar otra oferta',
+                subject: `Te han Rechazado tu oferta del ${offer.name} por el ${props.product.name}`,
+                body: `=(`
             } 
         }
         Swal.fire({
@@ -35,6 +41,7 @@ export default function Offers(props) {
             cancelButtonText: '<i class="fa fa-thumbs-down"></i> No'
           }).then((result) => {
             if (result.value) {
+                props.setLoader('active');
                 const data = {
                     "oferta_id": offer.id,
                     "muestra_id": props.product.id,
@@ -42,12 +49,23 @@ export default function Offers(props) {
                 }
                 SwapDone(data).then(res => {
                     console.log(res)
-                    Swal.fire(
-                        'Aceptada!',
-                        msg.confirm,
-                        'success'
-                    )
-                    props.off()
+                    SendEmail({
+                        "email": offer.user_email,
+                        "subject": msg.subject,
+                        "body": ''    
+                    }).then(res => {
+                        Swal.fire(
+                            'Aceptada!',
+                            msg.confirm,
+                            'success'
+                        )
+                        props.off()
+                        props.setLoader('');
+                    }).catch(err => {
+                        console.log(err);
+                        props.setLoader('');
+                    })
+                   
                     
                     
                 })
