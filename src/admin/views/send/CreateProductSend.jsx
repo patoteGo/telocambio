@@ -1,61 +1,120 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../layouts/HeaderAdmin'
 import { useForm } from 'react-hook-form';
-// import { Link } from "react-router-dom";
-export default function CreateProduct() {
-
+import { AppContext } from './../../../Context/AppContext'
+import { createProduct } from './../../../config/api.js'
+import Loader from './../../../Helpers/Loader'
+import Swal from 'sweetalert2'
+import { fetchProductbyID } from './../../../config/api'
+export default function CreateProduct(props) {
+  const context = useContext(AppContext);
+  const [user, setUser] = useState({});
   const { register, handleSubmit, errors } = useForm();
+  const [loader, setLoader] = useState("");
+  const [product, setProduct] = useState({});
+  const [gallery, setGallery] = useState([]);
 
   const onSubmit = (data) => {
-    console.log(data);
+    setLoader('active');
+    createProduct(data).then(res => {
+      setLoader('');
+      Swal.fire({
+        title: 'Ha sido creado',
+        text: 'Ya esta publicado',
+        icon: 'success',
+        confirmButtonText: 'Listo'
+      })
+    }).catch((err) => {
+      console.log(err);
+    })
+    // console.log(data);
+   
 
   }
+
+  useEffect(() => {
+    const updatedUser = () => {
+        setUser(context.user[0]);
+        if(props.match.params.id !== undefined ){
+          fetchProductbyID(props.match.params.id).then(prod => {
+            setProduct(prod);
+            console.log(prod);
+            setGallery((prod.gallery).split(','))
+          })
+        }
+        // 
+
+    }
+    updatedUser()
+    
+}, [context.user[0]]);
 
   return (
     <div>
       <Header />
+      <Loader active={loader}/>
       <div className="container">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row my-5">
             <div className="col">
-              <h3 className="text-center">Crear una Publicación</h3>
+              <h3 className="text-center">
+                {props.match.params.id !== undefined ? 'Editar Publicacion' : 'Crear una Publicación'}  
+              </h3>
             </div>
           </div>
           <div className="row">
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
-                <label htmlFor="post_title">Titulo de la Publicación</label>
+                <label htmlFor="name">Titulo de la Publicación</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="post_title"
-                  name="post_title"
+                  id="name"
+                  name="name"
                   placeholder="Licuadora"
                   ref={register({ required: 'Titulo requerido', minLength: { value: 8, message: 'muy corto' } })}
+                  defaultValue={product.name}
                 />
-                {errors.post_title && <p className="badge badge-danger ml-2">{errors.post_title.message}</p>}
+                {errors.name && <p className="badge badge-danger ml-2">{errors.name.message}</p>}
               </div>
 
               <div className="form-group">
-                <label htmlFor="short_desc">Descripcion Corta</label>
+                <label htmlFor="tags">Tags</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="tags"
+                  name="tags"
+                  placeholder="cocina, eléctrico, para la casa"
+                  ref={register({ required: 'Titulo requerido', minLength: { value: 8, message: 'muy corto' } })}
+                  defaultValue={product.tags}
+                />
+                {errors.tags && <p className="badge badge-danger ml-2">{errors.tags.message}</p>}
+              </div>
+              <div className="form-group">
+                <label htmlFor="shortDesc">Descripcion Corta</label>
                 <textarea
                   className="form-control"
-                  id="short_desc"
-                  name="short_desc"
+                  id="shortDesc"
+                  name="shortDesc"
                   rows="2"
-                  ref={register}
+                  ref={register({required: 'Descripción requerida'})}
+                  defaultValue={product.shortDesc}
                 ></textarea>
+                {errors.shortDesc && <p className="badge badge-danger ml-2">{errors.shortDesc.message}</p>}
               </div>
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
-                <label htmlFor="long_desc">Descripcion Larga</label>
+                <label htmlFor="longDesc">Descripcion Larga</label>
                 <textarea
                   className="form-control"
-                  id="long_desc"
-                  name="long_desc"
+                  id="longDesc"
+                  name="longDesc"
                   rows="6"
                   ref={register}
+                  defaultValue={product.longDesc}
+                  
                 ></textarea>
               </div>
             </div>
@@ -70,45 +129,41 @@ export default function CreateProduct() {
                   id="cover_img"
                   name="cover_img"
                   placeholder="Ingrese el url de su imagen"
-                  ref={register}
+                  ref={register({required: 'Imágen requerida'})}
+                  defaultValue={product.cover_img}
                 />
+                {errors.cover_img && <p className="badge badge-danger ml-2">{errors.cover_img.message}</p>}
               </div>
               <div className="form-group">
-                <label htmlFor="trade_for">Cambiar Por</label>
+                <label htmlFor="tradeBy">Cambiar Por</label>
                 <input
                   type="text"
                   className="form-control"
-                  name="trade_for"
-                  id="trade_for"
+                  name="tradeBy"
+                  id="tradeBy"
                   placeholder="Tostadora"
-                  ref={register}
+                  ref={register()}
+                  defaultValue={product.tradeBy}
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="trade_for">tags, si son varios separalo por coma</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  name="tags"
-                  id="tags"
-                  placeholder="Electrodomestico, cocina"
-                  ref={register}
-                />
-              </div>
+             
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
                 <label htmlFor="gallery">Imagen Galerias</label>
-                <input type="text" className="mt-2 form-control" id="gallery1" name="gallery1" placeholder="Ingrese el url de la imagen 1" ref={register} />
-                <input type="text" className="mt-2 form-control" id="gallery2" name="gallery2" placeholder="Ingrese el url de la imagen 2" ref={register} />
-                <input type="text" className="mt-2 form-control" id="gallery3" name="gallery3" placeholder="Ingrese el url de la imagen 3" ref={register} />
-                <input type="text" className="mt-2 form-control" id="gallery4" name="gallery4" placeholder="Ingrese el url de la imagen 4" ref={register} />
-                <input type="text" className="mt-2 form-control" id="gallery5" name="gallery5" placeholder="Ingrese el url de la imagen 5" ref={register} />
-                <input type="text" className="mt-2 form-control" id="gallery6" name="gallery6" placeholder="Ingrese el url de la imagen 6" ref={register} />
+                <input type="text" className="mt-2 form-control" id="gallery1" name="gallery1" placeholder="Ingrese el url de la imagen 1" ref={register} defaultValue={gallery[0]}/> 
+                <input type="text" className="mt-2 form-control" id="gallery2" name="gallery2" placeholder="Ingrese el url de la imagen 2" ref={register} defaultValue={gallery[1]}/>
+                <input type="text" className="mt-2 form-control" id="gallery3" name="gallery3" placeholder="Ingrese el url de la imagen 3" ref={register} defaultValue={gallery[2]}/>
+                <input type="text" className="mt-2 form-control" id="gallery4" name="gallery4" placeholder="Ingrese el url de la imagen 4" ref={register} defaultValue={gallery[3]}/>
+                <input type="text" className="mt-2 form-control" id="gallery5" name="gallery5" placeholder="Ingrese el url de la imagen 5" ref={register} defaultValue={gallery[4]}/>
+                <input type="text" className="mt-2 form-control" id="gallery6" name="gallery6" placeholder="Ingrese el url de la imagen 6" ref={register} defaultValue={gallery[5]}/>
               </div>
             </div>
           </div>
+        
           <div className="row">
+            <input type="hidden" name="user_id" defaultValue={user.id} ref={register({required: true})}/>
+            <input type="hidden" name="username" defaultValue={user.firstname} ref={register({required: true})}/>
 
           </div>
           <div className="row">
@@ -119,7 +174,7 @@ export default function CreateProduct() {
             </div>
           </div>
         </form>
-        <div className="btn btn-info">Buscar imagenes</div>
+        {/* <div className="btn btn-info">Buscar imagenes</div> */}
       </div>
     </div>
   )

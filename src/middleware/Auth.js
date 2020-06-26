@@ -6,9 +6,11 @@ import { fetchUserByToken } from './../config/api.js'
 const cookies = new Cookies();
 export const isAuth = async () => {
     
-    if(!cookies.get(NAMES.COOKIENAME)) { return false }
-    const token = cookies.get(NAMES.COOKIENAME);
+    // if(!cookies.get(NAMES.COOKIENAME)) { return false }
+    // const token = cookies.get(NAMES.COOKIENAME);
 
+    if(!localStorage.getItem(NAMES.COOKIENAME)) { return false }
+    const token = localStorage.getItem(NAMES.COOKIENAME);
     const userAPI = await fetchUserByToken(token);
     if (!userAPI ) return false;
     // const user = await fetchUserById(user.id);    

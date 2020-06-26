@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 // import { Link } from "react-router-dom";
 import './createproduct.sass'
 
-export default function NewPublish() {
+export default function NewPublish({name, product}) {
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
@@ -13,7 +13,7 @@ export default function NewPublish() {
 
     }
     return (
-        <div className="modal fade" id="newpublishModal" tabIndex="-1" role="dialog" aria-labelledby="newpublishModal" aria-hidden="true" >
+        <div className="modal fade" id={name} tabIndex="-1" role="dialog" aria-labelledby="newpublishModal" aria-hidden="true" >
             <div className="modal-dialog modal-dialog-centered createproduct" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -33,7 +33,6 @@ export default function NewPublish() {
                                                 <input
                                                     type="text"
                                                     className="form-control"
-                                                    id="post_title"
                                                     name="post_title"
                                                     placeholder="Licuadora"
                                                     ref={register({ required: 'Titulo requerido', minLength: { value: 8, message: 'muy corto' } })}
@@ -45,7 +44,6 @@ export default function NewPublish() {
                                                 <label htmlFor="short_desc">Descripcion Corta</label>
                                                 <textarea
                                                     className="form-control"
-                                                    id="short_desc"
                                                     name="short_desc"
                                                     rows="2"
                                                     ref={register}
@@ -57,7 +55,6 @@ export default function NewPublish() {
                                                 <label htmlFor="long_desc">Descripcion Larga</label>
                                                 <textarea
                                                     className="form-control"
-                                                    id="long_desc"
                                                     name="long_desc"
                                                     rows="6"
                                                     ref={register}
@@ -72,7 +69,6 @@ export default function NewPublish() {
                                                 <input
                                                     type="text"
                                                     className="form-control"
-                                                    id="cover_img"
                                                     name="cover_img"
                                                     placeholder="Ingrese el url de su imagen"
                                                     ref={register}
@@ -84,7 +80,6 @@ export default function NewPublish() {
                                                     type="text"
                                                     className="form-control"
                                                     name="trade_for"
-                                                    id="trade_for"
                                                     placeholder="Tostadora"
                                                     ref={register}
                                                 />
@@ -95,7 +90,6 @@ export default function NewPublish() {
                                                     type="text"
                                                     className="form-control"
                                                     name="tags"
-                                                    id="tags"
                                                     placeholder="Electrodomestico, cocina"
                                                     ref={register}
                                                 />

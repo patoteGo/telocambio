@@ -1,4 +1,4 @@
-import React, { useState, useContext }  from 'react'
+import React, { useState, useContext, useEffect }  from 'react'
 import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
@@ -7,8 +7,10 @@ import Loader from './../../Helpers/Loader'
 import { AppContext } from '../../Context/AppContext'
 import { useForm } from 'react-hook-form';
 import './RegisterLogin.sass'
+import { isAuth } from './../../middleware/Auth'
 import { loginUser } from './../../config/api.js'
 import { NAMES,  OPTIONS } from './../../config/config.js'
+
 
 
 // import SweetAlert from 'sweetalert2-react';
@@ -16,36 +18,33 @@ import Swal from 'sweetalert2'
 
 
 export default function Login(props) {
-    // const [ state ] = useContext(UserProvider);
     const context = useContext(AppContext);
     const { register, handleSubmit, errors } = useForm();
 
     const [loader, setLoader] = useState("");
-
     const onSubmit = (data) => {
         console.log(data);
         setLoader('active');
-            loginUser({'email':data.email, 'password':data.password}).then(res => {
+            loginUser(data).then(res => {
             // console.log(res);
             setLoader('');
             if(res.access_token){
                 console.log(res.access_token, 'exito');
                 context.token[1](res.access_token)
-                props.history.push('/admin/list')
-                // Auth.login(res.token, ()=>{
-                    
-                // });
-
+                // 
                 const cookies = new Cookies();
                 cookies.set(NAMES.COOKIENAME, res.access_token, OPTIONS);
+                localStorage.setItem(NAMES.COOKIENAME,res.access_token);
+                isAuth().then((userDB) => {
+                    context.user[1](userDB.user)
+                    props.history.push('/admin/list')
+                })
                 Swal.fire({
                     title: 'Yuhuuu',
                     text: 'Ya estas logueado',
                     icon: 'success',
                     confirmButtonText: 'Listo'
                   })
-                
-
             } else {
                 console.log(res, 'fallo');
                 Swal.fire({
@@ -56,7 +55,6 @@ export default function Login(props) {
                   })
                 
             }
-            
         }).catch((err) => {
             setLoader('');
             console.log(err);
@@ -70,6 +68,7 @@ export default function Login(props) {
         })
 
     }
+
 
 
     return (
