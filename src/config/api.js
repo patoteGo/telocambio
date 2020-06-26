@@ -137,6 +137,7 @@ export const SwapDone = async (data) => {
 }
 
 export const SendEmail = async (data) => {
+  console.log(data)
   const response = await fetch(APIS.SENDEMAIL, {
     method: 'POST',
     body: JSON.stringify(data),
