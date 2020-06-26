@@ -11,7 +11,7 @@ export default function ListPublish({name, product}) {
     const context = useContext(AppContext);
     const handleSwap = () => {
         const selector = document.querySelector('.selectpublish')
-        const prodoferta = context.products[0].filter(e => selector.value == e.id)[0]
+        const prodoferta = context.products[0].filter(e => selector.value === e.id)[0]
         console.log('prodo', prodoferta);  
         const data = {
             "oferta_id": selector.value,

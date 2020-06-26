@@ -1,8 +1,8 @@
-import React, { useContext }  from 'react'
+import React  from 'react'
 import './offers.sass'
 import { Link } from "react-router-dom";
 import { SwapDone } from '../../../config/api'
-import { AppContext } from './../../../Context/AppContext'
+
 
 import Swal from 'sweetalert2'
 export default function Offers(props) {
