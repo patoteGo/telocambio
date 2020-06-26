@@ -18,7 +18,7 @@ function Main() {
   // }
 
   return (
-    <AppProvider>
+
       <div className="Homepage-main">
         <Login />
         <Jumbotron />
@@ -26,23 +26,16 @@ function Main() {
           <div className="row mb-4">
             {
               products.map((product, index) => {
+                if(index <= 2){
                 return (
                   <div className="col-md-4 col-sm-6 mt-4" key={index}>
                     <Card user={user} product={product} />
                   </div>      
+                  
                 )
+                }
               })
             }
-            {/* <div className="col-md-4 col-sm-6 mt-4">
-              <Card user={user} />
-            </div> */}
-            {/* <div className="col-md-4 col-sm-6 mt-4">
-              <Card user={user} />
-            </div>
-            <div className="col-md-4 col-sm-6 mt-4">
-              <Card user={user} />
-            </div> */}
-
           </div>
           <div className="row">
             <div className="col offset-md-9 mb-4">
@@ -52,7 +45,7 @@ function Main() {
           </div>
         </div>
       </div>
-    </AppProvider>
+  
   );
 }
 

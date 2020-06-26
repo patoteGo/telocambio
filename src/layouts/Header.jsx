@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 import { AppContext } from './../Context/AppContext'
 import Cookies from 'universal-cookie';
 import { NAMES,  OPTIONS } from './../config/config.js'
-function Header() {
+function Header(props) {
   const context = useContext(AppContext);
   // eslint-disable-next-line
   const [user, setUser] = context.user;
@@ -77,9 +77,14 @@ function Header() {
                   
                   {dropdownmenu(user)}
               </div>
+              { props.search ? 
               <form className="form-inline my-2 my-md-0" _lpchecked="1">
-                <input className="form-control" type="text" placeholder="Buscar.." aria-label="Buscar.."/>
-              </form>
+              <input className="form-control search" type="text" placeholder="Buscar.." aria-label="Buscar.."/>
+            </form>
+                :
+                ''
+              }
+              
             </div>
           </div>
         </nav>

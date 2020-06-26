@@ -7,39 +7,23 @@ export default function Products() {
   const context = useContext(AppContext);
   // eslint-disable-next-line
   const [user, setUser] = context.user;
+  // eslint-disable-next-line
+  const [products, setProduct] = context.products;
     return (
         <div>
-             <Header/>
+             <Header search="tue"/>
 
              <div className="container">
       <div className="row mb-4">
-        {/* <div className="col-sm-3 col-md-4  mt-4">
-        <Card user={user}/> 
-        </div>
-        <div className="col-sm-3 col-md-4  mt-4">
-        <Card user={user}/> 
-        </div>
-        <div className="col-sm-3 col-md-4  mt-4">
-        <Card user={user}/> 
-        </div>
-        <div className="col-sm-3 col-md-4  mt-4">
-        <Card user={user}/> 
-        </div>
-        <div className="col-sm-3 col-md-4  mt-4">
-        <Card user={user}/> 
-        </div>
-        <div className="col-sm-3 col-md-4  mt-4">
-        <Card user={user}/> 
-        </div>
-        <div className="col-sm-3 col-md-4  mt-4">
-        <Card user={user}/> 
-        </div>
-        <div className="col-sm-3 col-md-4  mt-4">
-        <Card user={user}/> 
-        </div>
-        <div className="col-sm-3 col-md-4  mt-4">
-        <Card user={user}/> 
-        </div> */}
+      {
+              products.map((product, index) => {
+                return (
+                  <div className="col-md-4 col-sm-6 mt-4" key={index}>
+                    <Card user={user} product={product} />
+                  </div>      
+                )
+              })
+            }
       </div>
       </div>
 
