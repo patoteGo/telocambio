@@ -25,18 +25,17 @@ export default function Detail(props) {
                 setProduct(res)
             })
         }
-    }, [])
 
-    useEffect(() => {
         const updatedUser = () => {
             !context.user[0].id ? setModal("#loginModal") : setModal("#choiceModal")
         }
         updatedUser()
 
-    }, [context.user[0]]);
+    }, [])
+
 
     const galleryHandle = () => {
-        if (product.gallery != undefined) {
+        if (product.gallery !== undefined) {
             const gal = product.gallery.split(',').map(img => {
                 return {
                     original: img,
@@ -86,7 +85,7 @@ export default function Detail(props) {
                         <div className="row mb-4">
                             <div className="col">
                                 {
-                                context.user[0].id != product.user_id ?
+                                context.user[0].id !== product.user_id ?
                                     <div className="btn ml-2 btn-info" data-toggle="modal" data-target={modal}>Cambiar por</div> : ''
                                     
                                 }

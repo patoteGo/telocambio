@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect }  from 'react'
+import React, { useState, useContext }  from 'react'
 import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Header from '../../layouts/HeaderAdmin'
 import { Link } from "react-router-dom";
 import { deleteProduct } from './../../../config/api'
@@ -48,6 +48,7 @@ export default function ListProducts(props) {
             'Tu publicación ha sido borrada.',
             'success'
           )
+          // eslint-disable-next-line
           const productsSIN =  context.products[0]
             .map( (product) => { if ( product.id !== id) return product })
             .filter((el) => {return el != null})
@@ -98,8 +99,9 @@ export default function ListProducts(props) {
               </thead>
               <tbody>
                 {
+                  // eslint-disable-next-line
                   context.products[0].map((product, key) => {
-                    if(product.user_id == context.user[0].id){
+                    if(product.user_id === context.user[0].id){
 
                    
                     return (

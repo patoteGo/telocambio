@@ -55,7 +55,7 @@ export default function Card({ user , product }) {
                     <div className="row">
                         <Link className="btn ml-auto btn-primary" to={`/publicaciones/${product.id}`} >Detalles</Link>
                             {
-                            context.user[0].id != product.user_id ?
+                            context.user[0].id !== product.user_id ?
                                 <div className="btn ml-2 btn-info" data-toggle="modal" data-target={modal}>Cambiar por</div> : ''
                                 
                             }
