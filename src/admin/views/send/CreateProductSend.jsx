@@ -72,7 +72,7 @@ export default function CreateProduct(props) {
                   id="name"
                   name="name"
                   placeholder="Licuadora"
-                  ref={register({ required: 'Titulo requerido', minLength: { value: 8, message: 'muy corto' } })}
+                  ref={register({ required: 'Titulo requerido'})}
                   defaultValue={product.name}
                 />
                 {errors.name && <p className="badge badge-danger ml-2">{errors.name.message}</p>}
@@ -86,7 +86,7 @@ export default function CreateProduct(props) {
                   id="tags"
                   name="tags"
                   placeholder="cocina, eléctrico, para la casa"
-                  ref={register({ required: 'Titulo requerido', minLength: { value: 8, message: 'muy corto' } })}
+                  ref={register({ required: 'Titulo requerido' })}
                   defaultValue={product.tags}
                 />
                 {errors.tags && <p className="badge badge-danger ml-2">{errors.tags.message}</p>}

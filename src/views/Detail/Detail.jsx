@@ -85,7 +85,12 @@ export default function Detail(props) {
                         </p>
                         <div className="row mb-4">
                             <div className="col">
-                                <div className="btn btn-primary mt-2" data-toggle="modal" data-target={modal}>Ofrecer por esto</div>
+                                {
+                                context.user[0].id != product.user_id ?
+                                    <div className="btn ml-2 btn-info" data-toggle="modal" data-target={modal}>Cambiar por</div> : ''
+                                    
+                                }
+                             
                                 <Link to="/publicaciones" className="btn btn-light mt-2 ml-1">Ver todas</Link>
                             </div>
                         </div>
