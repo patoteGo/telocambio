@@ -10,6 +10,8 @@ export default function ListPublish({name, product}) {
     const context = useContext(AppContext);
     const handleSwap = () => {
         const selector = document.querySelector('.selectpublish')
+        const prodoferta = context.products[0].selector.value
+        
         const data = {
             "oferta_id": selector.value,
             "muestra_id": product.id,
@@ -17,13 +19,13 @@ export default function ListPublish({name, product}) {
         }
         createSwap(data).then((res) => {
             // dataemail_oferta = {
-            //     "email": "patote.gonzalez@gmail.com",
-            //     "subject": "email de prueba de heroky",
-            //     "body": "hoala"    
+            //     "email": prodoferta.user_email,
+            //     "subject": `Se enviado tu oferta por el producto ${product}`,
+            //     "body": ``    
             // }
             // dataemail_muestra = {
-            //     "email": "patote.gonzalez@gmail.com",
-            //     "subject": "email de prueba de heroky",
+            //     "email": product.user_email,
+            //     "subject": `En Telocambio te han ofrecido una oferta por tu ${product.name}`,
             //     "body": "hoala"    
             // }
             // SendEmail(dataemail_muestra)
