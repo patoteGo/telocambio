@@ -18,15 +18,17 @@ export default function ListPublish({name, product}) {
       
     const handleSwap = () => {
         setLoader('active');
-        const prodoferta = context.products[0].filter(e => select === e.id)[0]
+        const prodoferta = context.products[0].filter(prod => select == prod.id)[0]
         console.log('prodo', prodoferta);  
         const data = {
             "oferta_id": parseInt(select),
             "muestra_id": product.id,
             "done": false
         }
-        console.log(data);
+        console.log(select, prodoferta, product.user_email);
         createSwap(data).then((res) => {
+
+
             const dataemail_oferta = {
                 "email": prodoferta.user_email,
                 "subject": `Se enviado tu oferta por el producto ${product.name}`,
@@ -39,6 +41,9 @@ export default function ListPublish({name, product}) {
             }
             SendEmail(dataemail_muestra)
             SendEmail(dataemail_oferta)
+
+
+
             setLoader('');
             Swal.fire({
                 title: 'Esta Listo',
@@ -49,7 +54,7 @@ export default function ListPublish({name, product}) {
               console.log(res);
             }).catch((err) => {
                setLoader('');
-              console.log(err.status);
+              console.log(err);
               Swal.fire({
                 title: 'Ya habia echo esta oferta antes',
                 text: 'Espere que la otra persona acepte su trueque',
@@ -61,7 +66,7 @@ export default function ListPublish({name, product}) {
     }
 
     useEffect(() => {
-        const sel = document.querySelector('.selectpublish').value
+        const sel = document.querySelector(`#${name} .selectpublish`).value
         setSelect(sel)
         
     }, [])
