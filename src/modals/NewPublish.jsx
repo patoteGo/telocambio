@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 // import { Link } from "react-router-dom";
 import './createproduct.sass'
 
-export default function NewPublish({name, product}) {
+export default function NewPublish({ name, product }) {
     const { register, handleSubmit, errors } = useForm();
 
     const onSubmit = (data) => {
@@ -98,12 +98,12 @@ export default function NewPublish({name, product}) {
                                         <div className="col-md-6 col-sm-12">
                                             <div className="form-group">
                                                 <label htmlFor="gallery">Imagen Galerias</label>
-                                                <input type="text" className="mt-2 form-control" id="gallery1" name="gallery1" placeholder="Ingrese el url de la imagen 1" ref={register} />
-                                                <input type="text" className="mt-2 form-control" id="gallery2" name="gallery2" placeholder="Ingrese el url de la imagen 2" ref={register} />
-                                                <input type="text" className="mt-2 form-control" id="gallery3" name="gallery3" placeholder="Ingrese el url de la imagen 3" ref={register} />
-                                                <input type="text" className="mt-2 form-control" id="gallery4" name="gallery4" placeholder="Ingrese el url de la imagen 4" ref={register} />
-                                                <input type="text" className="mt-2 form-control" id="gallery5" name="gallery5" placeholder="Ingrese el url de la imagen 5" ref={register} />
-                                                <input type="text" className="mt-2 form-control" id="gallery6" name="gallery6" placeholder="Ingrese el url de la imagen 6" ref={register} />
+                                                <input type="text" className="mt-2 form-control" name="gallery1" placeholder="Ingrese el url de la imagen 1" ref={register} />
+                                                <input type="text" className="mt-2 form-control" name="gallery2" placeholder="Ingrese el url de la imagen 2" ref={register} />
+                                                <input type="text" className="mt-2 form-control" name="gallery3" placeholder="Ingrese el url de la imagen 3" ref={register} />
+                                                <input type="text" className="mt-2 form-control" name="gallery4" placeholder="Ingrese el url de la imagen 4" ref={register} />
+                                                <input type="text" className="mt-2 form-control" name="gallery5" placeholder="Ingrese el url de la imagen 5" ref={register} />
+                                                <input type="text" className="mt-2 form-control" name="gallery6" placeholder="Ingrese el url de la imagen 6" ref={register} />
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +114,7 @@ export default function NewPublish({name, product}) {
                                         <div className="offset-md-8 col-md-6 col-sm-12">
                                             <button type="submit" className="btn btn-primary mb-2">
                                                 Enviar esto para intercambio
-              </button>
+                                            </button>
                                         </div>
                                     </div>
                                 </form>

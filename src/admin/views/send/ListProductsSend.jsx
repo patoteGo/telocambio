@@ -3,7 +3,7 @@ import Header from '../../layouts/HeaderAdmin'
 import { Link } from "react-router-dom";
 import { deleteProduct } from './../../../config/api'
 import { AppContext } from './../../../Context/AppContext'
-import {fetchSwapsbyProduct} from './../../../config/api'
+import {fetchSwapsbyProduct, fetchProducts} from './../../../config/api'
 import Swal from 'sweetalert2'
 import Offers from './Offers'
 import './listproduct.sass'
@@ -25,6 +25,10 @@ export default function ListProducts(props) {
 
   const handleOfferOff = () => {
     setOfferactive('');
+    fetchProducts().then(res => {
+      console.log('off', res)
+      context.products[1](res)
+  }) 
   }
 
   const handleDelete = (id) => {
@@ -62,7 +66,7 @@ export default function ListProducts(props) {
     <div>
       <Header/>
     <div className="ListProducts" >
-      <Offers active={offeractive} off={handleOfferOff} product={product} offers={offers} />
+      <Offers active={offeractive} off={handleOfferOff} product={product} offers={offers} setProduct={setProduct} />
       <div className="container">
 
         <div className="row">
@@ -82,6 +86,7 @@ export default function ListProducts(props) {
               <thead>
                 <tr>
                   {/* <th scope="col">id</th> */}
+                  <th scope="col">Estado</th>
                   <th scope="col">Portada</th>
                   <th scope="col">Titulo</th>
                   <th scope="col">Porque lo cambias</th>
@@ -98,9 +103,10 @@ export default function ListProducts(props) {
 
                    
                     return (
-                  
-                      <tr key={key}>
-                      {/* <th>{product.id}</th> */}
+                      
+                      <tr key={key} className={product.done ? 'accept' : ''}>
+                      
+                      <td>{product.done ? 'Aceptado' : 'Pendiente'}</td>
                       <td>
                         <img
                           style={{ width: '40px' }}

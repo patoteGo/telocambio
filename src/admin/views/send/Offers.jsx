@@ -1,19 +1,62 @@
-import React from 'react'
+import React, { useContext, useEffect }  from 'react'
 import './offers.sass'
 import { Link } from "react-router-dom";
 import { SwapDone } from '../../../config/api'
+import { AppContext } from './../../../Context/AppContext'
+
+import Swal from 'sweetalert2'
 export default function Offers(props) {
-
-    const handleDone = (id) => {
-        const data = {
-            "oferta_id": id,
-            "muestra_id": props.product.id,
-            "done": true
+    const context = useContext(AppContext);
+    
+    const handleDone = (offer, done) => {
+        let msg = {}
+        if(done){
+            msg = {
+                html:`de aceptar la oferta de <strong>${offer.name}</strong> <br> por tu <strong>${props.product.name}</strong>?`,
+                okbutton: ' <i class="fa fa-thumbs-up"></i> Si, acepto la oferta',
+                confirm: 'Le va a llegar un email a ambos para q se pongan de acuerdo'
+            }
+        } else {
+            msg = {
+                html:`de arrepentirse la oferta de <strong>${offer.name}</strong> <br> por tu <strong>${props.product.name}</strong>?`,
+                okbutton: ' <i class="fa fa-thumbs-up"></i> Si, me arrepiento',
+                confirm: 'Ahora puedes aceptar otra oferta'
+            } 
         }
-        SwapDone(data).then(res => {
-
-        })
+        Swal.fire({
+            title: 'Estas segur@?',
+            html: msg.html,
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            focusConfirm: false,
+            confirmButtonText: msg.okbutton,
+            cancelButtonText: '<i class="fa fa-thumbs-down"></i> No'
+          }).then((result) => {
+            if (result.value) {
+                const data = {
+                    "oferta_id": offer.id,
+                    "muestra_id": props.product.id,
+                    "done": done
+                }
+                SwapDone(data).then(res => {
+                    console.log(res)
+                    Swal.fire(
+                        'Aceptada!',
+                        msg.confirm,
+                        'success'
+                    )
+                    props.off()
+                    
+                    
+                })
+              
+            }
+          })
     }
+
+   
 
     return (
         <div className={`Offers ${props.active}`}>
@@ -35,7 +78,7 @@ export default function Offers(props) {
                     <div className="col">
                         <h2>Ofertas</h2>
                     </div>
-
+                    
                 </div>
                 <div className="row mb-4">
 
@@ -43,9 +86,13 @@ export default function Offers(props) {
                 </div>
                 {
                     props.offers.map((offer, key) => {
+                        console.log(offer.id, props.product.id, offer.id === props.product.id);
                         return (
-                            <div className="row list" key={key}>
+                            <div className={offer.id === props.product.done  ? 'accept row list' : 'row list'} key={key}>
                                 <div className="col-md-1 list-cell">
+                                {offer.id === props.product.done ? <i className=" ml-2 fa fa-check mr-3" aria-hidden="true"></i> : ''}
+                                
+                                
                                     <img className="cover_img" src={offer.cover_img} alt="" />
                                 </div>
                                 <div className="col-md-7 text-center list-cell list-names">
@@ -57,10 +104,15 @@ export default function Offers(props) {
                                 </div>
                                 </div>
                                 <div className="col-md-2 list-cell">
-                                    <Link to='/' className="btn btn-info">Detalles</Link>
+                                    <Link to={`/publicaciones/${offer.id}`} className="btn btn-info">Detalles</Link>
                                 </div>
                                 <div className="col-md-2 list-cell">
-                                    <div className="btn btn-primary">Aceptar</div>
+                                {offer.id === props.product.done  ? 
+                                    <div className="btn btn-danger" onClick={()=>{handleDone(offer, false )}}>Arrepentirse</div>
+                                :
+                                <div className="btn btn-primary" onClick={()=>{handleDone(offer, true )}}>Aceptar</div>
+                                }
+                                    {/* <div className="btn btn-primary" onClick={()=>{handleDone(offer, true )}}>Aceptar</div> */}
                                 </div>
                             </div>
                         )

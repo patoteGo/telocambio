@@ -96,7 +96,6 @@ export default function Login(props) {
                                         <input
                                             type="email"
                                             name="email"
-                                            id="email"
                                             className="form-control"
                                             autoComplete="email"
                                             ref={register({ required: 'Email requerido' })}
@@ -108,7 +107,6 @@ export default function Login(props) {
                                         <input
                                             type="password"
                                             name="password"
-                                            id="password"
                                             autoComplete="off"
                                             className="form-control"
                                             ref={register({ required: 'Password requerido' })}
