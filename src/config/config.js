@@ -1,6 +1,6 @@
 export const URLBASE = 'telocambio';
 
-const VERCEL = false;
+const VERCEL = true;
 
 export const APIS = {
     GETUSERS: VERCEL ? 'https://telocambio-api.herokuapp.com/users' : 'http://localhost:5000/users',
@@ -18,7 +18,8 @@ export const APIS = {
     GETSWAPBYPRODUCT: VERCEL ? 'https://telocambio-api.herokuapp.com/swap' : 'http://localhost:5000/swap',
     SWAPDONE: VERCEL ? 'https://telocambio-api.herokuapp.com/swap/done' : 'http://localhost:5000/swap/done',
     SENDEMAIL: VERCEL ? 'https://telocambio-api.herokuapp.com/sendemail' : 'http://localhost:5000/sendemail',
-    ADMINEMAIL: 'patote.gonzalez@gmail.com'
+    ADMINEMAIL: 'patote.gonzalez@gmail.com',
+    BASEURL: VERCEL ? 'https://telocambio-api.herokuapp.com/' : 'http://localhost:3000/',
 }
 export const NAMES = {
     COOKIENAME : 'auth'

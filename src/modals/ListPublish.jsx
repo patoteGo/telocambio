@@ -2,6 +2,7 @@ import React, { useContext, } from 'react'
 import { AppContext } from './../Context/AppContext'
 import { createSwap, SendEmail } from './../config/api.js';
 import Swal from 'sweetalert2'
+import { APIS } from './../config/config'
 // import { useForm } from 'react-hook-form';
 // import { NAMES, APIS, OPTIONS } from './../config/config.js';
 // import { Link } from "react-router-dom";
@@ -26,7 +27,7 @@ export default function ListPublish({name, product}) {
             const dataemail_muestra = {
                 "email": product.user_email,
                 "subject": `En Telocambio te han ofrecido una oferta por tu ${product.name}`,
-                "body": `<p>Se ha enviado una oferta del producto ${prodoferta.name} , por tu producto ${product.name}</p> <p>si quieres ver en detalle lo que te ofertan entra a este  <a href='https://telocambio.patotego.vercel.app/telocambio/publicaciones/${prodoferta.id}'>link</a>`  
+                "body": `<p>Se ha enviado una oferta del producto ${prodoferta.name} , por tu producto ${product.name}</p> <p>si quieres ver en detalle lo que te ofertan entra a este  <a href='${APIS.BASEURL}/telocambio/publicaciones/${prodoferta.id}'>link</a>`  
             }
             SendEmail(dataemail_muestra)
             SendEmail(dataemail_oferta)
