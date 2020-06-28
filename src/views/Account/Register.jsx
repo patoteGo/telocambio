@@ -1,4 +1,6 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react' 
+import GoogleLogin from 'react-google-login'
+//import ReactDOM from 'react-dom';
 import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
@@ -11,7 +13,11 @@ import Loader from './../../Helpers/Loader'
 import Swal from 'sweetalert2'
 import { NAMES,  OPTIONS } from './../../config/config.js'
 import './RegisterLogin.sass'
+
 export default function Register(props) {
+    const responseGoogle = (response) => {
+        console.log(response);
+      }
     // eslint-disable-next-line
     const [loader, setLoader] = useState("");
     const context = useContext(AppContext);
@@ -129,6 +135,29 @@ export default function Register(props) {
 
                                         <div id="register-link" className="text-right">
                                             <Link to="/login" className="text-info">Loguearse acá</Link>
+                                        </div>
+                                        <div>
+                                            <GoogleLogin
+                                            clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                                            render={renderProps => (
+                                                <GoogleLogin
+                                                clientId={'739887851095-8adae8hjotoqt869ivcn88ot08thhdif.apps.googleusercontent.com'}
+                                                onSuccess={responseGoogle}
+                                                onFailure={responseGoogle}
+                                                cookiePolicy= { 'single_host_origin' }
+                                            >
+                                                {/* <FontAwesome
+                                                name='google'
+                                                /> */}
+                                                <span> Login with Google</span>
+                                            </GoogleLogin>
+                                            )}
+                                            buttonText="Login"
+                                            onSuccess={responseGoogle}
+                                            onFailure={responseGoogle}
+                                            cookiePolicy={'single_host_origin'}
+                                            />
+                                            
                                         </div>
                                     </form>
                                 </div>
