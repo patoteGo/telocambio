@@ -1,7 +1,48 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
+import { useGoogleLogin } from 'react-google-login';
+import { useGoogleLogout } from 'react-google-login';
+
 
 export class GoogleOauth extends Component {
+
+    const { signIn, loaded } = useGoogleLogin({
+        onSuccess,
+        onAutoLoadFinished,
+        clientId,
+        cookiePolicy,
+        loginHint,
+        hostedDomain,
+        autoLoad,
+        isSignedIn,
+        fetchBasicProfile,
+        redirectUri,
+        discoveryDocs,
+        onFailure,
+        uxMode,
+        scope,
+        accessType,
+        responseType,
+        jsSrc,
+        onRequest,
+        prompt
+      })
+
+    const { signOut, loaded } = useGoogleLogout({
+        jsSrc,
+        onFailure,
+        clientId,
+        cookiePolicy,
+        loginHint,
+        hostedDomain,
+        fetchBasicProfile,
+        discoveryDocs,
+        uxMode,
+        redirectUri,
+        scope,
+        accessType,
+        onLogoutSuccess
+      })
 
     responseGoogle=(response)=>{
         console.log(response);
@@ -17,6 +58,7 @@ export class GoogleOauth extends Component {
                 onSuccess= { this.responseGoogle }
                 onFailure= { this.responseGoogle }
                 cookiePolicy= { 'single_host_origin' }
+                isSignedIn={true}
                 />
             </div>
         )
