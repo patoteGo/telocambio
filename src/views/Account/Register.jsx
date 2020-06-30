@@ -15,8 +15,14 @@ import { NAMES,  OPTIONS } from './../../config/config.js'
 import './RegisterLogin.sass'
 
 export default function Register(props) {
-    const responseGoogle = (response) => {
-        console.log(response);
+    const responseGoogle = (response) => {  
+        const data = {
+            'email': response.Rt.Bu,
+            'avatar': response.Rt.dL,
+            'accessToken': response.accessToken,
+            'googleId': response.googleId
+        }
+        console.log(response, data);
       }
     // eslint-disable-next-line
     const [loader, setLoader] = useState("");
