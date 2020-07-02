@@ -4,6 +4,7 @@ import ChoicePublish from './../modals/ChoicePublish'
 import { AppContext } from '../Context/AppContext'
 import ListPublish from './../modals/ListPublish';
 import NewPublish from './../modals/NewPublish';
+import './Card.sass';
 export default function Card({ user , product }) {
     const [modal, setModal] = useState('');
     const context = useContext(AppContext);
@@ -53,10 +54,10 @@ export default function Card({ user , product }) {
 
                     </div>
                     <div className="row">
-                        <Link className="btn ml-auto btn-primary" to={`/publicaciones/${product.id}`} >Detalles</Link>
+                        <Link className="button1" to={`/publicaciones/${product.id}`} >Detalles</Link>
                             {
                             context.user[0].id !== product.user_id ?
-                                <div className="btn ml-2 btn-info" data-toggle="modal" data-target={modal}>Cambiar por</div> : ''
+                                <div className="button2" data-toggle="modal" data-target={modal}>Cambiar por</div> : ''
                                 
                             }
                         
