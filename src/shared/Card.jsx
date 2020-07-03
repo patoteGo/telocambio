@@ -39,8 +39,8 @@ export default function Card({ user , product }) {
                     </div>
                 </div>
 
-                <div className="view overlay">
-                    <img className="card-img-top rounded-0" src={product.cover_img} alt="Card cap" />
+                <div className="view overlay m-auto">
+                    <img style={{ maxHeight:'300px', width:'auto', maxWidth:'100%'}}className="card-img-top rounded-0" src={product.cover_img} alt="Card cap" />
                     <a href="#!">
                         <div className="mask rgba-white-slight"></div>
                     </a>

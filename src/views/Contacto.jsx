@@ -5,7 +5,7 @@ import {useForm} from 'react-hook-form';
 import Header from './../layouts/Header'
 import Footer from './../layouts/footer/Footer2'
 import { APIS } from './../config/config'
-import './RegisterLoginContacto.sass';
+import './Account/RegisterLoginContacto.sass';
 import Swal from 'sweetalert2'
 export default function Contacto() {
     const {register, handleSubmit, errors} = useForm();
