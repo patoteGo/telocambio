@@ -40,7 +40,7 @@ export default function Login(props) {
                     props.history.push('/admin/list')
                 })
                 Swal.fire({
-                    title: 'Yuhuuu',
+                    title: 'Bien',
                     text: 'Ya estas logueado',
                     icon: 'success',
                     confirmButtonText: 'Listo'
@@ -48,10 +48,10 @@ export default function Login(props) {
             } else {
                 console.log(res, 'fallo');
                 Swal.fire({
-                    title: 'Cueck',
+                    title: 'Problemas para entrar?',
                     html: `Tu email o password no son validos, <br> Intenta de nuevo`,
                     icon: 'error',
-                    confirmButtonText: 'uchh'
+                    confirmButtonText: 'otra vez'
                   })
                 
             }
@@ -59,10 +59,10 @@ export default function Login(props) {
             setLoader('');
             console.log(err);
             Swal.fire({
-                title: 'Cueck',
+                title: 'Problemas para entrar?',
                 html: `Tu email o password no son validos,  <br> Intenta de nuevo`,
                 icon: 'error',
-                confirmButtonText: 'uchh'
+                confirmButtonText: 'otra vez'
               })
             
         })

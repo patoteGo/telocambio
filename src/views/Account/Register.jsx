@@ -34,7 +34,7 @@ export default function Register(props) {
                     props.history.push('/admin/list')
                 })
                 Swal.fire({
-                    title: 'Yuhuuu',
+                    title: 'Vamos!',
                     text: 'Ya estas logueado',
                     icon: 'success',
                     confirmButtonText: 'Listo'
@@ -45,10 +45,10 @@ export default function Register(props) {
         }).catch((err) => {
             console.log(err);
             Swal.fire({
-                title: 'Cueck',
+                title: 'Tienes problemas para registrarte?',
                 html: `Hubo un problema con tu registro, prueba con otro email`,
                 icon: 'error',
-                confirmButtonText: 'uchh'
+                confirmButtonText: 'otra vez'
               })
         })
     }
@@ -86,7 +86,7 @@ export default function Register(props) {
                                                         name="lastname"
                                                         id="lastname"
                                                         className="form-control"
-                                                        ref={register({ required: 'Primer Nombre requerido' })}
+                                                        ref={register({ required: 'Apellido requerido' })}
                                                     />
                                                     {errors.lastname && <p className="badge badge-danger ml-2">{errors.lastname.message}</p>}
                                                 </div>
@@ -102,7 +102,7 @@ export default function Register(props) {
                                                         name="email"
                                                         id="email"
                                                         className="form-control"
-                                                        ref={register({ required: 'Primer Nombre requerido' })}
+                                                        ref={register({ required: 'E-mail requerido' })}
                                                     />
                                                     {errors.email && <p className="badge badge-danger ml-2">{errors.email.message}</p>}
                                                 </div>
@@ -115,7 +115,7 @@ export default function Register(props) {
                                                         name="password"
                                                         id="password"
                                                         className="form-control"
-                                                        ref={register({ required: 'Primer Nombre requerido' })}
+                                                        ref={register({ required: 'Password requerido' })}
                                                     />
                                                     {errors.password && <p className="badge badge-danger ml-2">{errors.password.message}</p>}
                                                 </div>
