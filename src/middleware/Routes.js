@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Homepage from '../views/Homepage/Index'
 // import Detail from './views/Detail/Index'
 import { URLBASE } from '../config/config'
-import Contact from './../views/Contacto';
+import Contact from './../views/Account/Contacto';
 import Login from '../views/Account/Login';
 import Register from '../views/Account/Register';
 import Detail from './../views/Detail/Detail.jsx'
