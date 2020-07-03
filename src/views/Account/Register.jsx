@@ -10,7 +10,7 @@ import { createUser, loginUser } from './../../config/api.js'
 import Loader from './../../Helpers/Loader'
 import Swal from 'sweetalert2'
 import { NAMES,  OPTIONS } from './../../config/config.js'
-import './RegisterLogin.sass'
+import './RegisterLoginContacto.sass'
 export default function Register(props) {
     // eslint-disable-next-line
     const [loader, setLoader] = useState("");

@@ -6,7 +6,7 @@ import Footer from './../../layouts/footer/Footer2.jsx'
 import Loader from './../../Helpers/Loader'
 import { AppContext } from '../../Context/AppContext'
 import { useForm } from 'react-hook-form';
-import './RegisterLogin.sass'
+import './RegisterLoginContacto.sass'
 import { isAuth } from './../../middleware/Auth'
 import { loginUser } from './../../config/api.js'
 import { NAMES,  OPTIONS } from './../../config/config.js'
