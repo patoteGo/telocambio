@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './Header.sass';
 import Swal from 'sweetalert2'
 import { AppContext } from './../Context/AppContext'
 import Cookies from 'universal-cookie';
 import { NAMES,  OPTIONS } from './../config/config.js'
+import Logo from './Logo'
 function Header(props) {
   const context = useContext(AppContext);
   // eslint-disable-next-line
@@ -27,17 +28,17 @@ function Header(props) {
   const dropdownmenu = (user) => {
     if(user.id){
       return (
-        <div className="dropdown-menu" aria-labelledby="dropdown07">
-        <Link className="dropdown-item" to='/admin/list'>Productos Ofreces</Link>
-        <Link className="dropdown-item" to='/admin/create'>Crear un Producto</Link>
-        <button className="dropdown-item" onClick={logout}>Logout</button>
+        <div className="dropdown-menu font-title" aria-labelledby="dropdown07">
+        <NavLink className="dropdown-item font-title" to='/admin/list'>Productos Ofreces</NavLink>
+        <NavLink className="dropdown-item font-title" to='/admin/create'>Crear un Producto</NavLink>
+        <button className="dropdown-item font-title" onClick={logout}>Logout</button>
       </div>
       )
     } else {
       return (
         <div className="dropdown-menu" aria-labelledby="dropdown07">
-        <Link className="dropdown-item" to="/login">Login</Link>
-        <Link className="dropdown-item" to="/register">Registrarse</Link>
+        <NavLink className="dropdown-item font-title" to="/login">Login</NavLink>
+        <NavLink className="dropdown-item font-title" to="/register">Registrarse</NavLink>
       </div>
       )
     }
@@ -45,35 +46,34 @@ function Header(props) {
 
   return (
     // <UserProvider>
-      <div className="Header">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className={`Header ${ props.interior ? 'interior' : '' }`}>
+          <nav className="navbar navbar-expand-lg bg-transparent navbar-dark">
           <div className="container">
-            <Link className="navbar-brand" to="/">
-              <img src="/img/logo.png" alt="logo"/>
-              <span>TE LO CAMBIO</span>
-            </Link>
+            <NavLink className="navbar-brand" to="/">
+              <Logo/>
+            </NavLink>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
 
             <div className="collapse navbar-collapse" id="navbarsExample07">
               <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
-                  <Link className="nav-link" to="/">Inicio <span className="sr-only">(current)</span></Link>
+                <li className="nav-item">
+                  <NavLink exact  className="font-title nav-NavLink-2" to="/">Inicio</NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/publicaciones">Productos</Link>
+                  <NavLink exact className="font-title nav-NavLink-2 text-white" to="/publicaciones">Productos</NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/quienes-somos">Quienes somos</Link>
+                  <NavLink exact className="nav-NavLink-2 font-title" to="/quienes-somos">Quienes somos</NavLink>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/contacto">Contáctanos</Link>
+                  <NavLink exact className="nav-NavLink-2 font-title" to="/contacto">Contáctanos</NavLink>
                 </li>
               </ul>
              
               <div className="nav-item dropdown my-md-0 is-dark">
-                  <div className="nav-link dropdown-toggle"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> { user.firstname ? 'Hola '+ user.firstname : 'Cuenta' } </div>
+                  <div className="nav-NavLink-2 dropdown-toggle font-title"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> { user.firstname ? 'Hola '+ user.firstname : 'Cuenta' } </div>
                   
                   {dropdownmenu(user)}
               </div>
@@ -88,6 +88,30 @@ function Header(props) {
             </div>
           </div>
         </nav>
+        <div className="homeimg">
+          
+          <img className="bg" src="/img/jumbotron_telocambio.jpg" alt="logo"/>
+          <div className="content">
+            <div className="container">
+              <div className="callaction d-flex flex-direction-column">
+                <h1 className="font-title  text-white">¿Quieres cambiar tus cosas?</h1>
+                <p className="text-white">Publica aqui y conecta con muchas otras personas que tambien quieren hacer lo mismo</p>
+              </div>
+              <div className="search">
+                <label className="text-white font-title" htmlFor="search">Buscar</label>
+                <input className="form-control" type="search" id="search"/>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div className="interiortitle bg-green w-100">
+          <div className="container">
+            <h4 className="font-title text-white my-2">{ props.title }</h4>
+          </div>
+            
+        </div>
+
       </div>
     // </UserProvider>
   );

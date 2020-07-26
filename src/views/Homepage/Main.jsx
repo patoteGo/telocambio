@@ -21,7 +21,7 @@ function Main() {
 
       <div className="Homepage-main">
         <Login />
-        <Jumbotron />
+        {/* <Jumbotron /> */}
         <div className="container">
           <div className="row mb-4">
             {

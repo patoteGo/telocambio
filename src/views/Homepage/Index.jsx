@@ -6,7 +6,7 @@ import Footer from './../../layouts/footer/Footer2.jsx'
 function Index() {
   return (
     <div className="Homepage-index">
-      <Header/>
+      <Header interior={false} title=""/>
       <Main/>
       <Footer/>
     </div>

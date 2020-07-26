@@ -9,30 +9,30 @@ export default function Footer2() {
                     <div className="row text-center d-flex justify-content-center pt-5 mb-3">
                     <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold ">
-                                <Link className="text-light" to="/">Inicio</Link>
+                                <Link className="text-light font-title" to="/">Inicio</Link>
                             </h6>
                         </div>
                         <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold ">
-                                <Link className="text-light" to="/register">Registrarse</Link>
+                                <Link className="text-light font-title" to="/register">Registrarse</Link>
                             </h6>
                         </div>
 
                         <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold">
-                            <Link className="text-light" to="/login">Login</Link>
+                            <Link className="text-light font-title" to="/login">Login</Link>
                             </h6>
                         </div>
 
                         <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold">
-                            <Link className="text-light" to="/contacto">Contáctanos</Link>
+                            <Link className="text-light font-title" to="/contacto">Contáctanos</Link>
                             </h6>
                         </div>
 
                         <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold">
-                            <Link className="text-light" to="/contacto">Ayuda</Link>
+                            <Link className="text-light font-title" to="/contacto">Ayuda</Link>
                             </h6>
                         </div>
 

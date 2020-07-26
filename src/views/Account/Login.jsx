@@ -75,7 +75,7 @@ export default function Login(props) {
  
            
             <div> 
-                <Header/>
+                <Header interior={true} title='Ingresar'/>
                 <Loader active={loader}/>
                 <div className="Login">
                     <div className="container">

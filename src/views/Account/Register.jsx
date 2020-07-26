@@ -55,7 +55,8 @@ export default function Register(props) {
     return (
         <div>
             <div>
-                <Header />
+                <Header interior={true} title='Registrarse'/>
+                
                 <Loader/>
                 <div className="Register">
                     <div className="container">

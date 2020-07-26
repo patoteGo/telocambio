@@ -11,7 +11,8 @@ export default function Products() {
   const [products, setProduct] = context.products;
     return (
         <div>
-             <Header search="tue"/>
+            <Header interior={true} title="Publicaciones"/>
+             {/* <Header search="tue"/> */}
 
              <div className="container">
       <div className="row mb-4">

@@ -53,7 +53,8 @@ export default function Detail(props) {
     // console.log('product',product, galleryHandle());
     return (
         <div className="Detail">
-            <Header />
+            <Header interior={true} title={product.name}/>
+            
             <ChoicePublish name="choiceModal" product={product} />
             <Login name="loginModal" product={product} />
             <ListPublish name={`listpublishModal${product.id}`} product={product} />

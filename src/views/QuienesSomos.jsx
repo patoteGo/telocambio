@@ -7,7 +7,7 @@ export default function Contacto() {
     return (
         <div>
             <div>
-                <Header />
+                <Header interior={true} title="Quienes somos"/>
                 <div className="container">
                     <div className="row quienesomos">
                         <div className="col-sm">

@@ -46,7 +46,7 @@ export default function Contacto() {
 
     return (
         <div>
-            <Header />
+            <Header interior={true} title="Contáctanos"/>
             <div className="Contacto">
                 <div className="container">
                     <div id="contact-row" className="row justify-content-center align-items-center">
