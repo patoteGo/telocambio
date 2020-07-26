@@ -10,7 +10,6 @@ import { createUser, loginUser } from './../../config/api.js'
 import Loader from './../../Helpers/Loader'
 import Swal from 'sweetalert2'
 import { NAMES,  OPTIONS } from './../../config/config.js'
-import './RegisterLoginContacto.sass'
 export default function Register(props) {
     // eslint-disable-next-line
     const [loader, setLoader] = useState("");
@@ -58,17 +57,16 @@ export default function Register(props) {
                 <Header interior={true} title='Registrarse'/>
                 
                 <Loader/>
-                <div className="Register">
+                <div className="Register my-4">
                     <div className="container">
-                        <div id="login-row" className="row justify-content-center align-items-center">
+                        <div id="login-row my-4" className="row justify-content-center align-items-center">
                             <div id="login-column" className="col-md-8">
                                 <div id="login-box" className="col-md-12">
                                     <form id="login-form" className="form is-light" onSubmit={handleSubmit(onSubmit)} >
-                                        <h3 className="text-center text-info">Registrarse</h3>
                                         <div className="row">
                                             <div className="col">
                                                 <div className="form-group">
-                                                    <label htmlFor="firstname" className="text-info">Nombre:</label><br />
+                                                    <label htmlFor="firstname" className="text-primary">Nombre:</label><br />
                                                     <input
                                                         type="text"
                                                         name="firstname"
@@ -81,7 +79,7 @@ export default function Register(props) {
                                             </div>
                                             <div className="col">
                                                 <div className="form-group">
-                                                    <label htmlFor="lastname" className="text-info">Apellido:</label><br />
+                                                    <label htmlFor="lastname" className="text-primary">Apellido:</label><br />
                                                     <input
                                                         type="text"
                                                         name="lastname"
@@ -97,7 +95,7 @@ export default function Register(props) {
                                         <div className="row">
                                             <div className="col">
                                                 <div className="form-group">
-                                                    <label htmlFor="email" className="text-info">Email:</label><br />
+                                                    <label htmlFor="email" className="text-primary">Email:</label><br />
                                                     <input
                                                         type="email"
                                                         name="email"
@@ -110,7 +108,7 @@ export default function Register(props) {
                                             </div>
                                             <div className="col">
                                                 <div className="form-group">
-                                                    <label htmlFor="password" className="text-info">Password:</label><br />
+                                                    <label htmlFor="password" className="text-primary">Password:</label><br />
                                                     <input
                                                         type="password"
                                                         name="password"
@@ -125,11 +123,11 @@ export default function Register(props) {
 
 
                                         <div className="form-group">
-                                            <input type="submit" name="submit" className="btn btn-info btn-md" value="Registrarse" />
+                                            <input type="submit" name="submit" className="btn btn-primary" value="Registrarse" />
                                         </div>
 
                                         <div id="register-link" className="text-right">
-                                            <Link to="/login" className="text-info">Loguearse acá</Link>
+                                            <Link to="/login" className="text-primary">Loguearse acá</Link>
                                         </div>
                                     </form>
                                 </div>
