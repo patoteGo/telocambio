@@ -1,12 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react'
 import Header from '../../layouts/HeaderAdmin'
 import { Link } from "react-router-dom";
-import { deleteProduct } from './../../../config/api'
-import { AppContext } from './../../../Context/AppContext'
-import {fetchSwapsbyProduct, fetchProducts} from './../../../config/api'
+import { deleteProduct } from '../../../config/api'
+import { AppContext } from '../../../Context/AppContext'
+import {fetchSwapsbyProduct, fetchProducts} from '../../../config/api'
 import Swal from 'sweetalert2'
 import Offers from './Offers'
-import Loader from './../../../Helpers/Loader'
+import Loader from '../../../Helpers/Loader'
 import './listproduct.sass'
 export default function ListProducts(props) {
   const context = useContext(AppContext);
@@ -68,22 +68,20 @@ export default function ListProducts(props) {
 
   return (
     <div>
-      <Header/>
+      <Header interior={true} title="Dashboard"/>
       <Loader active={loader}/> 
     <div className="ListProducts" >
       <Offers active={offeractive} off={handleOfferOff} product={product} offers={offers} setProduct={setProduct} setLoader={setLoader} />
       <div className="container">
 
-        <div className="row">
-          <div className="col offset-10 mt-3">
+        <div className="row mb-5">
+        <div className="col-9 mt-3 ">
+            <h2 className="text-start font-title text-primary">Tus Productos</h2>
+          </div>
+          <div className="col-3 mt-3">
             <Link className="btn btn-primary" to="/admin/create">Crear Producto</Link>
           </div>
           
-        </div>
-        <div className="row my-5">
-          <div className="col-12">
-            <h2 className="text-center">Tus Productos</h2>
-          </div>
         </div>
         <div className="row">
           <div className="col">
@@ -111,8 +109,6 @@ export default function ListProducts(props) {
                     return (
                       
                       <tr key={key} className={product.done ? 'accept' : ''}>
-                      
-                      <td>{product.done ? 'Aceptado' : 'Pendiente'}</td>
                       <td>
                         <img
                           style={{ width: '40px' }}
@@ -120,6 +116,8 @@ export default function ListProducts(props) {
                           alt="logo"
                         />
                       </td>
+                      <td>{product.done ? 'Aceptado' : 'Pendiente'}</td>
+                      
                       <th>{product.name}</th>
                       <td>{product.tradeBy}</td>
                       <td><strong className="mr-2">{product.offers}</strong> 

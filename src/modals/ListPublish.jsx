@@ -4,9 +4,6 @@ import { createSwap, SendEmail } from './../config/api.js';
 import Swal from 'sweetalert2'
 import { APIS } from './../config/config'
 import Loader from './../Helpers/Loader'
-// import { useForm } from 'react-hook-form';
-// import { NAMES, APIS, OPTIONS } from './../config/config.js';
-// import { Link } from "react-router-dom";
 
 export default function ListPublish({name, product}) {
     const context = useContext(AppContext);

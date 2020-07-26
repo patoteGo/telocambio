@@ -8,15 +8,13 @@ import { loginUser } from './../config/api.js'
 import { NAMES,  OPTIONS } from './../config/config.js'
 import Swal from 'sweetalert2'
 import { isAuth } from './../middleware/Auth'
-
+import closeModal from './closeModal'
 export default function Login(props) {
     const context = useContext(AppContext);
     const { register, handleSubmit, errors } = useForm();
     // eslint-disable-next-line
     const [loader, setLoader] = useState("");
     // const [user, setUser] = useState(context.user[0])
-
-
 
     const onSubmit = (data) => {
         console.log(data);
@@ -46,7 +44,7 @@ export default function Login(props) {
         } else {
             console.log(res, 'fallo');
             Swal.fire({
-                title: 'Cueck',
+                title: 'Oops',
                 html: `Tu email o password no son validos, <br> Intenta de nuevo`,
                 icon: 'error',
                 confirmButtonText: 'uchh'
@@ -57,7 +55,7 @@ export default function Login(props) {
         setLoader('');
         console.log(err);
         Swal.fire({
-            title: 'Cueck',
+            title: 'Oops',
             html: `Tu email o password no son validos,  <br> Intenta de nuevo`,
             icon: 'error',
             confirmButtonText: 'uchh'
@@ -66,14 +64,6 @@ export default function Login(props) {
     })
     }
 
-    // useEffect(() => {
-    //     setUser(context.user[0])
-        
-    //     // window.location.reload();
-    //     // console.log('changestate');
-        
-    // }, [user])
-
     return (
         <div>
             <Loader active={loader}/>
@@ -81,7 +71,7 @@ export default function Login(props) {
                 <div className="modal-dialog modal-dialog-centered" role="document" style={{ maxWidth: '400px' }}>
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h3 className="modal-title" id="exampleModalLabel">Tienes que loguearte primero</h3>
+                            <h4 className="modal-title text-center text-primary font-title" id="exampleModalLabel">Tienes que loguearte primero</h4>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -92,7 +82,7 @@ export default function Login(props) {
 
                                 <form id="login-form" className="form is-light" onSubmit={handleSubmit(onSubmit)}>
                                     <div className="form-group">
-                                        <label htmlFor="username" className="text-info">Email:</label><br />
+                                        <label htmlFor="username" className="text-primary">Email:</label><br />
                                         <input
                                             type="email"
                                             name="email"
@@ -103,7 +93,7 @@ export default function Login(props) {
                                         {errors.email && <p className="badge badge-danger ml-2">{errors.email.message}</p>}
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="password" className="text-info">Password:</label><br />
+                                        <label htmlFor="password" className="text-primary">Password:</label><br />
                                         <input
                                             type="password"
                                             name="password"
@@ -114,14 +104,15 @@ export default function Login(props) {
                                         {errors.password && <p className="badge badge-danger ml-2">{errors.password.message}</p>}
                                     </div>
                                     <div className="form-group">
-                                        <input type="submit" name="submit" className="btn btn-info btn-md" value="Entrar" />
+                                        <input type="submit" name="submit" className="btn btn-primary btn-md" value="Entrar" />
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div className="modal-footer">
                             Si no estas en Te lo cambio
-                        <Link to="/register" className="text-info">Registrarse aquí</Link>
+                            {/* <a >blabla</a> */}
+                        <Link to="/register" onClick={() => closeModal('loginModal')} className="text-primary">Registrarse aquí</Link>
                         </div>
                     </div>
                 </div>

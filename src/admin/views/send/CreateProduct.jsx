@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../layouts/HeaderAdmin'
 import { useForm } from 'react-hook-form';
-import { AppContext } from './../../../Context/AppContext'
-import { createProduct } from './../../../config/api.js'
-import Loader from './../../../Helpers/Loader'
+import { AppContext } from '../../../Context/AppContext'
+import { createProduct } from '../../../config/api.js'
+import Loader from '../../../Helpers/Loader'
 import Swal from 'sweetalert2'
-import { fetchProductbyID } from './../../../config/api'
+import { fetchProductbyID } from '../../../config/api'
 export default function CreateProduct(props) {
   const context = useContext(AppContext);
   const [user, setUser] = useState({});
@@ -51,13 +51,13 @@ export default function CreateProduct(props) {
 
   return (
     <div>
-      <Header />
+      <Header interior={true} title="Crear"/>
       <Loader active={loader}/>
       <div className="container">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row my-5">
             <div className="col">
-              <h3 className="text-center">
+              <h3 className="font-title text-primary text-center">
                 {props.match.params.id !== undefined ? 'Editar Publicacion' : 'Crear una Publicación'}  
               </h3>
             </div>
@@ -65,7 +65,7 @@ export default function CreateProduct(props) {
           <div className="row">
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
-                <label htmlFor="name">Titulo de la Publicación</label>
+                <label className="font-title text-green" htmlFor="name">Titulo de la Publicación</label>
                 <input
                   type="text"
                   className="form-control"
@@ -79,7 +79,7 @@ export default function CreateProduct(props) {
               </div>
 
               <div className="form-group">
-                <label htmlFor="tags">Tags</label>
+                <label className="font-title text-green" htmlFor="tags">Tags</label>
                 <input
                   type="text"
                   className="form-control"
@@ -92,7 +92,7 @@ export default function CreateProduct(props) {
                 {errors.tags && <p className="badge badge-danger ml-2">{errors.tags.message}</p>}
               </div>
               <div className="form-group">
-                <label htmlFor="shortDesc">Descripcion Corta</label>
+                <label className="font-title text-green" htmlFor="shortDesc">Descripcion Corta</label>
                 <textarea
                   className="form-control"
                   id="shortDesc"
@@ -106,7 +106,7 @@ export default function CreateProduct(props) {
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
-                <label htmlFor="longDesc">Descripcion Larga</label>
+                <label className="font-title text-green" htmlFor="longDesc">Descripcion Larga</label>
                 <textarea
                   className="form-control"
                   id="longDesc"
@@ -122,7 +122,7 @@ export default function CreateProduct(props) {
           <div className="row">
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
-                <label htmlFor="cover_img">Imagen Portada</label>
+                <label className="font-title text-green" htmlFor="cover_img">Imagen Portada</label>
                 <input
                   type="text"
                   className="form-control"
@@ -135,7 +135,7 @@ export default function CreateProduct(props) {
                 {errors.cover_img && <p className="badge badge-danger ml-2">{errors.cover_img.message}</p>}
               </div>
               <div className="form-group">
-                <label htmlFor="tradeBy">Cambiar Por</label>
+                <label className="font-title text-green" htmlFor="tradeBy">Cambiar Por</label>
                 <input
                   type="text"
                   className="form-control"
@@ -150,7 +150,7 @@ export default function CreateProduct(props) {
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
-                <label htmlFor="gallery">Imagen Galerias</label>
+                <label className="font-title text-green" htmlFor="gallery">Imagen Galerias</label>
                 <input type="text" className="mt-2 form-control" id="gallery1" name="gallery1" placeholder="Ingrese el url de la imagen 1" ref={register} defaultValue={gallery[0]}/> 
                 <input type="text" className="mt-2 form-control" id="gallery2" name="gallery2" placeholder="Ingrese el url de la imagen 2" ref={register} defaultValue={gallery[1]}/>
                 <input type="text" className="mt-2 form-control" id="gallery3" name="gallery3" placeholder="Ingrese el url de la imagen 3" ref={register} defaultValue={gallery[2]}/>
