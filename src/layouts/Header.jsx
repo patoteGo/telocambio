@@ -25,6 +25,16 @@ function Header(props) {
     })
   }
 
+  const toggler = () => {
+    console.log('toggle');
+    if(!document.querySelector('.navbar-toggler').classList.contains('collapsed')){
+      console.log('on');
+      document.querySelector('.Header.interior').classList.add('menu')
+    } else {
+      document.querySelector('.Header.interior').classList.remove('menu')
+    }
+  }
+
   const dropdownmenu = (user) => {
     if(user.id){
       return (
@@ -52,7 +62,7 @@ function Header(props) {
             <NavLink className="navbar-brand" to="/">
               <Logo/>
             </NavLink>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <button className="navbar-toggler" type="button" onClick={toggler} data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
 

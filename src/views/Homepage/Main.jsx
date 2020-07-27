@@ -21,7 +21,7 @@ function Main() {
               products.map((product, index) => {
                 if(index <= 2){
                 return (
-                  <div className="col-md-4 col-sm-6 mt-4" key={index}>
+                  <div className="col-md-4 col-sm-12 mt-4" key={index}>
                     <Card user={user} product={product} />
                   </div>      
                   

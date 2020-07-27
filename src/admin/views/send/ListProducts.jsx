@@ -26,19 +26,15 @@ export default function ListProducts(props) {
 
   const handleOfferOff = () => {
     setOfferactive('')
-    fetchProducts().then(res => {
-      // console.log('off', res)
-      context.products[1](res)
+  //   fetchProducts().then(res => {
+  //     // console.log('off', res)
+  //     context.products[1](res)
       
       
-      window.location.reload(false);
+  //     window.location.reload(false);
 
-  }) 
+  // }) 
   }
-
-  // useEffect(() => {
-  //   console.log('reinicia');
-  // }, [context.products[0]])
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -77,14 +73,14 @@ export default function ListProducts(props) {
       <Header interior={true} title="Dashboard"/>
       <Loader active={loader}/> 
     <div className="ListProducts" >
-      <Offers active={offeractive} off={handleOfferOff} product={product} offers={offers} setProduct={setProduct} setLoader={setLoader} />
+      <Offers active={offeractive} handleOfferOff={handleOfferOff} product={product} offers={offers} setProduct={setProduct} setLoader={setLoader} />
       <div className="container">
 
         <div className="row mb-5">
         <div className="col-9 mt-3 ">
             <h2 className="text-start font-title text-primary">Tus Productos</h2>
           </div>
-          <div className="col-3 mt-3">
+          <div className="col-sm-3 col-xs-12 mt-3">
             <Link className="btn btn-primary" to="/admin/create">Crear Producto</Link>
           </div>
           
@@ -94,15 +90,13 @@ export default function ListProducts(props) {
             <table className="table">
               <thead>
                 <tr>
-                  {/* <th scope="col">id</th> */}
                   <th className="text-small text-center" scope="col">Portada </th>
-                  {/* <th scope="col">Estado</th> */}
                   <th className="text-small text-center" scope="col">Titulo</th>
-                  <th className="text-small text-center" scope="col">Porque lo cambias</th>
-                  <th className="text-small text-center" scope="col">Ofertas</th>
+                  <th className="text-small text-center hide-mobile" scope="col">Porque lo cambias</th>
+                  <th className="text-small text-center " scope="col">Ofertas</th>
                   
-                  <th className="text-small text-center" scope="col">Editar</th>
-                  <th className="text-small text-center" scope="col">Borrar</th>
+                  <th className="text-small text-center hide-mobile" scope="col">Editar</th>
+                  <th className="text-small text-center hide-mobile" scope="col">Borrar</th>
                 </tr>
               </thead>
               <tbody>
@@ -111,10 +105,9 @@ export default function ListProducts(props) {
                   context.products[0].map((product, key) => {
                     if(product.user_id === context.user[0].id){
                       return (
-                        <tr key={key} className={product.done ? 'accept' : ''}>
+                        <tr key={key} className={product.done ? 'accept ' : ''}>
                         <td className="cover d-flex justify-content-center">
                           <img
-                            style={{ width: '120px' }}
                             src={product.cover_img}
                             alt="logo"
                             className="bg"
@@ -129,10 +122,31 @@ export default function ListProducts(props) {
                         {/* <td>{product.done ? 'Aceptado' : 'Pendiente'}</td> */}
                         
                         <th  style={{ maxWidth: '250px'}}>
-                          <h4 className="font-title">{product.name}</h4>
-                          <p className="text-small"  >{product.shortDesc}</p>
+                          <h4 className="font-title title-mobile">{product.name}</h4>
+                          <p className="text-small hide-mobile"  >{product.shortDesc}</p>
+                          <div className="d-flex hide-desktop">
+                            <Link to={`/admin/edit/${product.id}`} className="btn-edit d-flex align-items-center mr-2">
+                            <span className="mr-2 text-small">Editar</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="25.182" height="25.415" viewBox="0 0 25.182 25.415">
+                                <g id="edit" transform="translate(1.5 1.733)">
+                                  <path id="Trazado_2" data-name="Trazado 2" d="M12.922,6H5.2A2.2,2.2,0,0,0,3,8.2V23.639a2.2,2.2,0,0,0,2.2,2.2H20.639a2.2,2.2,0,0,0,2.2-2.2V15.922" transform="translate(-3 -3.661)" fill="none" stroke="#888" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"/>
+                                  <path id="Trazado_3" data-name="Trazado 3" d="M23.575,3.5A2.339,2.339,0,0,1,26.883,6.81L16.41,17.283,12,18.386l1.1-4.41Z" transform="translate(-5.385 -2.818)" fill="none" stroke="#888" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3"/>
+                                </g>
+                              </svg>
+
+                            </Link>
+                            <div className="ml-2 btn-delete" onClick={()=>{handleDelete(product.id)}}>
+                                <span className="mr-2 text-small">Borrar</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17.253" height="22.182" viewBox="0 0 17.253 22.182">
+                                  <path id="delete" d="M8.732,24.217A2.472,2.472,0,0,0,11.2,26.682h9.859a2.472,2.472,0,0,0,2.465-2.465V9.429H8.732ZM24.753,5.732H20.44L19.207,4.5H13.046L11.813,5.732H7.5V8.2H24.753Z" transform="translate(-7.5 -4.5)" fill="#888"/>
+                                </svg>
+                            </div>
+                          
+                          </div>
+
+                          
                           </th>
-                        <td> <div className="font-title text-center">{product.tradeBy}</div></td>
+                        <td className="hide-mobile"> <div className="font-title text-center ">{product.tradeBy}</div></td>
                         <td className="text-center">
                           { product.offers > 0 ? 
                           
@@ -147,10 +161,10 @@ export default function ListProducts(props) {
                           }
                             
                         </td>
-                        <td>
+                        <td className="hide-mobile">
                         
 
-                          <Link to="/admin/create" className="btn-edit d-flex align-items-center">
+                          <Link to={`/admin/edit/${product.id}`} className="btn-edit d-flex align-items-center">
                           <span className="mr-2 text-small">Editar</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="25.182" height="25.415" viewBox="0 0 25.182 25.415">
                               <g id="edit" transform="translate(1.5 1.733)">
@@ -161,7 +175,7 @@ export default function ListProducts(props) {
 
                           </Link>
                         </td>
-                        <td >
+                        <td className="hide-mobile">
                           <div className="btn-delete" onClick={()=>{handleDelete(product.id)}}>
                               <span className="mr-2 text-small">Borrar</span>
                               <svg xmlns="http://www.w3.org/2000/svg" width="17.253" height="22.182" viewBox="0 0 17.253 22.182">

@@ -59,11 +59,17 @@ export default function Offers(props) {
                             msg.confirm,
                             'success'
                         )
-                        props.off()
+                        // props.handleOfferOff()
                         props.setLoader('');
+                        setTimeout(() => {
+                            window.location.reload(false);
+                        }, 1500);
                     }).catch(err => {
                         console.log(err);
                         props.setLoader('');
+                        setTimeout(() => {
+                            window.location.reload(false);
+                        }, 1500);
                     })
                    
                     
@@ -81,7 +87,7 @@ export default function Offers(props) {
             <div className="container">
                 <div className="row mt-4">
                     <div className="col d-flex justify-content-start">
-                        <div onClick={props.off} className="cerrar">
+                        <div onClick={props.handleOfferOff} className="cerrar">
                             <svg xmlns="http://www.w3.org/2000/svg" width="14.002" height="14.002" viewBox="0 0 14.002 14.002">
                                 <g id="input_close" transform="translate(-31.194 -53.197)">
                                     <path id="Trazado_1" data-name="Trazado 1" d="M31.9,66.492,44.489,53.9" fill="none" stroke="#979797" strokeLinecap="round" strokeWidth="2" />
@@ -92,41 +98,59 @@ export default function Offers(props) {
                         </div>
 
                     </div>
-
-                    <div className="col">
-                        <h2>Ofertas</h2>
-                    </div>
-                    
                 </div>
                 <div className="row mb-4">
-
-                    <div className="col">Por el producto: <strong>{props.product.name}</strong> te ofrecen:</div>
+                    <h3 className="ml-5 font-title text-primary">Te Ofertan por:</h3>
                 </div>
+                <div className="row mb-4 ml-3">
+                    <div className="col-2">
+                        <img className="w-100" src={props.product.cover_img} alt=""/>
+                    </div>
+                    <div className="col-4">
+                        <h5 className="font-title text-primary"><strong>{props.product.name}</strong></h5>
+                        <p className="text-primary hide-mobile">{props.product.shortDesc}</p>
+                    </div>
+                    <div className="col-3 hide-mobile">
+                        <p className="text-green">Tu estabas pidiendo:</p>
+                        <h5 className="font-title text-green"><strong>{props.product.tradeBy}</strong></h5>
+                    </div>
+                </div>
+                <hr/>
                 {
                     props.offers.map((offer, key) => {
                         console.log(offer.id, props.product.id, offer.id === props.product.id);
                         return (
-                            <div className={offer.id === props.product.done  ? 'accept row list' : 'row list'} key={key}>
-                                <div className="col-md-1 list-cell">
-                                {offer.id === props.product.done ? <i className=" ml-2 fa fa-check mr-3" aria-hidden="true"></i> : ''}
-                                
-                                
-                                    <img className="cover_img" src={offer.cover_img} alt="" />
+                            <div className={offer.id === props.product.done  ? 'row list' : 'row list'} key={key}>
+                                <div className="col-6 col-md-2 ">
+                                    <div className="cover">
+
+                                    <img
+                                        src={offer.cover_img}
+                                        alt="logo"
+                                        className="bg"
+                                    />
+                                    {
+                                        offer.id === props.product.done ? 
+                                        <img className="checkimg" src="/img/check_img.svg" alt="check"/>  
+                                        : ''
+                                    }
+                                    </div>
                                 </div>
-                                <div className="col-md-7 text-center list-cell list-names">
-                                    <div className="name">
+                                <div className=" col-6 col-md-6 text-left list-names ">
+                                    <h4 className="name font-title text-primary">
                                         {offer.name}
-                                </div>
-                                    <div className="det">
+                                    </h4>
+                                    <div className="det text-left hide-mobile">
                                         {offer.shortDesc}
+                                    </div>
                                 </div>
-                                </div>
-                                <div className="col-md-2 list-cell">
+                                <div className="col-3 col-md-2 ">
                                     <Link to={`/publicaciones/${offer.id}`} className="btn btn-info">Detalles</Link>
                                 </div>
-                                <div className="col-md-2 list-cell">
+                                <div className="col-6 col-md-2 ">
                                 {offer.id === props.product.done  ? 
-                                    <div className="btn btn-danger" onClick={()=>{handleDone(offer, false )}}>Arrepentirse</div>
+                                    <div className="text-green text-center">Aceptado</div>
+                                    // <div className="btn btn-danger" onClick={()=>{handleDone(offer, false )}}>Arrepentirse</div>
                                 :
                                 <div className="btn btn-primary" onClick={()=>{handleDone(offer, true )}}>Aceptar</div>
                                 }
