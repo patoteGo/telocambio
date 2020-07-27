@@ -65,7 +65,7 @@ export default function Detail(props) {
                 <div className="row mt-5 d-flex align-items-end">
                     <div className="col">
                         <h2 className="mr-4 font-title">{product.name}</h2>
-                        <p>Usuario: <strong>{product.username}</strong></p>
+                        <p className="text-green">Quien lo ofrece: <strong>{product.username}</strong></p>
                     </div>
 
                 </div>

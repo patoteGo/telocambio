@@ -75,13 +75,35 @@ export default function ListPublish({name, product}) {
             <div className="modal-dialog modal-dialog-centered" role="document" style={{ maxWidth: '400px' }}>
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h3 className="modal-title" id="exampleModalLabel">Elige entre tus publicaciones</h3>
+                        {/* <h3 className="modal-title font-title text-primary" id="exampleModalLabel">Elige entre tus publicaciones</h3> */}
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <div className="container">
+                            <div className="row">
+                                <h3 className="font-title text-primary">Cambiar</h3>
+                            </div>
+                            <div className="row">
+                                <div className="col-4">
+                                    <div className="cover"><img className="w-100" src={product.cover_img} alt=""/></div>
+                                </div>
+                                <div className="col">
+                                    <h3 className="font-title">{ product.name}</h3>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        
+
+                    </div>
+                    <div className="modal-body">
+                        <div className="container">
+                        <div className="row d-flex flex-column">
+                                <h3 className="font-title text-primary">Por</h3>
+                                <p className="text-primary">Elige entre tus publicaciones</p>
+                            </div>
                             <div className="row">
                             
                                 <select className="form-control selectpublish" name="publish" onChange={handleChange} >

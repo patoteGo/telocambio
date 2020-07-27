@@ -5,3 +5,40 @@
     height: 90vh
     tr.accept
         background: #e7ffe7
+    .btn-edit, .btn-delete
+        color: gray
+        transition: all 0.1s ease-in-out
+        cursor: pointer
+        span
+            font-weight: bold
+        &:hover
+            text-decoration: none
+            transform: scale(1.05)
+    .btn-edit
+        &:hover
+            span
+                color: #3F826D
+                text-decoration: none!important
+            svg path
+                stroke: #3F826D
+    .btn-delete
+        &:hover
+            span
+                color: #C03221
+                text-decoration: none!important
+            svg path
+                fill: #C03221
+    td, th
+        vertical-align: middle!important
+        height: 100%
+    td.cover
+        position: relative
+        .checkimg
+            position: absolute
+            left: 0px
+            right: 0px
+            top: 0px
+            bottom: 0px
+            margin: auto
+        img.bg
+            text-align: center
