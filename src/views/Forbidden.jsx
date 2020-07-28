@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Forbidden() {
     return (
         <div>
-            <Header/>
+            <Header interior={true} title="oh oh"/>
             <div className="container">
                 <div className="row mt-4">
                     <div className="col d-flex flex-column align-items-center">

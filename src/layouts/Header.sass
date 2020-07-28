@@ -1,12 +1,113 @@
-@import './../sass/_colors'
-.navbar
-    background-color: $primario!important
-    .nav-link
-        color: $secundario!important
-    .navbar-brand
-        img
-            height: 30px
-        span
-            color: #eda336
-            font-weight: bold
-  
+.Header
+    overflow: hidden
+    position: relative
+    height: 372px
+    border-radius: 15px
+    width: 98%
+    margin: auto
+    margin-top: 10px
+    @media (max-width: 760px)
+        height: 450px
+    .navbar
+        background: linear-gradient(to bottom,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)
+        background-color: transparent!important
+        z-index: 10
+        position: absolute!important
+        width: 100%
+        @media (max-width: 760px)
+            height: 30%
+            align-items: flex-start!important
+        .navbar-brand
+            img
+                height: 30px
+            span
+                color: #eda336
+                font-weight: bold
+    .homeimg
+        height: 90%
+        
+        // width: 90%
+        margin: auto
+        border-radius: 10px
+        // margin-top: -55px
+        overflow: hidden
+        .bg_hover
+            position: absolute
+            content: ''
+            background: rgba(0,0,0,0.5)
+            top: 0px
+            left: 0px
+            width: 100%
+            height: 100%
+            z-index: 2
+            background: rgba(0,0,0,0.2)
+            @media (max-width: 760px)
+                background: rgba(0,0,0,0.5)
+                display: block
+        .bg
+            position: absolute
+            z-index: -1
+            width: 100%
+            @media (max-width: 760px)
+                height: 100%
+                width: auto
+                transform: translateX(-40%)
+        .content
+            z-index: 5
+            padding-top: 90px
+            position: absolute
+            height: 100%
+            width: 100%
+            display: flex
+            align-items: center
+            .container
+                display: flex
+                justify-content: space-between
+                @media (max-width: 760px)
+                    flex-direction: column
+                .callaction, .search
+                    display: flex
+                    flex-direction: column
+                    @media (max-width: 760px)
+                        text-align: center
+                    p
+                        max-width: 70%
+                        @media (max-width: 760px)
+                            max-width: 100%
+                .search
+                    width: 40%
+                    @media (max-width: 760px)
+                        width: 100%
+                .lupa
+                    cursor: pointer
+                    transition: all 0.2s ease-in
+                    &:hover
+                        transform: scale(1.1)
+    .interiortitle
+        display: none
+        position: absolute
+        bottom: 0px
+.Header.interior
+    height: 150px
+    transition: all 0.2s ease-in
+    .interiortitle
+        display: block
+        position: absolute
+        bottom: -100%  
+        animation: up 0.3s 1 0.3s ease-out
+        animation-fill-mode: forwards
+    .homeimg
+        height: 90%
+        .content
+            display: none
+        .bg
+            @media (max-width: 760px)
+                transform: translateX(0px)
+.Header.interior.menu
+    height: 300px
+
+@keyframes up
+    0% 
+        bottom: -100%    
+    100%
+        bottom: 0px  

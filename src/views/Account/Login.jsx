@@ -6,14 +6,9 @@ import Footer from './../../layouts/footer/Footer2.jsx'
 import Loader from './../../Helpers/Loader'
 import { AppContext } from '../../Context/AppContext'
 import { useForm } from 'react-hook-form';
-import './RegisterLoginContacto.sass'
 import { isAuth } from './../../middleware/Auth'
 import { loginUser } from './../../config/api.js'
 import { NAMES,  OPTIONS } from './../../config/config.js'
-
-
-
-// import SweetAlert from 'sweetalert2-react';
 import Swal from 'sweetalert2'
 
 
@@ -75,17 +70,16 @@ export default function Login(props) {
  
            
             <div> 
-                <Header/>
+                <Header interior={true} title='Ingresar'/>
                 <Loader active={loader}/>
-                <div className="Login">
+                <div className="Login my-4">
                     <div className="container">
-                        <div id="login-row" className="row justify-content-center align-items-center">
+                        <div id="login-row  my-4" className="row justify-content-center align-items-center">
                             <div id="login-column" className="col-md-6">
                                 <div id="login-box" className="col-md-12">
                                     <form id="login-form" className="form is-light" onSubmit={handleSubmit(onSubmit)}>
-                                        <h3 className="text-center text-info">Login</h3>
                                         <div className="form-group">
-                                            <label htmlFor="username" className="text-info">Email:</label><br/>
+                                            <label htmlFor="username" className="text-primary">Email:</label><br/>
                                             <input 
                                                 type="email" 
                                                 name="email" 
@@ -97,7 +91,7 @@ export default function Login(props) {
                                             {errors.email && <p className="badge badge-danger ml-2">{errors.email.message}</p>}
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="password" className="text-info">Password:</label><br/>
+                                            <label htmlFor="password" className="text-primary">Password:</label><br/>
                                             <input 
                                                 type="password" 
                                                 name="password" 
@@ -110,10 +104,10 @@ export default function Login(props) {
                                         </div>
                                         <div className="form-group">
                                             
-                                            <input type="submit"  name="submit" className="btn btn-info btn-md" value="Entrar"/>
+                                            <input type="submit"  name="submit" className="btn btn-primary btn-md" value="Entrar"/>
                                         </div>
                                         <div id="register-link" className="text-right">
-                                            <Link to="/register" className="text-info">Registrarse aquí</Link>
+                                            <Link to="/register" className="text-primary">Registrarse aquí</Link>
                                         </div>
                                     </form>
                                 </div>

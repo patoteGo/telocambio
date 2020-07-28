@@ -1,6 +1,6 @@
 export const URLBASE = 'telocambio';
 
-const VERCEL = true;
+const VERCEL = process.env.NODE_ENV === 'production';
 
 export const APIS = {
     GETUSERS: VERCEL ? 'https://telocambio-api.herokuapp.com/users' : 'http://localhost:5000/users',

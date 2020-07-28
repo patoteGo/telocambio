@@ -11,8 +11,8 @@ import Products from './../views/Products/Products.jsx'
 import QuienesSomos from './../views/QuienesSomos';
 
 //admin
-import CreateProductSend from '../admin/views/send/CreateProductSend.jsx'
-import ListProductsSend from './../admin/views/send/ListProductsSend.jsx'
+import CreateProductSend from '../admin/views/send/CreateProduct.jsx'
+import ListProductsSend from './../admin/views/send/ListProducts.jsx'
 
 import ConfigPage from './../admin/views/configuration/ConfigUser.jsx'
 import { ProtectedRoute } from './Protected-route'

@@ -5,7 +5,6 @@ import Gallery from './Gallery'
 import { Link } from "react-router-dom";
 import { AppContext } from './../../Context/AppContext'
 import { fetchProductbyID } from './../../config/api'
-import './detail.sass'
 import ChoicePublish from './../../modals/ChoicePublish'
 import Login from './../../modals/Login'
 import NewPublish from './../../modals/NewPublish'
@@ -53,7 +52,8 @@ export default function Detail(props) {
     // console.log('product',product, galleryHandle());
     return (
         <div className="Detail">
-            <Header />
+            <Header interior={true} title={product.name}/>
+            
             <ChoicePublish name="choiceModal" product={product} />
             <Login name="loginModal" product={product} />
             <ListPublish name={`listpublishModal${product.id}`} product={product} />
@@ -64,8 +64,8 @@ export default function Detail(props) {
             <div className="container">
                 <div className="row mt-5 d-flex align-items-end">
                     <div className="col">
-                        <h2 className="mr-4">{product.name}</h2>
-                        <h5>Usuario: <strong>{product.username}</strong></h5>
+                        <h2 className="mr-4 font-title">{product.name}</h2>
+                        <p className="text-green">Quien lo ofrece: <strong>{product.username}</strong></p>
                     </div>
 
                 </div>
@@ -86,11 +86,11 @@ export default function Detail(props) {
                             <div className="col">
                                 {
                                 context.user[0].id !== product.user_id ?
-                                    <div className="btn ml-2 btn-info" data-toggle="modal" data-target={modal}>Cambiar por</div> : ''
+                                    <div className="btn ml-2 btn-primary" data-toggle="modal" data-target={modal}>Cambiar por</div> : ''
                                     
                                 }
                              
-                                <Link to="/publicaciones" className="btn btn-light mt-2 ml-1">Ver todas</Link>
+                                <Link to="/publicaciones" className="btn btn-light  ml-1">Ver todas</Link>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,30 @@
+@import './colors'
+@import './fonts'
+.nav-item
+    display: flex
+    align-items: center
+    jusfify-content: center
+    .navlink.nav-header
+        color: white
+        padding-right: 2rem
+        padding-left: 2rem
+
+
+.navbar-collapse
+    @media (max-width: 760px)
+        background: #414141
+        padding: 16px
+        margin-top: 19px
+.text-small
+    font-size: 0.7em
+.hide-mobile
+    @media (max-width: 760px)
+        display: none
+.hide-desktop
+    display: none!important
+    @media (max-width: 760px)
+        display: flex!important
+.title-mobile
+    font-size: 1.3em
+.navlink.active
+    color: $secundario!important
