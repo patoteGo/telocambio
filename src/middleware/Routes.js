@@ -9,7 +9,7 @@ import Register from '../views/Account/Register';
 import Detail from './../views/Detail/Detail.jsx'
 import Products from './../views/Products/Products.jsx'
 import QuienesSomos from './../views/QuienesSomos';
-
+import Test from './../views/Test'
 //admin
 import CreateProductSend from '../admin/views/send/CreateProduct.jsx'
 import ListProductsSend from './../admin/views/send/ListProducts.jsx'
@@ -30,6 +30,7 @@ const Routes = () => {
                 <Route exact path={'/publicaciones'} component={Products} />
                 <Route exact path={'/publicaciones/:id'} component={Detail} />
                 <Route exact path={'/quienes-somos'} component={QuienesSomos}/>
+                <Route exact path={'/test'} component={Test}/>
                 <ProtectedRoute exact path={'/admin/create'} component={CreateProductSend} />
                 <ProtectedRoute exact path={'/admin/edit/:id'} component={CreateProductSend} />
                 <ProtectedRoute exact path={'/admin/list'} component={ListProductsSend} />
