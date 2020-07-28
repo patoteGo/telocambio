@@ -10,7 +10,7 @@ export default function Test() {
             <div className="container my-5">
             <div className="row">
                 <div className="col-6">
-                    <form action="http://127.0.0.1:5000/file" method="post" enctype="multipart/form-data">
+                    <form action="http://127.0.0.1:5000/file" method="post" enctype="multipart/form-data"> 
                         <div className="input-group">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroupFileAddon01">Upload</span>
