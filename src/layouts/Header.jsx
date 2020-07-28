@@ -69,21 +69,21 @@ function Header(props) {
             <div className="collapse navbar-collapse" id="navbarsExample07">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <NavLink exact  className="font-title nav-NavLink-2" to="/">Inicio</NavLink>
+                  <NavLink exact  className="font-title navlink nav-header" to="/">Inicio</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink exact className="font-title nav-NavLink-2 text-white" to="/publicaciones">Productos</NavLink>
+                  <NavLink exact className="font-title navlink nav-header text-white" to="/publicaciones">Productos</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink exact className="nav-NavLink-2 font-title" to="/quienes-somos">Quienes somos</NavLink>
+                  <NavLink exact className="navlink nav-header font-title" to="/quienes-somos">Quienes somos</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink exact className="nav-NavLink-2 font-title" to="/contacto">Contáctanos</NavLink>
+                  <NavLink exact className="navlink nav-header font-title" to="/contacto">Contáctanos</NavLink>
                 </li>
               </ul>
              
               <div className="nav-item dropdown my-md-0 is-dark">
-                  <div className="nav-NavLink-2 dropdown-toggle font-title"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> { user.firstname ? 'Hola '+ user.firstname : 'Cuenta' } </div>
+                  <div className="navlink nav-header dropdown-toggle font-title"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> { user.firstname ? 'Hola '+ user.firstname : 'Cuenta' } </div>
                   
                   {dropdownmenu(user)}
               </div>
@@ -99,7 +99,7 @@ function Header(props) {
           </div>
         </nav>
         <div className="homeimg">
-          
+          <div className="bg_hover"></div>
           <img className="bg" src="/img/jumbotron_telocambio.jpg" alt="logo"/>
           <div className="content">
             <div className="container">
@@ -109,10 +109,14 @@ function Header(props) {
               </div>
               <div className="search">
                 <label className="text-white font-title" htmlFor="search">Buscar</label>
+                <div className="input d-flex">
                 <input className="form-control" type="search" id="search"/>
+                <img className="ml-2 lupa" src="/img/lupa.svg" alt=""/>
+                </div>
+                
+
               </div>
             </div>
-            
           </div>
         </div>
         <div className="interiortitle bg-green w-100">

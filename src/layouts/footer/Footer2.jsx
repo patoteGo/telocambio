@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 export default function Footer2() {
     return (
         <div>
@@ -9,30 +9,30 @@ export default function Footer2() {
                     <div className="row text-center d-flex justify-content-center pt-5 mb-3">
                     <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold ">
-                                <Link className="text-light font-title" to="/">Inicio</Link>
+                                <NavLink exact className="text-light font-title navlink" to="/">Inicio</NavLink>
                             </h6>
                         </div>
                         <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold ">
-                                <Link className="text-light font-title" to="/register">Registrarse</Link>
+                                <NavLink exact className="text-light font-title navlink" to="/register">Registrarse</NavLink>
                             </h6>
                         </div>
 
                         <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold">
-                            <Link className="text-light font-title" to="/login">Login</Link>
+                            <NavLink exact className="text-light font-title navlink" to="/login">Login</NavLink>
                             </h6>
                         </div>
 
                         <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold">
-                            <Link className="text-light font-title" to="/contacto">Contáctanos</Link>
+                            <NavLink exact className="text-light font-title navlink" to="/contacto">Contáctanos</NavLink>
                             </h6>
                         </div>
 
                         <div className="col-md-2 mb-3">
                             <h6 className="text-uppercase font-weight-bold">
-                            <Link className="text-light font-title" to="/contacto">Ayuda</Link>
+                            <NavLink exact className="text-light font-title navlink" to="/contacto">Ayuda</NavLink>
                             </h6>
                         </div>
 

@@ -15,7 +15,7 @@
         position: absolute!important
         width: 100%
         @media (max-width: 760px)
-            height: 50%
+            height: 30%
             align-items: flex-start!important
         .navbar-brand
             img
@@ -31,6 +31,19 @@
         border-radius: 10px
         // margin-top: -55px
         overflow: hidden
+        .bg_hover
+            position: absolute
+            content: ''
+            background: rgba(0,0,0,0.5)
+            top: 0px
+            left: 0px
+            width: 100%
+            height: 100%
+            z-index: 2
+            background: rgba(0,0,0,0.2)
+            @media (max-width: 760px)
+                background: rgba(0,0,0,0.5)
+                display: block
         .bg
             position: absolute
             z-index: -1
@@ -42,6 +55,7 @@
         .content
             z-index: 5
             padding-top: 90px
+            position: absolute
             height: 100%
             width: 100%
             display: flex
@@ -64,6 +78,11 @@
                     width: 40%
                     @media (max-width: 760px)
                         width: 100%
+                .lupa
+                    cursor: pointer
+                    transition: all 0.2s ease-in
+                    &:hover
+                        transform: scale(1.1)
     .interiortitle
         display: none
         position: absolute

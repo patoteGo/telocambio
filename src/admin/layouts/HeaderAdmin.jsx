@@ -5,7 +5,6 @@ import Cookies from 'universal-cookie';
 import { NAMES,  OPTIONS } from './../../config/config.js'
 import Logo from './../../layouts/Logo'
 import Swal from 'sweetalert2'
-import './Header.sass';
 function Header(props) {
   const context = useContext(AppContext);
   // eslint-disable-next-line
@@ -60,17 +59,17 @@ function Header(props) {
             <div className="collapse navbar-collapse" id="navbarsExample07">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <NavLink exact  className="font-title nav-NavLink-2" to='/admin/list'>Lista Productos</NavLink>
+                  <NavLink exact  className="font-title navlink nav-header" to='/admin/list'>Lista Productos</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink exact  className="font-title nav-NavLink-2" to='/admin/create'>Crear Producto</NavLink>
+                  <NavLink exact  className="font-title navlink nav-header" to='/admin/create'>Crear Producto</NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink exact  className="font-title nav-NavLink-2" to="/publicaciones">Productos Front</NavLink>
+                  <NavLink exact  className="font-title navlink nav-header" to="/publicaciones">Productos Front</NavLink>
                 </li>
               </ul>
               <div className="nav-item dropdown my-md-0 is-dark">
-                  <div className="nav-NavLink-2 dropdown-toggle font-title"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> { user.firstname ? 'Hola '+ user.firstname : 'Cuenta' } </div>
+                  <div className="navlink nav-header dropdown-toggle font-title"  id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> { user.firstname ? 'Hola '+ user.firstname : 'Cuenta' } </div>
                   
                   {dropdownmenu(user)}
               </div>
