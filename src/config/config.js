@@ -18,6 +18,9 @@ export const APIS = {
     GETSWAPBYPRODUCT: VERCEL ? 'https://telocambio-api.herokuapp.com/swap' : 'http://localhost:5000/swap',
     SWAPDONE: VERCEL ? 'https://telocambio-api.herokuapp.com/swap/done' : 'http://localhost:5000/swap/done',
     SENDEMAIL: VERCEL ? 'https://telocambio-api.herokuapp.com/sendemail' : 'http://localhost:5000/sendemail',
+
+    UPLOADIMAGE: VERCEL ? 'https://telocambio-api.herokuapp.com/upload' : 'http://localhost:5000/upload',
+
     ADMINEMAIL: 'patote.gonzalez@gmail.com',
     BASEURL: VERCEL ? 'https://telocambio-api.herokuapp.com/' : 'http://localhost:3000/',
 }
