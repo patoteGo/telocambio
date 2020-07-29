@@ -87,6 +87,28 @@ export const createProduct = async (data) => {
   return await res;
 }
 
+export const editProduct = async (id,data) => {
+  const response = await fetch(`${APIS.CREATEPRODUCT}/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    
+  });
+  const res = response.json();
+  return await res;
+}
+
+export const uploadImage = async (formData) => {
+  const response = await fetch(APIS.UPLOADIMAGE, {
+    method: 'POST',
+    body: formData,
+  });
+  const res = response.json();
+  return res;
+}
 
 
 export const deleteProduct = async (id) => {

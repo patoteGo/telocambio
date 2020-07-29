@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Header from '../../layouts/HeaderAdmin'
 import { useForm } from 'react-hook-form';
 import { AppContext } from '../../../Context/AppContext'
-import { createProduct } from '../../../config/api.js'
+import { createProduct,editProduct, uploadImage } from '../../../config/api.js'
 import Loader from '../../../Helpers/Loader'
 import Swal from 'sweetalert2'
 import { fetchProductbyID } from '../../../config/api'
@@ -16,19 +16,67 @@ export default function CreateProduct(props) {
 
   const onSubmit = (data) => {
     setLoader('active');
-    createProduct(data).then(res => {
+    const formData = new FormData()
+    const filecover = document.querySelector('#cover_img')
+    const filegal1 = document.querySelector('#gallery1')
+    const filegal2 = document.querySelector('#gallery2')
+    const filegal3 = document.querySelector('#gallery3')
+    const filegal4 = document.querySelector('#gallery4')
+    const filegal5 = document.querySelector('#gallery5')
+    const filegal6 = document.querySelector('#gallery6')
+    formData.append('cover_img', filecover.files[0])
+    formData.append('gallery1', filegal1.files[0])
+    formData.append('gallery2', filegal2.files[0])
+    formData.append('gallery3', filegal3.files[0])
+    formData.append('gallery4', filegal4.files[0])
+    formData.append('gallery5', filegal5.files[0])
+    formData.append('gallery6', filegal6.files[0])
+
+    console.log('data real', data);
+
+    uploadImage(formData).then(res => {
+      console.log(res);    
       setLoader('');
-      Swal.fire({
-        title: 'Ha sido creado',
-        text: 'Ya esta publicado',
-        icon: 'success',
-        confirmButtonText: 'Listo'
-      })
+      res.forEach(resval => {
+        data = {...data,  ...resval }
+      });
+      console.log('dataantes crear', data);
+      if(props.match.params.id !== undefined ){
+        //editar
+        editProduct(props.match.params.id, data).then(res => {
+            setLoader('');
+            Swal.fire({
+              title: 'Producto editado',
+              text: 'Ya esta publicado',
+              icon: 'success',
+              confirmButtonText: 'Listo'
+            })
+          }).catch((err) => {
+            console.log(err);
+          })
+      }else {
+        //crear
+        createProduct(data).then(res => {
+            setLoader('');
+            Swal.fire({
+              title: 'Ha sido creado',
+              text: 'Ya esta publicado',
+              icon: 'success',
+              confirmButtonText: 'Listo'
+            })
+          }).catch((err) => {
+            console.log(err);
+          })
+      }
+          
     }).catch((err) => {
+      setLoader('');
       console.log(err);
     })
-    // console.log(data);
-   
+ 
+
+    console.log(data);
+    // console.log(formData);
 
   }
 
@@ -51,10 +99,10 @@ export default function CreateProduct(props) {
 
   return (
     <div>
-      <Header interior={true} title="Crear"/>
+      <Header interior={true} title={ props.match.params.id !== undefined ? 'Editar' : 'Crear'}/>
       <Loader active={loader}/>
       <div className="container">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
           <div className="row my-5">
             <div className="col">
               <h3 className="font-title text-primary text-center">
@@ -123,15 +171,7 @@ export default function CreateProduct(props) {
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
                 <label className="font-title text-green" htmlFor="cover_img">Imagen Portada</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cover_img"
-                  name="cover_img"
-                  placeholder="Ingrese el url de su imagen"
-                  ref={register({required: 'Imágen requerida'})}
-                  defaultValue={product.cover_img}
-                />
+                <input id="input-b1" id="cover_img" type="file" className="form-control"/>
                 {errors.cover_img && <p className="badge badge-danger ml-2">{errors.cover_img.message}</p>}
               </div>
               <div className="form-group">
@@ -151,12 +191,12 @@ export default function CreateProduct(props) {
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
                 <label className="font-title text-green" htmlFor="gallery">Imagen Galerias</label>
-                <input type="text" className="mt-2 form-control" id="gallery1" name="gallery1" placeholder="Ingrese el url de la imagen 1" ref={register} defaultValue={gallery[0]}/> 
-                <input type="text" className="mt-2 form-control" id="gallery2" name="gallery2" placeholder="Ingrese el url de la imagen 2" ref={register} defaultValue={gallery[1]}/>
-                <input type="text" className="mt-2 form-control" id="gallery3" name="gallery3" placeholder="Ingrese el url de la imagen 3" ref={register} defaultValue={gallery[2]}/>
-                <input type="text" className="mt-2 form-control" id="gallery4" name="gallery4" placeholder="Ingrese el url de la imagen 4" ref={register} defaultValue={gallery[3]}/>
-                <input type="text" className="mt-2 form-control" id="gallery5" name="gallery5" placeholder="Ingrese el url de la imagen 5" ref={register} defaultValue={gallery[4]}/>
-                <input type="text" className="mt-2 form-control" id="gallery6" name="gallery6" placeholder="Ingrese el url de la imagen 6" ref={register} defaultValue={gallery[5]}/>
+                <input id="gallery1" type="file" className="form-control"/>
+                <input id="gallery2" type="file" className="form-control"/>
+                <input id="gallery3" type="file" className="form-control"/>
+                <input id="gallery4" type="file" className="form-control"/>
+                <input id="gallery5" type="file" className="form-control"/>
+                <input id="gallery6" type="file" className="form-control"/>
               </div>
             </div>
           </div>
@@ -170,7 +210,7 @@ export default function CreateProduct(props) {
           <div className="row">
             <div className="offset-md-6 col-md-6 col-sm-12">
               <button type="submit" className="btn btn-primary mb-2">
-                Subir Publicación a tu cuenta
+                { props.match.params.id !== undefined ? 'Editar Publicación' : 'Subir Publicación'}
               </button>
             </div>
           </div>
