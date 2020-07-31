@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@popperjs/core": "^2.4.0",
+    "@popperjs/core": "^2.4.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -16,11 +16,11 @@
     "react-dom": "^16.13.1",
     "react-dynamic-modal": "^1.1.1",
     "react-hook-form": "^5.7.2",
-    "react-image-gallery": "^1.0.7",
+    "react-image-gallery": "^1.0.8",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "sweetalert2": "^9.15.1",
+    "sweetalert2": "^9.17.1",
     "sweetalert2-react": "^0.8.3",
     "swiper": "^5.4.5",
     "universal-cookie": "^4.0.3"
