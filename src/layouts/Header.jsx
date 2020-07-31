@@ -107,15 +107,13 @@ function Header(props) {
                 <h1 className="font-title  text-white">¿Quieres cambiar tus cosas?</h1>
                 <p className="text-white">Publica aqui y conecta con muchas otras personas que tambien quieren hacer lo mismo</p>
               </div>
-              <div className="search">
+              {/* <div className="search">
                 <label className="text-white font-title" htmlFor="search">Buscar</label>
                 <div className="input d-flex">
                 <input className="form-control" type="search" id="search"/>
                 <img className="ml-2 lupa" src="/img/lupa.svg" alt=""/>
                 </div>
-                
-
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
