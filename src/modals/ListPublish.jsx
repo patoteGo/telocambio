@@ -27,7 +27,7 @@ export default function ListPublish({name, product}) {
 
 
             const dataemail_oferta = {
-                email: prodoferta.user_email,
+                email: product.user_email,
                 subject: `Se enviado tu oferta por el producto ${product.name}`,
                 template: 'swapreceive',
                 data: {
@@ -41,7 +41,7 @@ export default function ListPublish({name, product}) {
                         },
             }
             const dataemail_muestra = {
-                email: product.user_email,
+                email: prodoferta.user_email,
                 subject: `En Telocambio te han ofrecido una oferta por tu ${product.name}`,
                 template: 'swapsend',
                 data: {
