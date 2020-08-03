@@ -16,6 +16,7 @@ export default function ListProducts(props) {
   const [loader, setLoader] = useState("");
 
 
+
   const handleOffer = (product) => {
     setOfferactive('active');
     setProduct(product)
@@ -26,14 +27,6 @@ export default function ListProducts(props) {
 
   const handleOfferOff = () => {
     setOfferactive('')
-  //   fetchProducts().then(res => {
-  //     // console.log('off', res)
-  //     context.products[1](res)
-      
-      
-  //     window.location.reload(false);
-
-  // }) 
   }
 
   const handleDelete = (id) => {

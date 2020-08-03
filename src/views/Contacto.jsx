@@ -12,15 +12,15 @@ export default function Contacto() {
     const onSubmit = (data) => {
         console.log(data)
         const dataFormat = {
-            "email": APIS.ADMINEMAIL,
-            "subject": `Email de Telocambio de ${data.username} ${data.lastname}`,
-            "body": `
-                <h1>Email de contacto</h1>
-                <p>nombre: <strong>${data.username}</strong></p>
-                <p>apellido: <strong>${data.lastname}</strong></p>
-                <p>email: <strong>${data.email}</strong></p>
-                <p>mensaje: <strong>${data.body}</strong></p>
-            `
+            email: APIS.ADMINEMAIL,
+            subject: `Email de Telocambio de ${data.username} ${data.lastname}`,
+            template: 'contactform',
+            data: {
+                nombre: data.username,
+                apellido: data.lastname,
+                email: data.email,
+                mensaje: data.body
+            }
         }
         SendEmail(dataFormat).then((res) => {
             console.log('funciona email', res)

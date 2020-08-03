@@ -50,9 +50,19 @@ export default function Offers(props) {
                 SwapDone(data).then(res => {
                     console.log(res)
                     SendEmail({
-                        "email": offer.user_email,
-                        "subject": msg.subject,
-                        "body": ''    
+                        email: offer.user_email,
+                        subject: msg.subject,
+                        template: 'swapdone',
+                        data: {
+                           oferta_name: offer.name,
+                           oferta_img: offer.cover_img,
+                           oferta_link: `${document.location.origin}/publicaciones/${offer.id}`,
+                           muestra_name: props.product.name,
+                           muestra_img: props.product.cover_img,
+                           muestra_link: `${document.location.origin}/publicaciones/${props.product.id}`,
+                           name: props.product.username,
+                           email: props.product.user_email
+                        }    
                     }).then(res => {
                         Swal.fire(
                             'Aceptada!',
