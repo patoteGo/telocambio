@@ -24,11 +24,9 @@ export default function ListPublish({name, product}) {
         }
         console.log(select, prodoferta, product.user_email);
         createSwap(data).then((res) => {
-
-
             const dataemail_oferta = {
                 email: product.user_email,
-                subject: `Se enviado tu oferta por el producto ${product.name}`,
+                subject: `En Telocambio te han ofrecido una oferta por tu ${product.name}`,
                 template: 'swapreceive',
                 data: {
                     oferta_name: prodoferta.name,
@@ -42,7 +40,7 @@ export default function ListPublish({name, product}) {
             }
             const dataemail_muestra = {
                 email: prodoferta.user_email,
-                subject: `En Telocambio te han ofrecido una oferta por tu ${product.name}`,
+                subject: `Se enviado tu oferta por el producto ${product.name}`,
                 template: 'swapsend',
                 data: {
                     oferta_name: prodoferta.name,
@@ -55,7 +53,7 @@ export default function ListPublish({name, product}) {
             }
             SendEmail(dataemail_muestra)
             SendEmail(dataemail_oferta)
-            closeModal(`listpublishModal${product.id}`)
+            // closeModal(`listpublishModal${product.id}`)
 
 
             setLoader('');
