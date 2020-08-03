@@ -55,7 +55,7 @@ export default function ListPublish({name, product}) {
             }
             SendEmail(dataemail_muestra)
             SendEmail(dataemail_oferta)
-            // closeModal('listpublishModal')
+            closeModal(`listpublishModal${product.id}`)
 
 
             setLoader('');
