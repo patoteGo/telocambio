@@ -18,6 +18,7 @@ function Main() {
         <div className="container">
           <div className="row mb-4">
             {
+              // eslint-disable-next-line
               products.map((product, index) => {
                 if(index <= 2){
                 return (

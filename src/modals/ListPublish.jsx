@@ -3,7 +3,8 @@ import { AppContext } from './../Context/AppContext'
 import { createSwap, SendEmail } from './../config/api.js';
 import Swal from 'sweetalert2'
 import Loader from './../Helpers/Loader'
-import closeModal from './closeModal'
+import {fetchProducts} from './../config/api'
+// import closeModal from './closeModal'
 export default function ListPublish({name, product}) {
     const context = useContext(AppContext);
     const [ select, setSelect ] = useState("")
@@ -15,6 +16,7 @@ export default function ListPublish({name, product}) {
       
     const handleSwap = () => {
         setLoader('active');
+        // eslint-disable-next-line
         const prodoferta = context.products[0].filter(prod => select == prod.id)[0]
         console.log('prodo', prodoferta);  
         const data = {
@@ -53,7 +55,7 @@ export default function ListPublish({name, product}) {
             }
             SendEmail(dataemail_muestra)
             SendEmail(dataemail_oferta)
-            // closeModal(`listpublishModal${product.id}`)
+            // 
 
 
             setLoader('');
@@ -64,6 +66,9 @@ export default function ListPublish({name, product}) {
                 confirmButtonText: 'Listo'
               })
               console.log(res);
+              fetchProducts().then(prod => {
+                context.products[1](prod)
+              })
               
             }).catch((err) => {
                setLoader('');
@@ -81,7 +86,7 @@ export default function ListPublish({name, product}) {
     useEffect(() => {
         const sel = document.querySelector(`#${name} .selectpublish`).value
         setSelect(sel)
-        
+     // eslint-disable-next-line   
     }, [])
     
     return (
@@ -132,6 +137,7 @@ export default function ListPublish({name, product}) {
                                                 )
                                                 
                                             }
+                                            return ''
                                         })
                                     }
 

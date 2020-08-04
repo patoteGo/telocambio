@@ -1,16 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 // import ReactDOM from 'react-dom';
 import { SendEmail } from '../config/api.js'
 import {useForm} from 'react-hook-form';
 import Header from './../layouts/Header'
 import Footer from './../layouts/footer/Footer2'
+import Loader from './../Helpers/Loader'
 import { APIS } from './../config/config'
 import Swal from 'sweetalert2'
 export default function Contacto() {
     const {register, handleSubmit, errors} = useForm();
-
+    const [loader, setLoader] = useState("");
     const onSubmit = (data) => {
         console.log(data)
+        setLoader('active');
         const dataFormat = {
             email: APIS.ADMINEMAIL,
             subject: `Email de Telocambio de ${data.username} ${data.lastname}`,
@@ -24,6 +26,7 @@ export default function Contacto() {
         }
         SendEmail(dataFormat).then((res) => {
             console.log('funciona email', res)
+            setLoader('');
             Swal.fire({
                 title: 'Listo',
                 text: 'Su email ha sido enviado',
@@ -46,6 +49,7 @@ export default function Contacto() {
     return (
         <div>
             <Header interior={true} title="Contáctanos"/>
+            <Loader active={loader}/>
             <div className="Contacto my-5">
                 <div className="container">
                     <div id="contact-row" className="row justify-content-around align-items-start">
@@ -72,7 +76,7 @@ export default function Contacto() {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="message" className="text-primary">Mensaje:</label><br />
-                                        <input type="text" name="body"  className="form-control" ref={register({required: 'mensaje requerido'})} />
+                                        <textarea name="body" className="form-control" cols="30" rows="10" ref={register({required: 'mensaje requerido'})} ></textarea>
                                         {errors.body && <p className="badge badge-danger ml-2">{errors.body.message}</p>}
                                     </div>
                                     <div className="form-group">

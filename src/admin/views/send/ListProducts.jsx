@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect  } from 'react'
+import React, { useContext, useState  } from 'react'
 import Header from '../../layouts/HeaderAdmin'
 import { Link } from "react-router-dom";
 import { deleteProduct } from '../../../config/api'
 import { AppContext } from '../../../Context/AppContext'
-import {fetchSwapsbyProduct, fetchProducts} from '../../../config/api'
+import {fetchSwapsbyProduct} from '../../../config/api'
 import Swal from 'sweetalert2'
 import Offers from './Offers'
 import Loader from '../../../Helpers/Loader'
@@ -48,6 +48,7 @@ export default function ListProducts(props) {
           )
           // eslint-disable-next-line
           const productsSIN =  context.products[0]
+          // eslint-disable-next-line
             .map( (product) => { if ( product.id !== id) return product })
             .filter((el) => {return el != null})
 

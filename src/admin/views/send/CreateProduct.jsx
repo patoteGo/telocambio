@@ -1,19 +1,33 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useHistory } from "react-router-dom";
 import Header from '../../layouts/HeaderAdmin'
 import { useForm } from 'react-hook-form';
 import { AppContext } from '../../../Context/AppContext'
 import { createProduct,editProduct, uploadImage } from '../../../config/api.js'
 import Loader from '../../../Helpers/Loader'
 import Swal from 'sweetalert2'
-import { fetchProductbyID } from '../../../config/api'
+import { fetchProductbyID,fetchProducts } from '../../../config/api'
+
 export default function CreateProduct(props) {
   const context = useContext(AppContext);
   const [user, setUser] = useState({});
   const { register, handleSubmit, errors } = useForm();
   const [loader, setLoader] = useState("");
   const [product, setProduct] = useState({});
+  // eslint-disable-next-line
   const [gallery, setGallery] = useState([]);
+  const history = useHistory();
 
+  const showGallery = (product, num) => {
+    if(product.gallery){
+      if(product.gallery.split(",")[num] !== undefined){
+        return <img src={product.gallery.split(",")[num]} alt={`gallery${num}`} style={{ width:'90px'}}/>
+      } else { return ''}
+      
+    }
+
+  }
+   
   const onSubmit = (data) => {
     setLoader('active');
     const formData = new FormData()
@@ -51,6 +65,13 @@ export default function CreateProduct(props) {
               icon: 'success',
               confirmButtonText: 'Listo'
             })
+            fetchProducts().then(prod => {
+              context.products[1](prod)
+            })
+            
+            history.push('/admin/list')
+
+
           }).catch((err) => {
             console.log(err);
           })
@@ -64,6 +85,11 @@ export default function CreateProduct(props) {
               icon: 'success',
               confirmButtonText: 'Listo'
             })
+            fetchProducts().then(prod => {
+              context.products[1](prod)
+            })
+            
+            history.push('/admin/list')
           }).catch((err) => {
             console.log(err);
           })
@@ -94,7 +120,7 @@ export default function CreateProduct(props) {
 
     }
     updatedUser()
-    
+    // eslint-disable-next-line
 }, [context.user[0]]);
 
   return (
@@ -171,8 +197,14 @@ export default function CreateProduct(props) {
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
                 <label className="font-title text-green" htmlFor="cover_img">Imagen Portada</label>
-                <input id="input-b1" id="cover_img" type="file" className="form-control"/>
+                <div className="d-flex">
+                { props.match.params.id !== undefined && <img src={product.cover_img} style={{ width:'100px'}} alt="coverimg"/>  }
+                <input id="cover_img" type="file" className="form-control"/>
                 {errors.cover_img && <p className="badge badge-danger ml-2">{errors.cover_img.message}</p>}
+
+                </div>
+                
+                
               </div>
               <div className="form-group">
                 <label className="font-title text-green" htmlFor="tradeBy">Cambiar Por</label>
@@ -182,21 +214,45 @@ export default function CreateProduct(props) {
                   name="tradeBy"
                   id="tradeBy"
                   placeholder="Tostadora"
-                  ref={register()}
+                  ref={register({required: 'porque cambiar requerida'})}
                   defaultValue={product.tradeBy}
                 />
+                {errors.tradeBy && <p className="badge badge-danger ml-2">{errors.tradeBy.message}</p>}
               </div>
              
             </div>
             <div className="col-md-6 col-sm-12">
               <div className="form-group">
                 <label className="font-title text-green" htmlFor="gallery">Imagen Galerias</label>
-                <input id="gallery1" type="file" className="form-control"/>
-                <input id="gallery2" type="file" className="form-control"/>
-                <input id="gallery3" type="file" className="form-control"/>
-                <input id="gallery4" type="file" className="form-control"/>
-                <input id="gallery5" type="file" className="form-control"/>
-                <input id="gallery6" type="file" className="form-control"/>
+                <div className="d-flex my-2">
+                <input id="gallery1" type="file" className="form-control mr-1"/>
+                { props.match.params.id !== undefined && showGallery(product ,0)}
+                </div>
+                
+                <div className="d-flex my-2">
+                <input id="gallery2" type="file" className="form-control mr-1"/>
+                { props.match.params.id !== undefined && showGallery(product ,1)}
+                </div>
+
+                <div className="d-flex my-2">
+                <input id="gallery3" type="file" className="form-control mr-1"/>
+                { props.match.params.id !== undefined && showGallery(product ,2)}
+                </div>
+
+                <div className="d-flex my-2">
+                <input id="gallery4" type="file" className="form-control mr-1"/>
+                { props.match.params.id !== undefined && showGallery(product ,3)}
+                </div>
+
+                <div className="d-flex my-2">
+                <input id="gallery5" type="file" className="form-control mr-1"/>
+                { props.match.params.id !== undefined && showGallery(product ,4)}
+                </div>
+
+                <div className="d-flex my-2">
+                <input id="gallery6" type="file" className="form-control mr-1"/>
+                { props.match.params.id !== undefined && showGallery(product ,5)}
+                </div>
               </div>
             </div>
           </div>

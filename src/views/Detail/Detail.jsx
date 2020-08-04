@@ -29,7 +29,7 @@ export default function Detail(props) {
             !context.user[0].id ? setModal("#loginModal") : setModal("#choiceModal")
         }
         updatedUser()
-
+// eslint-disable-next-line
     }, [])
 
 

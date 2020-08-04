@@ -13,6 +13,7 @@ export default function Card({ user , product }) {
             !user.id ? setModal("#loginModal") : setModal(`#choiceModal${product.id}`)
         }
         updatedUser()
+        // eslint-disable-next-line
     }, [user]);
 
     return (

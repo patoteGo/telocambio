@@ -1,4 +1,5 @@
-import React, { useState, useContext }  from 'react'
+import React, { useState, useContext, useEffect }  from 'react'
+import { useHistory } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 import Header from './../../layouts/Header'
@@ -17,6 +18,7 @@ export default function Login(props) {
     const { register, handleSubmit, errors } = useForm();
 
     const [loader, setLoader] = useState("");
+    const history = useHistory();
     const onSubmit = (data) => {
         console.log(data);
         setLoader('active');
@@ -65,6 +67,14 @@ export default function Login(props) {
     }
 
 
+    useEffect(() => {
+        // console.log('user',context);    
+        
+        if(context.user[0].id){
+            history.push('/admin/list')
+        }
+        // eslint-disable-next-line
+    }, [context])
 
     return (
  
