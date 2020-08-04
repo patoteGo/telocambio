@@ -16,8 +16,6 @@
         transition: all 0.2s ease-in-out
         &:hover
             transform: scale(1.3)
-    .cover_img
-        width: 50px
     .list
         // padding: 20px 0px
         .list-cell
@@ -36,6 +34,12 @@
         position: relative
         width: 130px
         margin-right: 20px
+        @media (max-width: 760px)
+            width: 100%
+        .cover_img
+            width: 50px
+            @media (max-width: 760px)
+                width: 100%
         .checkimg
             position: absolute
             left: 0px
@@ -43,10 +47,12 @@
             top: 0px
             bottom: 0px
             margin: auto
+            @media (max-width: 760px)
+                width: 50%
         img.bg
             text-align: center
             width: 120px
             @media (max-width: 760px)
-                width: 130px
+                width: 100%
 .Offers.active
     transform: translateX(0%)

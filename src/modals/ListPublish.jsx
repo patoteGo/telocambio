@@ -1,4 +1,4 @@
-import React, { useContext,useState, useEffect } from 'react'
+import React, { useContext,useState } from 'react'
 import { AppContext } from './../Context/AppContext'
 import { createSwap, SendEmail } from './../config/api.js';
 import Swal from 'sweetalert2'
@@ -7,11 +7,11 @@ import {fetchProducts} from './../config/api'
 // import closeModal from './closeModal'
 export default function ListPublish({name, product}) {
     const context = useContext(AppContext);
-    const [ select, setSelect ] = useState("")
+    let select = ""
     const [loader, setLoader] = useState("");
     const handleChange = (event) => {
         console.log('select', event.target.value);
-        setSelect(event.target.value)
+        select = event.target.value
       }
       
     const handleSwap = () => {
@@ -82,12 +82,6 @@ export default function ListPublish({name, product}) {
             })
 
     }
-
-    useEffect(() => {
-        const sel = document.querySelector(`#${name} .selectpublish`).value
-        setSelect(sel)
-     // eslint-disable-next-line   
-    }, [])
     
     return (
         <div>
@@ -131,11 +125,12 @@ export default function ListPublish({name, product}) {
                                     {
                                         context.products[0].map((product, key) => {
                                             if (product.user_id === context.user[0].id && product.done === 0) {
-                                                
+                                                if(key === 0){
+                                                    select = product.id;
+                                                }
                                                 return (
                                                     <option key={key} value={product.id}>{product.name}</option>
                                                 )
-                                                
                                             }
                                             return ''
                                         })

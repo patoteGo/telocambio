@@ -138,6 +138,20 @@ export const createSwap = async (data) => {
   return await res;
 }
 
+export const deleteSwap = async (data) => {
+  const response = await fetch(APIS.SWAPDELETE, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    
+  });
+  const res = response.json();
+  return await res;
+}
+
 export const fetchSwapsbyProduct = async(productid) => {
   const response = await fetch(APIS.GETSWAPBYPRODUCT + '/' +  productid);
   const res = response.json();

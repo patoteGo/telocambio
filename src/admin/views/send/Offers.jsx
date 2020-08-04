@@ -1,13 +1,56 @@
-import React  from 'react'
+import React, {useContext}  from 'react'
 import './offers.sass'
 import { Link } from "react-router-dom";
-import { SwapDone, SendEmail } from '../../../config/api'
-
-
+import { SwapDone, SendEmail,deleteSwap } from '../../../config/api'
+import { AppContext } from '../../../Context/AppContext'
 import Swal from 'sweetalert2'
 export default function Offers(props) {
-    // const context = useContext(AppContext);
-    
+    const context = useContext(AppContext);
+    const handleDeleteOffer = (offer) => {
+        Swal.fire({
+            title: 'Estas segur@? de quitar esta oferta',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borralo'
+          }).then((result) => {
+            if (result.value) {
+                props.setLoader('active');
+              deleteSwap(
+                    {
+                      oferta_id: offer.id,
+                      muestra_id: props.product.id
+                    }).then(res => {
+                SendEmail({
+                    email: offer.user_email,
+                    subject: `Te han rechazado tu oferta de ${offer.name} por ${props.product.name}`,
+                    template: 'swapno',
+                    data: {
+                       oferta_name: offer.name,
+                       oferta_img: offer.cover_img,
+                       oferta_link: `${document.location.origin}/publicaciones/${offer.id}`,
+                       muestra_name: props.product.name,
+                    }
+                }).then(res => {
+                    props.setLoader('');
+                    Swal.fire(
+                        'Borrada!',
+                        `La oferta ${offer.name} ha sido quitada y enviado un email a quien la hizo`,
+                        'success'
+                      )
+                      setTimeout(() => {
+                        window.location.reload(false);
+                    }, 1500);
+                })
+
+                
+              })
+              
+            }
+          })
+        
+    }
     const handleDone = (offer, done) => {
         let msg = {}
         
@@ -29,6 +72,8 @@ export default function Offers(props) {
                 body: `=(`
             } 
         }
+        
+        
         Swal.fire({
             title: 'Estas segur@?',
             html: msg.html,
@@ -42,13 +87,35 @@ export default function Offers(props) {
           }).then((result) => {
             if (result.value) {
                 props.setLoader('active');
+                let olddone = 0;
+                //envia email cuando hay un antiguo ya en transaccion
+                if(props.product.done !== 0){
+                    const prevoffer_id = props.product.done;
+                    console.log('id', props.product.done);
+                    const prevoffer = context.products[0].filter(prod => prod.id === prevoffer_id)[0];
+                    console.log(prevoffer);
+                    olddone = prevoffer.id
+                    SendEmail({
+                        email: prevoffer.user_email,
+                        subject: `Te han rechazado tu oferta de ${prevoffer.name} por ${props.product.name}`,
+                        template: 'swapno',
+                        data: {
+                           oferta_name: prevoffer.name,
+                           oferta_img: prevoffer.cover_img,
+                           oferta_link: `${document.location.origin}/publicaciones/${prevoffer.id}`,
+                           muestra_name: props.product.name,
+                        }
+                    })
+                }
                 const data = {
                     "oferta_id": offer.id,
                     "muestra_id": props.product.id,
-                    "done": done
+                    "done": done,
+                    'olddone':olddone
+                    
                 }
                 SwapDone(data).then(res => {
-                    console.log(res)
+                    // console.log(res)
                     SendEmail({
                         email: offer.user_email,
                         subject: msg.subject,
@@ -113,10 +180,10 @@ export default function Offers(props) {
                     <h3 className="ml-5 font-title text-primary">Te Ofertan por:</h3>
                 </div>
                 <div className="row mb-4 ml-3">
-                    <div className="col-2">
+                    <div className="col-6 col-md-2">
                         <img className="w-100" src={props.product.cover_img} alt=""/>
                     </div>
-                    <div className="col-4">
+                    <div className="col-6 col-md-4">
                         <h5 className="font-title text-primary"><strong>{props.product.name}</strong></h5>
                         <p className="text-primary hide-mobile">{props.product.shortDesc}</p>
                     </div>
@@ -130,20 +197,19 @@ export default function Offers(props) {
                     props.offers.map((offer, key) => {
                         console.log(offer.id, props.product.id, offer.id === props.product.id);
                         return (
-                            <div className={offer.id === props.product.done  ? 'row list' : 'row list'} key={key}>
+                            <div className='row list my-4 py-4 py-md-0 my-md-2' key={key}>
                                 <div className="col-6 col-md-2 ">
                                     <div className="cover">
-
-                                    <img
-                                        src={offer.cover_img}
-                                        alt="logo"
-                                        className="bg"
-                                    />
-                                    {
-                                        offer.id === props.product.done ? 
-                                        <img className="checkimg" src="/img/check_img.svg" alt="check"/>  
-                                        : ''
-                                    }
+                                        <img
+                                            src={offer.cover_img}
+                                            alt="logo"
+                                            className="bg"
+                                        />
+                                        {
+                                            offer.id === props.product.done ? 
+                                            <img className="checkimg" src="/img/check_img.svg" alt="check"/>  
+                                            : ''
+                                        }
                                     </div>
                                 </div>
                                 <div className=" col-6 col-md-6 text-left list-names ">
@@ -154,17 +220,28 @@ export default function Offers(props) {
                                         {offer.shortDesc}
                                     </div>
                                 </div>
-                                <div className="col-3 col-md-2 ">
+                                <div className="col-3 col-md-1 ">
                                     <Link to={`/publicaciones/${offer.id}`} className="btn btn-info">Detalles</Link>
                                 </div>
-                                <div className="col-6 col-md-2 ">
-                                {offer.id === props.product.done  ? 
-                                    <div className="text-green text-center">Aceptado</div>
-                                    // <div className="btn btn-danger" onClick={()=>{handleDone(offer, false )}}>Arrepentirse</div>
-                                :
-                                <div className="btn btn-primary" onClick={()=>{handleDone(offer, true )}}>Aceptar</div>
-                                }
-                                    {/* <div className="btn btn-primary" onClick={()=>{handleDone(offer, true )}}>Aceptar</div> */}
+                                <div className="col-5 col-md-2 ">
+                                    {offer.id === props.product.done  ? 
+                                        <div className="text-green text-center">Aceptado</div>
+                                        // <div className="btn btn-danger" onClick={()=>{handleDone(offer, false )}}>Arrepentirse</div>
+                                    :
+                                    <div className="btn btn-primary" onClick={()=>{handleDone(offer, true )}}>Aceptar</div>
+                                    }
+                                </div>
+                                <div className="col-4 col-md-1 ">
+                                    {
+                                        offer.id !== props.product.done  &&
+                                        <div className="ml-2 btn-delete" onClick={()=>{handleDeleteOffer(offer)}}>
+                                            <span className="mr-2 text-small">Borrar</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17.253" height="22.182" viewBox="0 0 17.253 22.182">
+                                            <path id="delete" d="M8.732,24.217A2.472,2.472,0,0,0,11.2,26.682h9.859a2.472,2.472,0,0,0,2.465-2.465V9.429H8.732ZM24.753,5.732H20.44L19.207,4.5H13.046L11.813,5.732H7.5V8.2H24.753Z" transform="translate(-7.5 -4.5)" fill="#888"/>
+                                            </svg>
+                                        </div>
+                                    }
+                                    
                                 </div>
                             </div>
                         )

@@ -36,7 +36,7 @@ export default function Login(props) {
                 }
             });
             Swal.fire({
-                title: 'Yuhuuu',
+                title: 'Bien',
                 text: 'Ya estas logueado, ahora presiona el mismo boton para ver tus opciones de cambio',
                 icon: 'success',
                 confirmButtonText: 'Listo'
@@ -44,7 +44,7 @@ export default function Login(props) {
         } else {
             console.log(res, 'fallo');
             Swal.fire({
-                title: 'Oops',
+                title: '=(',
                 html: `Tu email o password no son validos, <br> Intenta de nuevo`,
                 icon: 'error',
                 confirmButtonText: 'uchh'
@@ -55,7 +55,7 @@ export default function Login(props) {
         setLoader('');
         console.log(err);
         Swal.fire({
-            title: 'Oops',
+            title: '=(',
             html: `Tu email o password no son validos,  <br> Intenta de nuevo`,
             icon: 'error',
             confirmButtonText: 'uchh'
