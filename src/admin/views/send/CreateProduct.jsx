@@ -7,7 +7,8 @@ import { createProduct,editProduct, uploadImage } from '../../../config/api.js'
 import Loader from '../../../Helpers/Loader'
 import Swal from 'sweetalert2'
 import { fetchProductbyID,fetchProducts } from '../../../config/api'
-
+// import ImageUploadResizer from 'react-form-upload-image-resize';
+// import resizeImage from './../../../config/resizeImage'
 export default function CreateProduct(props) {
   const context = useContext(AppContext);
   const [user, setUser] = useState({});
@@ -32,6 +33,17 @@ export default function CreateProduct(props) {
     setLoader('active');
     const formData = new FormData()
     const filecover = document.querySelector('#cover_img')
+    //   resizeImage({
+    //     file: filecover.files[0],
+    //     maxSize: 500
+    // }).then(function (resizedImage) {
+    //     console.log("upload resized image")
+    //     formData.append('cover_img', resizedImage)
+    // }).catch(function (err) {
+    //     console.error(err);
+    // });
+    
+
     const filegal1 = document.querySelector('#gallery1')
     const filegal2 = document.querySelector('#gallery2')
     const filegal3 = document.querySelector('#gallery3')
@@ -105,7 +117,7 @@ export default function CreateProduct(props) {
     // console.log(formData);
 
   }
-
+ 
   useEffect(() => {
     const updatedUser = () => {
         setUser(context.user[0]);
@@ -199,6 +211,7 @@ export default function CreateProduct(props) {
                 <label className="font-title text-green" htmlFor="cover_img">Imagen Portada</label>
                 <div className="d-flex">
                 { props.match.params.id !== undefined && <img src={product.cover_img} style={{ width:'100px'}} alt="coverimg"/>  }
+                {/* <ImageUploadResizer change={callback} id="cover_img"  width={200} height={200} /> */}
                 <input id="cover_img" type="file" className="form-control"/>
                 {errors.cover_img && <p className="badge badge-danger ml-2">{errors.cover_img.message}</p>}
 
