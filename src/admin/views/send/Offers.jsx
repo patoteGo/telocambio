@@ -231,11 +231,11 @@ export default function Offers(props) {
                                     <div className="btn btn-primary" onClick={()=>{handleDone(offer, true )}}>Aceptar</div>
                                     }
                                 </div>
-                                <div className="col-4 col-md-1 ">
+                                <div className="col-3 col-md-1 ">
                                     {
                                         offer.id !== props.product.done  &&
-                                        <div className="ml-2 btn-delete" onClick={()=>{handleDeleteOffer(offer)}}>
-                                            <span className="mr-2 text-small">Borrar</span>
+                                        <div className="ml-2 btn-delete " onClick={()=>{handleDeleteOffer(offer)}}>
+                                            <span className="mr-2 reject-text">Rechazar</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="17.253" height="22.182" viewBox="0 0 17.253 22.182">
                                             <path id="delete" d="M8.732,24.217A2.472,2.472,0,0,0,11.2,26.682h9.859a2.472,2.472,0,0,0,2.465-2.465V9.429H8.732ZM24.753,5.732H20.44L19.207,4.5H13.046L11.813,5.732H7.5V8.2H24.753Z" transform="translate(-7.5 -4.5)" fill="#888"/>
                                             </svg>
