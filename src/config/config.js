@@ -23,6 +23,7 @@ export const APIS = {
     UPLOADIMAGE: VERCEL ? 'https://telocambio-api.herokuapp.com/upload' : 'http://localhost:5000/upload',
 
     ADMINEMAIL: 'patote.gonzalez@gmail.com',
+    ADMINEMAIL2: 'sequeracrespo@gmail.com',
     BASEURL: VERCEL ? 'https://telocambio-api.herokuapp.com/' : 'http://localhost:3000/',
 }
 export const NAMES = {

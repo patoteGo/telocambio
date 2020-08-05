@@ -24,6 +24,18 @@ export default function Contacto() {
                 mensaje: data.body
             }
         }
+        const dataFormat2 = {
+            email: APIS.ADMINEMAIL2,
+            subject: `Email de Telocambio de ${data.username} ${data.lastname}`,
+            template: 'contactform',
+            data: {
+                nombre: data.username,
+                apellido: data.lastname,
+                email: data.email,
+                mensaje: data.body
+            }
+        }
+        SendEmail(dataFormat2)
         SendEmail(dataFormat).then((res) => {
             console.log('funciona email', res)
             setLoader('');
