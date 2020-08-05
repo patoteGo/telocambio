@@ -127,6 +127,8 @@ export default function CreateProduct(props) {
             console.log(prod);
             setGallery((prod.gallery).split(','))
           })
+        } else {
+          document.querySelector('#name').value = '';
         }
         // 
 

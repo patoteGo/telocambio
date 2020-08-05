@@ -33,6 +33,10 @@ export default function Contacto() {
                 icon: 'success',
                 confirmButtonText: 'Listo'
               })
+            document.querySelector('#username').value = '';
+            document.querySelector('#lastname').value = '';
+            document.querySelector('#email').value = '';
+            document.querySelector('#body').value = '';
         })
         .catch((err) => {
             console.log('error de email',err);
@@ -58,25 +62,25 @@ export default function Contacto() {
                                 <form onSubmit={handleSubmit(onSubmit)} id="contact-form" className="form is-light" action="" method="post">
                                     <div className="form-group">
                                         <label htmlFor="username" className="text-primary">Nombre:</label><br />
-                                        <input type="text" name="username"  className="form-control" ref={register({required: 'Nombre requerido'})}/>
+                                        <input type="text" name="username" id="username" className="form-control" ref={register({required: 'Nombre requerido'})}/>
                                         {errors.username && <p className="badge badge-danger ml-2">{errors.username.message}</p>}
                                         
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="lastname" className="text-primary">Apellido:</label><br />
-                                        <input type="text" name="lastname"  className="form-control" ref={register({required: 'Apellido requerido'})}/>
+                                        <input type="text" name="lastname" id="lastname" className="form-control" ref={register({required: 'Apellido requerido'})}/>
                                         {errors.lastname && <p className="badge badge-danger ml-2">{errors.lastname.message}</p>}
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="email" className="text-primary">Email:</label><br />
-                                        <input type="text" name="email" className="form-control" 
+                                        <input type="text" name="email" id="email" className="form-control" 
                                         ref={register({required: 'email requerido'})}
                                         />
                                         {errors.email && <p className="badge badge-danger ml-2">{errors.email.message}</p>}
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="message" className="text-primary">Mensaje:</label><br />
-                                        <textarea name="body" className="form-control" cols="30" rows="10" ref={register({required: 'mensaje requerido'})} ></textarea>
+                                        <textarea name="body" id="body" className="form-control" cols="30" rows="10" ref={register({required: 'mensaje requerido'})} ></textarea>
                                         {errors.body && <p className="badge badge-danger ml-2">{errors.body.message}</p>}
                                     </div>
                                     <div className="form-group">

@@ -4,7 +4,7 @@ import { createSwap, SendEmail } from './../config/api.js';
 import Swal from 'sweetalert2'
 import Loader from './../Helpers/Loader'
 // import {fetchProducts} from './../config/api'
-// import closeModal from './closeModal'
+import closeModal from './closeModal'
 export default function ListPublish({name, product}) {
     const context = useContext(AppContext);
     let select = ""
@@ -66,6 +66,7 @@ export default function ListPublish({name, product}) {
                 confirmButtonText: 'Listo'
               })
               console.log(res);
+              closeModal(`listpublishModal${product.id}`)
             //   fetchProducts().then(prod => {
             //     context.products[1](prod)
             //   })
