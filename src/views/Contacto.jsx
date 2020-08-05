@@ -53,7 +53,7 @@ export default function Contacto() {
     return (
         <div>
             <Header interior={true} title="Contáctanos"/>
-            <Loader active={loader}/>
+            <Loader active={loader} msg="saliendo..."/>
             <div className="Contacto my-5">
                 <div className="container">
                     <div id="contact-row" className="row justify-content-around align-items-start">

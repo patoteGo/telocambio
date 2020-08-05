@@ -1,19 +1,26 @@
-import React, { useContext } from 'react';
+import React, { useContext,useEffect,useState } from 'react';
 import Card from './../../shared/Card'
 import { Link } from "react-router-dom";
 import Login from './../../modals/Login'
 import { AppContext } from './../../Context/AppContext'
+import Loader from './../../Helpers/Loader'
 function Main() {
   const context = useContext(AppContext);
   // eslint-disable-next-line
   const [user, setUser] = context.user;
   // eslint-disable-next-line
   const [products, setProduct] = context.products;
+  const [loader, setLoader] = useState("active");
   
+  useEffect(() => {
+    if(products.length > 0) setLoader('');
+    console.log(products);
+  }, [products])
 
   return (
 
       <div className="Homepage-main">
+        <Loader active={loader} msg="calentando motores..."/>
         <Login />
         <div className="container">
           <div className="row mb-4">
