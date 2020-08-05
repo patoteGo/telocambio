@@ -22,8 +22,10 @@ export default function Detail(props) {
             const idproduct = props.match.params.id;
             fetchProductbyID(idproduct).then(res => {
                 setProduct(res)
+                // console.log('gal',product);
             })
         }
+        
 
         const updatedUser = () => {
             !context.user[0].id ? setModal("#loginModal") : setModal("#choiceModal")
@@ -32,8 +34,9 @@ export default function Detail(props) {
 // eslint-disable-next-line
     }, [])
 
-
+    
     const galleryHandle = () => {
+        // console.log('gal',product.gallery);
         if (product.gallery !== undefined) {
             const gal = product.gallery.split(',').map(img => {
                 return {
@@ -46,6 +49,13 @@ export default function Detail(props) {
                 thumbnail: product.cover_img
             });
             return gal;
+        } else {
+            return [
+                {
+                original: product.cover_img,
+                thumbnail: product.cover_img
+            }
+        ];
         }
 
     }
@@ -72,7 +82,7 @@ export default function Detail(props) {
                 <div className="row mb-4">
                     <div className="col-md-8 overflow-hidden col-sm-12">
 
-                        {product.gallery && <Gallery images={galleryHandle()} />}
+                        {product.cover_img && <Gallery images={galleryHandle()} />}
 
                     </div>
                     <div className="col-md-4 col-sm-12">

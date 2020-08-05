@@ -28,7 +28,7 @@ function Header(props) {
   const toggler = () => {
     console.log('toggle');
     if(!document.querySelector('.navbar-toggler').classList.contains('collapsed')){
-      console.log('on');
+      // console.log('on');
       document.querySelector('.Header.interior').classList.add('menu')
     } else {
       document.querySelector('.Header.interior').classList.remove('menu')

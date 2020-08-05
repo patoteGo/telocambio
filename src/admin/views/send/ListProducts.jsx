@@ -105,6 +105,7 @@ export default function ListProducts(props) {
                             src={product.cover_img}
                             alt="logo"
                             className="bg"
+                            style={{ height:'100%'}}
                           />
                           {
                             product.done > 0 ? 

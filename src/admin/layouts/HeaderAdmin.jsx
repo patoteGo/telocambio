@@ -28,12 +28,17 @@ function Header(props) {
     console.log('toggle');
     if(!document.querySelector('.navbar-toggler').classList.contains('collapsed')){
       console.log('on');
-      document.querySelector('.Header.interior').classList.add('menu')
+      if(document.querySelector('.Header.interior')){
+        document.querySelector('.Header.interior').classList.add('menu')
+      }
+      
     } else {
-      document.querySelector('.Header.interior').classList.remove('menu')
+      if(document.querySelector('.Header.interior')){
+        document.querySelector('.Header.interior').classList.remove('menu')
+      }
     }
   }
-  
+
   const dropdownmenu = (user) => {
     if(user.id){
       return (

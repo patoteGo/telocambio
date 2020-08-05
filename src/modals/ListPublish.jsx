@@ -7,24 +7,29 @@ import Loader from './../Helpers/Loader'
 import closeModal from './closeModal'
 export default function ListPublish({name, product}) {
     const context = useContext(AppContext);
-    let select = ""
+    // let select = ""
     const [loader, setLoader] = useState("");
-    const handleChange = (event) => {
-        console.log('select', event.target.value);
-        select = event.target.value
-      }
-      
+    // const handleChange = (event) => {
+    //     console.log('select', event.target.value);
+    //     select = event.target.value
+    //   }
+    // console.log('select antes', select);
     const handleSwap = () => {
         setLoader('active');
+        const modalbase = document.querySelector(`#listpublishModal${product.id}`)
+        const selectvalue = modalbase.querySelector('.selectpublish').value
+        console.log('selectvalue',selectvalue);
+
+        // console.log('select despues', select);
         // eslint-disable-next-line
-        const prodoferta = context.products[0].filter(prod => select == prod.id)[0]
+        const prodoferta = context.products[0].filter(prod => parseInt(selectvalue) === prod.id)[0]
         console.log('prodo', prodoferta);  
         const data = {
-            "oferta_id": parseInt(select),
+            "oferta_id": parseInt(selectvalue),
             "muestra_id": product.id,
             "done": false
         }
-        console.log(select, prodoferta, product.user_email);
+        console.log(selectvalue, prodoferta, product.user_email);
         createSwap(data).then((res) => {
             const dataemail_oferta = {
                 email: product.user_email,
@@ -122,13 +127,14 @@ export default function ListPublish({name, product}) {
                             </div>
                             <div className="row">
                             
-                                <select className="form-control selectpublish" name="publish" onChange={handleChange} >
+                                <select className="form-control selectpublish" name="publish"  >
                                     {
                                         context.products[0].map((product, key) => {
                                             if (product.user_id === context.user[0].id && product.done === 0) {
-                                                if(key === 0){
-                                                    select = product.id;
-                                                }
+                                                // if(key === 0){
+                                                //     select = product.id;
+                                                //     console.log('crea lista', select);
+                                                // }
                                                 return (
                                                     <option key={key} value={product.id}>{product.name}</option>
                                                 )
