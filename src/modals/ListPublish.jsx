@@ -3,7 +3,7 @@ import { AppContext } from './../Context/AppContext'
 import { createSwap, SendEmail } from './../config/api.js';
 import Swal from 'sweetalert2'
 import Loader from './../Helpers/Loader'
-import {fetchProducts} from './../config/api'
+// import {fetchProducts} from './../config/api'
 // import closeModal from './closeModal'
 export default function ListPublish({name, product}) {
     const context = useContext(AppContext);
@@ -66,9 +66,9 @@ export default function ListPublish({name, product}) {
                 confirmButtonText: 'Listo'
               })
               console.log(res);
-              fetchProducts().then(prod => {
-                context.products[1](prod)
-              })
+            //   fetchProducts().then(prod => {
+            //     context.products[1](prod)
+            //   })
               
             }).catch((err) => {
                setLoader('');
