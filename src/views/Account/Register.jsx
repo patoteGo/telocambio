@@ -64,7 +64,7 @@ export default function Register(props) {
                                 <div id="login-box" className="col-md-12">
                                     <form id="login-form" className="form is-light" onSubmit={handleSubmit(onSubmit)} >
                                         <div className="row">
-                                            <div className="col">
+                                            <div className="col-sm-12 col-md-6">
                                                 <div className="form-group">
                                                     <label htmlFor="firstname" className="text-primary">Nombre:</label><br />
                                                     <input
@@ -77,7 +77,7 @@ export default function Register(props) {
                                                     {errors.firstname && <p className="badge badge-danger ml-2">{errors.firstname.message}</p>}
                                                 </div>
                                             </div>
-                                            <div className="col">
+                                            <div className="col-sm-12 col-md-6">
                                                 <div className="form-group">
                                                     <label htmlFor="lastname" className="text-primary">Apellido:</label><br />
                                                     <input
@@ -93,7 +93,7 @@ export default function Register(props) {
                                             </div>
                                         </div>
                                         <div className="row">
-                                            <div className="col">
+                                            <div className="col-sm-12 col-md-6">
                                                 <div className="form-group">
                                                     <label htmlFor="email" className="text-primary">Email:</label><br />
                                                     <input
@@ -106,7 +106,7 @@ export default function Register(props) {
                                                     {errors.email && <p className="badge badge-danger ml-2">{errors.email.message}</p>}
                                                 </div>
                                             </div>
-                                            <div className="col">
+                                            <div className="col-sm-12 col-md-6">
                                                 <div className="form-group">
                                                     <label htmlFor="password" className="text-primary">Password:</label><br />
                                                     <input

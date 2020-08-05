@@ -115,7 +115,7 @@ export default function ListProducts(props) {
                         </td>
                         {/* <td>{product.done ? 'Aceptado' : 'Pendiente'}</td> */}
                         
-                        <th  style={{ maxWidth: '250px'}}>
+                        <th  style={{ maxWidth: '250px',width:'250px'}}>
                           <h4 className="font-title title-mobile">{product.name}</h4>
                           <p className="text-small hide-mobile"  >{product.shortDesc}</p>
                           <div className="d-flex hide-desktop">
